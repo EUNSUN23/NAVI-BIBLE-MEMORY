@@ -83,7 +83,6 @@ describe('SeriesTab Test', () => {
 
     await waitForElementToBeRemovedIfExist(
       within(testTabPanel).queryByTestId('loader'),
-      { timeout: 3000 },
     );
 
     SERIES_DATA_SUB.forEach(data => {
