@@ -7,28 +7,31 @@ import { render } from '@/lib/test/testUtils/render';
 import DrillingPage from '@pages/drilling';
 import Exam from '@pages/exam';
 
-const renderRoute = () => {
-  const router = createMemoryRouter([
-    {
-      element: <RootComponent />,
-      HydrateFallback: Loader,
-      children: [
-        {
-          path: '/',
-          element: <Home />,
-          loader: getSeries,
-        },
-        {
-          path: '/drilling',
-          element: <DrillingPage />,
-        },
-        {
-          path: '/exam',
-          element: <Exam />,
-        },
-      ],
-    },
-  ]);
+const renderRoute = (initialEntry = '/') => {
+  const router = createMemoryRouter(
+    [
+      {
+        element: <RootComponent />,
+        HydrateFallback: Loader,
+        children: [
+          {
+            path: '/',
+            element: <Home />,
+            loader: getSeries,
+          },
+          {
+            path: '/drilling',
+            element: <DrillingPage />,
+          },
+          {
+            path: '/exam',
+            element: <Exam />,
+          },
+        ],
+      },
+    ],
+    { initialEntries: [initialEntry] },
+  );
   render(<RouterProvider router={router} />);
 };
 
