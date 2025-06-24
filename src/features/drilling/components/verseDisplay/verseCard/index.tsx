@@ -4,7 +4,7 @@ import { Textfit } from 'react-textfit';
 import { useCardHideOptionStore } from '@store/drilling/cardHideOptionStore';
 import { ClassValue } from 'clsx';
 import cn from '@utils/cn';
-import { CARD_HIDE_OPTIONS } from '@features/drilling/constants/cardHideOptions';
+import { CARD_HIDE_OPTIONS } from '@features/cardHideOptionSelect/constants/cardHideOptions';
 import { createVerseCardTestId } from '@utils/componentUtils/verseCard';
 
 const {

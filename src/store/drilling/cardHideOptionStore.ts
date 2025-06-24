@@ -1,7 +1,7 @@
 import { create } from 'zustand/index';
 
-import { CARD_HIDE_OPTIONS } from '@features/drilling/constants/cardHideOptions';
-import { CardHideOption } from '@features/drilling/types/cardHideOption.types';
+import { CARD_HIDE_OPTIONS } from '@features/cardHideOptionSelect/constants/cardHideOptions';
+import { CardHideOption } from '@features/cardHideOptionSelect/types/cardHideOption.types';
 
 type CardHideOptionState = {
   cardHideOption: CardHideOption;

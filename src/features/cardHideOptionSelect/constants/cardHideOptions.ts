@@ -1,4 +1,4 @@
-import { CardHideOptionTypes } from '@features/drilling/types/cardHideOption.types';
+import { CardHideOptionTypes } from '@features/cardHideOptionSelect/types/cardHideOption.types';
 
 export const CARD_HIDE_OPTIONS = {
   NONE: { code: 'HIDE_000', name: '없음' },
