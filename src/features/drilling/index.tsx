@@ -23,7 +23,7 @@ function Drilling() {
                 resetErrorBoundary={resetErrorBoundary}
               />
             )}
-            suspenseFallback={<Loader />}
+            suspenseFallback={<Loader id='bibleVersionSelect-loader' />}
           >
             <BibleVersionSelect />
           </ComposedBoundary>
@@ -39,7 +39,7 @@ function Drilling() {
                 resetErrorBoundary={resetErrorBoundary}
               />
             )}
-            suspenseFallback={<Loader />}
+            suspenseFallback={<Loader id='cardHideOptionSelect-loader' />}
           >
             <CardHideOptionSelect />
           </ComposedBoundary>
@@ -53,7 +53,9 @@ function Drilling() {
             error={error}
           />
         )}
-        suspenseFallback={<Loader size='lg' className='my-[120px]' />}
+        suspenseFallback={
+          <Loader size='lg' className='my-[120px]' id='verseDisplay-loader' />
+        }
       >
         <CardDisplay />
       </ComposedBoundary>
