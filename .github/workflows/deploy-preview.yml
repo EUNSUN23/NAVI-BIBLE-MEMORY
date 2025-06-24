@@ -12,7 +12,6 @@ on:
       - main
 jobs:
   build-test-deploy-preview:
-    if: github.repository == 'EUNSUN23/bs_memory_project_forked'
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
