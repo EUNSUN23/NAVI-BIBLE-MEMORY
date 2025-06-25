@@ -4,28 +4,20 @@ import { VERSE_DETAIL_DATA_KOR } from '@/mock/mockData';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
 import { createVerseCardTestId } from '@utils/componentUtils/verseCard';
 import waitForElementToBeRemovedIfExist from '@/lib/test/testUtils/waitForElementToBeRemovedIfExist';
-import { VerseSelectStore } from '@store/verseSelectStore';
-import { VerseId } from '@features/verseSelect/types/verseSummaryData.types';
-
-type SelectorMock = (
-  state: VerseSelectStore,
-) => VerseSelectStore extends infer V ? V : never;
+import { VerseStoreSelectorMock } from '@features/verseSelect/types/verseStoreSelectorMock.type';
 
 describe('DrillingPage Test', () => {
   beforeAll(() => {
     vi.mock('@store/verseSelectStore', async () => {
       const verseSelectStore = await vi.importActual('@store/verseSelectStore');
+
       return {
         ...verseSelectStore,
         useVerseSelectStore: vi
           .fn()
-          .mockImplementation((selector: SelectorMock) =>
+          .mockImplementation((selector: VerseStoreSelectorMock) =>
             selector({
               verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.idx),
-              remove: (_: VerseId) => {},
-              add: (_: VerseId | VerseId[]) => {},
-              hasId: (_: VerseId) => true,
-              reset: () => {},
               hasAnyId: () => true,
             }),
           ),
@@ -36,11 +28,6 @@ describe('DrillingPage Test', () => {
     });
     mockAnimationsApi();
     renderRoute('/drilling');
-  });
-
-  afterAll(() => {
-    vi.resetModules();
-    vi.restoreAllMocks();
   });
 
   test('renders "홈으로" and "시험보기" links, "성경버전" and "숨김" options, and card slide', async () => {
