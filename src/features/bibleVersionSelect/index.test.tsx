@@ -21,9 +21,7 @@ describe('BibleVersionSelect test', () => {
       screen.queryByTestId('bibleVersionSelect-loader'),
     );
 
-    const combobox = screen.getByRole('combobox', { name: '성경버전' });
-
-    await user.click(combobox);
+    expect(screen.queryByRole('combobox', { name: '성경버전' })).not.toBeNull();
 
     const comboboxButton = await screen.findByRole('button', {
       expanded: false,
