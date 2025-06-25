@@ -3,8 +3,7 @@ import SwiperCore from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
-import { VerseDetailDataList } from '@features/drilling/components/verseDisplay/verseCard/type';
-import VerseCard from 'src/features/drilling/components/verseDisplay/verseCard';
+import VerseCard from '@features/verseDisplay/components/verseCard';
 import { getShortVerseAddress } from '@utils/common';
 import { FiChevronsLeft } from '@react-icons/all-files/fi/FiChevronsLeft';
 import { FiChevronsRight } from '@react-icons/all-files/fi/FiChevronsRight';
@@ -13,10 +12,10 @@ import { FaAngleRight } from '@react-icons/all-files/fa/FaAngleRight';
 import { useRef, useState } from 'react';
 import cn from '@utils/cn';
 import { ClassValue } from 'clsx';
-
-type CardSwiperProps = {
-  data: VerseDetailDataList;
-};
+import { useBibleVersionStore } from '@store/bibleVersionStore';
+import { useVerseSelectStore } from '@store/verseSelectStore';
+import { useShallow } from 'zustand/react/shallow';
+import { useVersesDetail } from '@features/verseSelect/api/getVersesDetail';
 
 const startEndNavClass = (disabled: boolean, ...inputs: ClassValue[]) => {
   return cn(
@@ -30,7 +29,12 @@ const prevNextNavClass = (disabled: boolean, ...inputs: ClassValue[]) => {
   return cn('absolute z-20', inputs, disabled && 'text-gray-500');
 };
 
-function CardSwiper({ data }: CardSwiperProps) {
+function VerseCardSwiper() {
+  const bibleVersion = useBibleVersionStore(state => state.bibleVersion);
+  const verseIds = useVerseSelectStore(useShallow(state => state.verseIds));
+
+  const { data } = useVersesDetail(verseIds, bibleVersion);
+
   const swiperRef = useRef<SwiperCore>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -54,7 +58,7 @@ function CardSwiper({ data }: CardSwiperProps) {
   };
 
   return (
-    <>
+    <div className='relative my-8 w-[640px] mobile:w-[300px]'>
       <button
         disabled={isStart}
         className={prevNextNavClass(
@@ -109,8 +113,8 @@ function CardSwiper({ data }: CardSwiperProps) {
         <FaAngleRight aria-hidden={true} className='size-12 mobile:size-8' />
         <span className='sr-only'>다음 구절로</span>
       </button>
-    </>
+    </div>
   );
 }
 
-export default CardSwiper;
+export default VerseCardSwiper;

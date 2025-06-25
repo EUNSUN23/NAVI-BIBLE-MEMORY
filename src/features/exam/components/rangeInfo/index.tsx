@@ -1,4 +1,4 @@
-import { VerseDetailDataList } from '@features/drilling/components/verseDisplay/verseCard/type';
+import { VerseDetailDataList } from '@features/verseDisplay/type';
 import { Textfit } from 'react-textfit';
 
 type RangeInfoProps = {
