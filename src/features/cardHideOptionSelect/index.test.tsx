@@ -1,3 +1,9 @@
 import { test } from 'vitest';
 
-test('CardHideOptionSelect listbox renders card hide options', () => {});
+describe('CardHideOptionSelect Test', () => {
+  beforeAll(() => {
+    vi.mock('');
+  });
+
+  test('renders card hide option combobox after data loading finishes', () => {});
+});

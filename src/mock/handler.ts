@@ -1,13 +1,13 @@
 import { http, HttpResponse } from 'msw';
 import {
   BIBLE_VERSIONS,
+  CARD_HIDE_OPTIONS,
   SERIES_DATA,
   SERIES_DATA_SUB,
   VERSE_DETAIL_DATA_KOR,
   VERSE_SUMMARY_DATA,
 } from '@/mock/mockData';
 import { SUPABASE_URL } from '@/lib/supabase/supabaseConfig';
-import { CARD_HIDE_OPTIONS_LIST } from '@features/cardHideOptionSelect/constants/cardHideOptions';
 import { SORT_METHODS_LIST } from '@features/exam/constants/sortMethods';
 
 const baseURL = `${SUPABASE_URL}/rest/v1`;
@@ -67,7 +67,7 @@ export const getCardHideOptionHandler = http.get(
   `${baseURL}/card_hide_option?select=*`,
   () => {
     return HttpResponse.json({
-      data: CARD_HIDE_OPTIONS_LIST,
+      data: CARD_HIDE_OPTIONS,
       error: null,
     });
   },
