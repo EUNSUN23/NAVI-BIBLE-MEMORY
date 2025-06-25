@@ -13,20 +13,24 @@ type SelectorMock = (
 
 describe('DrillingPage Test', () => {
   beforeAll(() => {
-    vi.mock('@store/verseSelectStore', () => ({
-      useVerseSelectStore: vi
-        .fn()
-        .mockImplementation((selector: SelectorMock) =>
-          selector({
-            verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.idx),
-            remove: (_: VerseId) => {},
-            add: (_: VerseId | VerseId[]) => {},
-            hasId: (_: VerseId) => true,
-            reset: () => {},
-            hasAnyId: () => true,
-          }),
-        ),
-    }));
+    vi.mock('@store/verseSelectStore', async () => {
+      const verseSelectStore = await vi.importActual('@store/verseSelectStore');
+      return {
+        ...verseSelectStore,
+        useVerseSelectStore: vi
+          .fn()
+          .mockImplementation((selector: SelectorMock) =>
+            selector({
+              verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.idx),
+              remove: (_: VerseId) => {},
+              add: (_: VerseId | VerseId[]) => {},
+              hasId: (_: VerseId) => true,
+              reset: () => {},
+              hasAnyId: () => true,
+            }),
+          ),
+      };
+    });
     vi.mock('@store/exam/examConfigModalStore', async () => {
       return await vi.importActual('@store/exam/examConfigModalStore');
     });
@@ -41,7 +45,6 @@ describe('DrillingPage Test', () => {
 
   test('renders "홈으로" and "시험보기" links, "성경버전" and "숨김" options, and card slide', async () => {
     await waitForElementToBeRemovedIfExist(screen.queryByTestId('loader'));
-
     expect(
       screen.queryByRole('heading', { level: 1, name: '암송하기' }),
     ).not.toBeNull();

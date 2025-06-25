@@ -14,6 +14,7 @@ const tstConfig = testConfig({
     environment: 'jsdom',
     setupFiles: './vitest.setup.ts',
     printConsoleTrace: true,
+    bail: 1,
   },
 });
 
