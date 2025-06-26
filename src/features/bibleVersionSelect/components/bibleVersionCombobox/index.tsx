@@ -29,6 +29,7 @@ function BibleVersionCombobox() {
       onChangeCombobox={(item: CommonComboboxItem) =>
         setBibleVersion({ name: item.name, code: item.value })
       }
+      buttonLabel='성경버전 선택'
     />
   );
 }

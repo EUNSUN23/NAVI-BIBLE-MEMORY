@@ -4,17 +4,17 @@ import { render } from '@/lib/test/testUtils/render';
 import VerseDisplay from '@features/verseDisplay/index';
 import { VERSE_DETAIL_DATA_KOR } from '@/mock/mockData';
 import { VerseStoreSelectorMock } from '@features/verseSelect/types/verseStoreSelectorMock.type';
-import { mockAnimationsApi } from 'jsdom-testing-mocks';
 import waitForElementToBeRemovedIfExist from '@/lib/test/testUtils/waitForElementToBeRemovedIfExist';
 import { screen, within } from '@testing-library/react';
 import { getShortVerseAddress, getVerseAddress } from '@utils/common';
 import { createVerseCardTestId } from '@utils/componentUtils/verseCard';
+import { mockAnimationsApi } from 'jsdom-testing-mocks';
 
 const setup = () => {
   const user = userEvent.setup();
   const verseList = VERSE_DETAIL_DATA_KOR.map(data => ({
     ...data,
-    contents: data.verse_kor,
+    contents: data.verse_kor.trim(),
   }));
 
   render(<VerseDisplay />);

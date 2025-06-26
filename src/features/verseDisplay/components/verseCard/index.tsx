@@ -14,7 +14,7 @@ type CardProps = {
 };
 
 const cardTextClass = (isHidden: boolean, ...inputs: ClassValue[]) => {
-  return cn(inputs, isHidden && 'text-transparent bg-sky-100/70');
+  return cn(inputs, isHidden && 'text-covered');
 };
 
 function VerseCard({ data }: CardProps) {

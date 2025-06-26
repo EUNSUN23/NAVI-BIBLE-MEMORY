@@ -27,6 +27,7 @@ function CardHideOptionCombobox() {
       onChangeCombobox={(item: CommonComboboxItem) => {
         setCardHideOption({ name: item.name, code: item.value });
       }}
+      buttonLabel='숨김 옵션 선택'
     />
   );
 }

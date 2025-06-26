@@ -20,6 +20,7 @@ function ExposeSelect() {
       onChangeCombobox={({ name, value }) =>
         setExposeOption({ name, code: value })
       }
+      buttonLabel='시험구절 옵션 선택'
     />
   );
 }

@@ -20,6 +20,7 @@ function SortMethodSelect() {
       onChangeCombobox={({ name, value }) =>
         setSortMethod({ name, code: value })
       }
+      buttonLabel='정렬 옵션 선택'
     />
   );
 }

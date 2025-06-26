@@ -8,7 +8,7 @@ const setup = () => {
   const user = userEvent.setup();
   const verses = VERSE_DETAIL_DATA_KOR.map(data => ({
     ...data,
-    contents: data.verse_kor,
+    contents: data.verse_kor.trim(),
   }));
 
   render(<SwiperPagination verses={verses} activeIndex={0} />);

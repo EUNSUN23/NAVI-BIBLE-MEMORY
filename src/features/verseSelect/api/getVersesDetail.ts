@@ -15,7 +15,7 @@ const getKorVersesDetail = async (verseIds: Verse['idx'][]) => {
     .order('series_code(ord)', { ascending: true });
 
   return supabaseResponseHandler(res, data =>
-    data.map(v => ({ ...v, contents: v.verse_kor })),
+    data.map(v => ({ ...v, contents: v.verse_kor.trim() })),
   );
 };
 
@@ -29,7 +29,7 @@ const getGaeVersesDetail = async (verseIds: Verse['idx'][]) => {
     .order('series_code(ord)', { ascending: true });
 
   return supabaseResponseHandler(res, data =>
-    data.map(v => ({ ...v, contents: v.verse_gae })),
+    data.map(v => ({ ...v, contents: v.verse_gae.trim() })),
   );
 };
 
