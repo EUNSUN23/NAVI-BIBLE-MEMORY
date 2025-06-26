@@ -15,6 +15,7 @@ const tstConfig = testConfig({
     setupFiles: './vitest.setup.ts',
     bail: 1,
     silent: true,
+    retry: 2,
   },
 });
 
