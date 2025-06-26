@@ -27,6 +27,7 @@ describe('CommonCombobox Test', () => {
           items={items}
           selectedItem={selectedItem}
           onChangeCombobox={handleChangeCombobox}
+          buttonLabel='성경버전 선택'
         />
       </Field>,
     );
