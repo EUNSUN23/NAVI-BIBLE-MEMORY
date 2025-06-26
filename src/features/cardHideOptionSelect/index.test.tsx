@@ -23,7 +23,11 @@ describe('CardHideOptionSelect Test', () => {
 
     expect(screen.queryByRole('combobox', { name: '숨김' })).not.toBeNull();
 
-    await user.click(screen.getByRole('button', { expanded: false }));
+    const comboboxButton = await screen.findByRole('button', {
+      expanded: false,
+    });
+
+    await user.click(comboboxButton);
 
     const listbox = await screen.findByRole('listbox');
 
