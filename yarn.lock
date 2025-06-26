@@ -4448,7 +4448,7 @@ process@^0.11.10:
   resolved "https://registry.npmjs.org/process/-/process-0.11.10.tgz"
   integrity sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==
 
-prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -4507,6 +4507,13 @@ react-is@^17.0.1:
   version "17.0.2"
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
+
+react-paginate@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-8.3.0.tgz#911a625b34fb2bb3b659803cd7f2d365af3c179b"
+  integrity sha512-TptZE37HPkT3R+7AszWA++LOTIsIHXcCSWMP9WW/abeF8sLpJzExFB/dVs7xbtqteJ5njF6kk+udTDC0AR3y5w==
+  dependencies:
+    prop-types "^15"
 
 react-property@2.0.2:
   version "2.0.2"
