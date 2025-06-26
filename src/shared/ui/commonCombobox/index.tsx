@@ -52,7 +52,7 @@ export function CommonCombobox({
         <ComboboxOptions className='absolute z-10 max-h-60 w-full overflow-auto rounded-md bg-white text-xl shadow-lg ring-1 ring-black/5 focus:outline-none mobile:text-sm'>
           {items.map(item => (
             <ComboboxOption
-              key={item.id}
+              key={`option-${item.id}`}
               value={item}
               className='group relative cursor-default select-none py-2 pl-10 pr-3 text-secondary data-[focus]:bg-secondary data-[focus]:text-white data-[focus]:outline-none mobile:pl-6'
             >
