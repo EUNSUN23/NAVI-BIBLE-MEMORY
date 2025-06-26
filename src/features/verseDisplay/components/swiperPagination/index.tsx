@@ -54,10 +54,12 @@ function SwiperPagination({ verses, activeIndex }: SwiperBulletProps) {
         </div>
       }
       pageLabelBuilder={page => getShortVerseAddress(verses[page - 1])}
+      ariaLabelBuilder={page => getShortVerseAddress(verses[page - 1])}
       containerClassName='w-[90%] flex items-center justify-center space-x-2 px-8 mt-6 mx-auto'
-      pageClassName='swiper-pagination-bullet mt-[55px]'
-      activeClassName='swiper-pagination-bullet-active'
-      disabledClassName='text-gray-400'
+      pageClassName='mt-[55px] w-fit shrink-0'
+      pageLinkClassName='swiper-custom-pagination-bullet'
+      activeLinkClassName='swiper-custom-pagination-bullet-active'
+      disabledLinkClassName='swiper-custom-nav-disabled'
       previousClassName='mr-1 absolute bottom-[70px] left-0 z-100'
       breakClassName='ml-2 text-3xl'
       nextClassName='ml-1 absolute bottom-[70px] right-0'
