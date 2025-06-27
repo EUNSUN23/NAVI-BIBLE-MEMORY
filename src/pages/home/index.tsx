@@ -5,26 +5,26 @@ import ExamConfigModal from 'src/features/examConfig';
 import { useVerseSelectStore } from '@store/verseSelectStore';
 import { useExamConfigModalStore } from '@store/exam/examConfigModalStore';
 import Nav from '@/shared/ui/Nav';
-import ExamConfigProvider from '@/providers/ExamConfigProvider';
 import ALERT_MESSAGE from '@/constants/alertMessage';
 import PAGE_HEADING_TEXTS from '@/constants/pageHeadingTexts';
+import { MouseEvent } from 'react';
 
 function Home() {
-  const hasSelectedVerse = useVerseSelectStore(
-    useShallow(state => state.hasAnyId),
-  );
   const setExamConfigModalOpen = useExamConfigModalStore(
     state => state.setIsOpen,
   );
+  const hasSelectedVerse = useVerseSelectStore(
+    useShallow(state => state.hasAnyId),
+  );
 
-  const handleDrillingLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleDrillingLinkClick = (e: MouseEvent<HTMLAnchorElement>) => {
     if (!hasSelectedVerse()) {
       e.preventDefault();
       alert(ALERT_MESSAGE.VERSE_NOT_SELECTED);
     }
   };
 
-  const handleExamLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleExamLinkClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (!hasSelectedVerse()) {
       alert(ALERT_MESSAGE.VERSE_NOT_SELECTED);
@@ -55,9 +55,7 @@ function Home() {
         </h1>
         <VerseSelect />
       </div>
-      <ExamConfigProvider>
-        <ExamConfigModal />
-      </ExamConfigProvider>
+      <ExamConfigModal />
     </>
   );
 }

@@ -1,8 +1,8 @@
-import { useGlobalExamConfigStore } from '@store/exam/globalExamConfigStore';
 import ExamCard from 'src/features/exam/components/examCard';
 
 import { SORT_METHODS } from '@features/exam/constants/sortMethods';
 import { ExamVerseDataList } from '@features/exam/types/examVerseData.types';
+import { useExamConfigStore } from '@store/exam/examConfigStore';
 
 type ExamBoardProps = {
   data: ExamVerseDataList;
@@ -11,8 +11,8 @@ type ExamBoardProps = {
 const { NORMAL: SORT_NORMAL } = SORT_METHODS;
 
 function ExamBoard({ data }: ExamBoardProps) {
-  const exposeOption = useGlobalExamConfigStore(state => state.exposeOption);
-  const sortMethod = useGlobalExamConfigStore(state => state.sortMethod);
+  const exposeOption = useExamConfigStore(state => state.exposeOption);
+  const sortMethod = useExamConfigStore(state => state.sortMethod);
 
   let items: ExamVerseDataList = data;
   if (sortMethod.code === SORT_NORMAL.code) {

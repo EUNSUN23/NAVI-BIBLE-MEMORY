@@ -1,22 +1,30 @@
 import { useShallow } from 'zustand/react/shallow';
 import { CommonCombobox } from '@/shared/ui/commonCombobox';
-import useExamConfigContext from '@/hooks/useExamConfigContext';
 import { useCardSortMethods } from '@features/examConfig/api/getCardSortMethods';
+import { useExamConfigStore } from '@store/exam/examConfigStore';
 
 function SortMethodSelect() {
-  const { name, code } = useExamConfigContext(
+  const { name: sortMethodName, code: sortMethodCode } = useExamConfigStore(
     useShallow(state => state.sortMethod),
   );
-  const setSortMethod = useExamConfigContext(state => state.setSortMethod);
+  const setSortMethod = useExamConfigStore(state => state.setSortMethod);
 
-  const { data } = useCardSortMethods();
+  const { data: sortMethodData } = useCardSortMethods();
 
-  const items = data.map(({ name, code }) => ({ name, value: code, id: code }));
+  const items = sortMethodData.map(({ name, code }) => ({
+    name,
+    value: code,
+    id: code,
+  }));
 
   return (
     <CommonCombobox
       items={items}
-      selectedItem={{ name, value: code, id: code }}
+      selectedItem={{
+        name: sortMethodName,
+        value: sortMethodCode,
+        id: sortMethodCode,
+      }}
       onChangeCombobox={({ name, value }) =>
         setSortMethod({ name, code: value })
       }
