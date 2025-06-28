@@ -2,6 +2,8 @@ import { http, HttpResponse } from 'msw';
 import {
   BIBLE_VERSIONS,
   CARD_HIDE_OPTIONS,
+  CARD_SORT_METHODS,
+  EXAM_EXPOSE_OPTIONS,
   SERIES_DATA,
   SERIES_DATA_SUB,
   VERSE_DETAIL_DATA_GAE,
@@ -9,7 +11,6 @@ import {
   VERSE_SUMMARY_DATA,
 } from '@/mock/mockData';
 import { SUPABASE_URL } from '@/lib/supabase/supabaseConfig';
-import { SORT_METHODS_LIST } from '@features/exam/constants/sortMethods';
 
 const baseURL = `${SUPABASE_URL}/rest/v1`;
 
@@ -54,16 +55,6 @@ export const getBibleVerseHandler = http.get(
   },
 );
 
-export const getCardSortMethodHandler = http.get(
-  `${baseURL}/card_sort_method?select=*`,
-  () => {
-    return HttpResponse.json({
-      data: SORT_METHODS_LIST,
-      error: null,
-    });
-  },
-);
-
 export const getCardHideOptionHandler = http.get(
   `${baseURL}/card_hide_option?select=*`,
   () => {
@@ -89,6 +80,26 @@ export const getVerseDetailGaeHandler = http.get(
   () => {
     return HttpResponse.json({
       data: VERSE_DETAIL_DATA_GAE,
+      error: null,
+    });
+  },
+);
+
+export const getExamExposeOptionsHandler = http.get(
+  `${baseURL}/exam_expose_option?select=*`,
+  () => {
+    return HttpResponse.json({
+      data: EXAM_EXPOSE_OPTIONS,
+      error: null,
+    });
+  },
+);
+
+export const getCardSortMethodsHandler = http.get(
+  `${baseURL}/card_sort_method?select=*`,
+  () => {
+    return HttpResponse.json({
+      data: CARD_SORT_METHODS,
       error: null,
     });
   },

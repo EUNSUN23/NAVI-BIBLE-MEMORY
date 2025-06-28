@@ -33,6 +33,8 @@ const renderRoute = (initialEntry = '/') => {
     { initialEntries: [initialEntry] },
   );
   render(<RouterProvider router={router} />);
+
+  return router;
 };
 
 export default renderRoute;

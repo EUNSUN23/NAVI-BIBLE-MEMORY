@@ -2,16 +2,15 @@ import { useExamStatusStore } from '@store/exam/examStatusStore';
 import getExamResultHTML from '@utils/getExamResultHTML';
 import { useState } from 'react';
 import parse from 'html-react-parser';
-
-import { EXPOSE_OPTIONS } from '@features/exam/constants/exposeOptions';
 import { ExamExposeOption } from '@features/exam/types/examExposeOptions.types';
+import { EXAM_EXPOSE_OPTIONS } from '@/mock/mockData';
 
 type ThemeInputProps = {
   exposeOption: ExamExposeOption;
   theme: string;
 };
 
-const { THEME: EXPOSE_THEME } = EXPOSE_OPTIONS;
+const [_, EXPOSE_THEME] = EXAM_EXPOSE_OPTIONS;
 
 function ThemeInput({ exposeOption, theme }: ThemeInputProps) {
   const isFinished = useExamStatusStore(state => state.isFinished);

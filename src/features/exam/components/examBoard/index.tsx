@@ -1,14 +1,13 @@
 import ExamCard from 'src/features/exam/components/examCard';
-
-import { SORT_METHODS } from '@features/exam/constants/sortMethods';
 import { ExamVerseDataList } from '@features/exam/types/examVerseData.types';
 import { useExamConfigStore } from '@store/exam/examConfigStore';
+import { CARD_SORT_METHODS } from '@/mock/mockData';
 
 type ExamBoardProps = {
   data: ExamVerseDataList;
 };
 
-const { NORMAL: SORT_NORMAL } = SORT_METHODS;
+const [SORT_NORMAL] = CARD_SORT_METHODS;
 
 function ExamBoard({ data }: ExamBoardProps) {
   const exposeOption = useExamConfigStore(state => state.exposeOption);

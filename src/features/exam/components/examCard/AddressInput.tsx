@@ -2,16 +2,15 @@ import { useState } from 'react';
 import { useExamStatusStore } from '@store/exam/examStatusStore';
 import getExamResultHTML from '@utils/getExamResultHTML';
 import parse from 'html-react-parser';
-
-import { EXPOSE_OPTIONS } from '@features/exam/constants/exposeOptions';
 import { ExamExposeOption } from '@features/exam/types/examExposeOptions.types';
+import { EXAM_EXPOSE_OPTIONS } from '@/mock/mockData';
 
 type AddressInputProps = {
   exposeOption: ExamExposeOption;
   address: string;
 };
 
-const { ADDR: EXPOSE_ADDR, ADDR_THEME: EXPOSE_ADDR_THEME } = EXPOSE_OPTIONS;
+const [EXPOSE_ADDR, EXPOSE_ADDR_THEME] = EXAM_EXPOSE_OPTIONS;
 
 function AddressInput({ exposeOption, address }: AddressInputProps) {
   const isFinished = useExamStatusStore(state => state.isFinished);

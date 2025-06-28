@@ -25,6 +25,7 @@ function ExamPage() {
           <Nav.Link to={`/drilling`}>암송하기</Nav.Link>
         </Nav.Container>
       </Nav>
+      <h1 className='sr-only'>시험보기</h1>
       <Suspense fallback={<Loader size='lg' className='my-[100px]' />}>
         <Exam />
       </Suspense>

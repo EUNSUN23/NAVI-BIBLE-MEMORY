@@ -1399,3 +1399,14 @@ export const CARD_HIDE_OPTIONS = [
   { code: 'HIDE_003', name: '제목' },
   { code: 'HIDE_004', name: '내용' },
 ] as const;
+
+export const EXAM_EXPOSE_OPTIONS = [
+  { code: 'EXPOSE_001', name: '장절' },
+  { code: 'EXPOSE_002', name: '제목' },
+  { code: 'EXPOSE_003', name: '장절,제목' },
+] as const;
+
+export const CARD_SORT_METHODS = [
+  { code: 'SORT_001', name: '기본 순' },
+  { code: 'SORT_002', name: '랜덤' },
+] as const;

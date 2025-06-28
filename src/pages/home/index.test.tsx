@@ -11,7 +11,6 @@ import { createVerseOptionId } from '@utils/componentUtils/verseOption';
 import LINK_TEXTS from '@/constants/linkTexts';
 import PAGE_HEADING_TEXTS from '@/constants/pageHeadingTexts';
 import renderRoute from '@/lib/test/testUtils/renderRoute';
-import DIALOG_HEADING_TEXTS from '@/constants/dialogHeadingTexts';
 import mockAlert from '@/lib/test/testUtils/mocks/mockAlert';
 import mockScrollIntoView from '@/lib/test/testUtils/mocks/mockScrollIntoView';
 import waitForElementToBeRemovedIfExist from '@/lib/test/testUtils/waitForElementToBeRemovedIfExist';
@@ -143,7 +142,7 @@ describe('HomePage Test', () => {
       expect(
         screen.queryByRole('heading', {
           level: 3,
-          name: DIALOG_HEADING_TEXTS.EXAMCONFIG,
+          name: '시험설정',
         }),
       ).not.toBeNull();
     });

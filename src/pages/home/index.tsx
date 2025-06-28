@@ -7,14 +7,23 @@ import { useExamConfigModalStore } from '@store/exam/examConfigModalStore';
 import Nav from '@/shared/ui/Nav';
 import ALERT_MESSAGE from '@/constants/alertMessage';
 import PAGE_HEADING_TEXTS from '@/constants/pageHeadingTexts';
-import { MouseEvent } from 'react';
+import { MouseEvent, useTransition } from 'react';
+import { useExamConfigStore } from '@store/exam/examConfigStore';
 
 function Home() {
+  const [_, startTransition] = useTransition();
+  const setInitialExamVerseCount = useExamConfigStore(
+    state => state.setVerseCount,
+  );
   const setExamConfigModalOpen = useExamConfigModalStore(
     state => state.setIsOpen,
   );
+
   const hasSelectedVerse = useVerseSelectStore(
     useShallow(state => state.hasAnyId),
+  );
+  const selectedVerseCount = useVerseSelectStore(
+    state => state.verseIds.length,
   );
 
   const handleDrillingLinkClick = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -30,7 +39,10 @@ function Home() {
       alert(ALERT_MESSAGE.VERSE_NOT_SELECTED);
       return;
     }
-    setExamConfigModalOpen(true);
+    setInitialExamVerseCount(selectedVerseCount);
+    startTransition(() => {
+      setExamConfigModalOpen(true);
+    });
   };
 
   return (

@@ -115,10 +115,11 @@ describe('DrillingPage Test - card hide option and verse card integration test',
 
     await user.click(cardHideComboboxButton);
 
-    const hideAddressOption = within(screen.getByRole('listbox')).getByRole(
-      'option',
-      { name: CARD_HIDE_OPTIONS[1].name },
-    );
+    const listbox = screen.getByRole('listbox');
+    screen.debug(listbox);
+    const hideAddressOption = within(listbox).getByRole('option', {
+      name: CARD_HIDE_OPTIONS[1].name,
+    });
 
     await user.click(hideAddressOption);
 

@@ -1,8 +1,7 @@
 import { CardSortMethod } from '@features/exam/types/cardSortMethods.types';
 import { ExamExposeOption } from '@features/exam/types/examExposeOptions.types';
-import { SORT_METHODS } from '@features/exam/constants/sortMethods';
-import { EXPOSE_OPTIONS } from '@features/exam/constants/exposeOptions';
 import { create } from 'zustand/index';
+import { CARD_SORT_METHODS, EXAM_EXPOSE_OPTIONS } from '@/mock/mockData';
 
 type ExamConfigState = {
   time: number;
@@ -20,12 +19,12 @@ type ExamConfigAction = {
   isConfigValid: () => boolean;
 };
 
-type ExamConfigStore = ExamConfigState & ExamConfigAction;
+export type ExamConfigStore = ExamConfigState & ExamConfigAction;
 
 const initialState: ExamConfigState = {
   time: 30,
-  sortMethod: SORT_METHODS.NORMAL,
-  exposeOption: EXPOSE_OPTIONS.ADDR,
+  sortMethod: CARD_SORT_METHODS[0],
+  exposeOption: EXAM_EXPOSE_OPTIONS[0],
   verseCount: 0,
 };
 
