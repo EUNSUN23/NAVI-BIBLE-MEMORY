@@ -8,11 +8,12 @@ import { EXAM_EXPOSE_OPTIONS } from '@/mock/mockData';
 type AddressInputProps = {
   exposeOption: ExamExposeOption;
   address: string;
+  verseId: number;
 };
 
 const [EXPOSE_ADDR, EXPOSE_ADDR_THEME] = EXAM_EXPOSE_OPTIONS;
 
-function AddressInput({ exposeOption, address }: AddressInputProps) {
+function AddressInput({ exposeOption, address, verseId }: AddressInputProps) {
   const isFinished = useExamStatusStore(state => state.isFinished);
   const [value, setValue] = useState('');
 
@@ -27,11 +28,11 @@ function AddressInput({ exposeOption, address }: AddressInputProps) {
         </div>
       ) : (
         <div className='w-full'>
-          <label htmlFor='address' className='sr-only'>
+          <label htmlFor={`address-${verseId}`} className='sr-only'>
             장절
           </label>
           <input
-            id='address'
+            id={`address-${verseId}`}
             type='text'
             value={value}
             placeholder='장절'

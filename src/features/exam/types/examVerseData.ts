@@ -3,4 +3,4 @@ import { ArrayElement } from '@/shared/types/arrayElement.type';
 import { getExamVerse } from '@features/exam/api/getExamVerse';
 
 export type ExamVerseDataList = ApiResultType<typeof getExamVerse>;
-export type ExamVerseDataTypes = ArrayElement<ExamVerseDataList>;
+export type ExamVerseData = ArrayElement<ExamVerseDataList>;

@@ -4,6 +4,7 @@ import {
   getCardHideOptionHandler,
   getCardSortMethodsHandler,
   getExamExposeOptionsHandler,
+  getExamKorVerseAllByASCHandler,
   getSeriesHandler,
   getSubSeriesHandler,
   getVerseDetailGaeHandler,
@@ -21,6 +22,7 @@ export const handlers = [
   getVerseDetailGaeHandler,
   getExamExposeOptionsHandler,
   getCardSortMethodsHandler,
+  getExamKorVerseAllByASCHandler,
 ];
 
 export const server = setupServer(...handlers);

@@ -11,8 +11,7 @@ import { mockAnimationsApi } from 'jsdom-testing-mocks';
 import mockAlert from '@/lib/test/testUtils/mocks/mockAlert';
 import { VerseSelectStore } from '@store/verseSelectStore';
 import renderRoute from '@/lib/test/testUtils/renderRoute';
-
-type StoreSelector<T> = <U>(state: T extends U ? U : never) => U[keyof U];
+import { StoreSelectorMock } from '@/types/common.types';
 
 beforeAll(() => {
   vi.mock('@/store/verseSelectStore', async () => {
@@ -23,7 +22,7 @@ beforeAll(() => {
     return {
       useVerseSelectStore: vi
         .fn()
-        .mockImplementation((selector: StoreSelector<VerseSelectStore>) =>
+        .mockImplementation((selector: StoreSelectorMock<VerseSelectStore>) =>
           selector({
             ...actual.useVerseSelectStore.getState(),
             hasAnyId: () => true,

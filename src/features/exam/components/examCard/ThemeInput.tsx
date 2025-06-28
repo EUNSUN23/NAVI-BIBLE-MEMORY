@@ -8,11 +8,12 @@ import { EXAM_EXPOSE_OPTIONS } from '@/mock/mockData';
 type ThemeInputProps = {
   exposeOption: ExamExposeOption;
   theme: string;
+  verseId: number;
 };
 
 const [_, EXPOSE_THEME] = EXAM_EXPOSE_OPTIONS;
 
-function ThemeInput({ exposeOption, theme }: ThemeInputProps) {
+function ThemeInput({ exposeOption, theme, verseId }: ThemeInputProps) {
   const isFinished = useExamStatusStore(state => state.isFinished);
   const [value, setValue] = useState('');
 
@@ -28,11 +29,11 @@ function ThemeInput({ exposeOption, theme }: ThemeInputProps) {
         </div>
       ) : (
         <>
-          <label htmlFor='theme' className='sr-only'>
+          <label htmlFor={`theme-${verseId}`} className='sr-only'>
             제목
           </label>
           <input
-            id='theme'
+            id={`theme-${verseId}`}
             type='text'
             value={value}
             placeholder='제목'

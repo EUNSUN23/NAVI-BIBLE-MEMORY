@@ -44,26 +44,35 @@ function Timer({ time }: TimerProps) {
   const secString = secValue.toString().padStart(2, '0');
 
   return (
-    <div className='grid w-full grid-cols-4 place-items-center'>
-      <h3 className='col-span-2 grid w-full grid-cols-4 place-content-between place-items-center'>
-        <div className='col-span-2 min-w-[100px] text-[28px] font-semibold leading-loose mobile:min-w-[70px] mobile:text-[18px]'>
+    <section
+      aria-label='제한시간 정보'
+      className='grid w-full grid-cols-4 place-items-center'
+    >
+      <div className='col-span-2 grid w-full grid-cols-4 place-content-between place-items-center'>
+        <div
+          id='timelimit-label'
+          className='col-span-2 min-w-[100px] text-[28px] font-semibold leading-loose mobile:min-w-[70px] mobile:text-[18px]'
+        >
           남은 시간
         </div>
-        <div className='col-span-2 ml-2 mr-auto text-2xl font-medium text-secondary mobile:text-base'>
-          <div className='flex items-center justify-center space-x-1 text-center'>
-            <div className='w-[45px] mobile:w-[22px]'>{minString}</div>
-            <div className='pb-1 leading-none'>&#58;</div>
-            <div className='w-[45px] mobile:w-[22px]'>{secString}</div>
+        <div className='col-span-2 ml-2 mr-auto'>
+          <div
+            role='status'
+            aria-live='polite'
+            aria-labelledby='timelimit-label'
+            className='flex w-[120px] items-center justify-center space-x-1 text-center text-2xl font-medium text-secondary mobile:w-[72px] mobile:text-base'
+          >
+            {minString}분 {secString}초
           </div>
         </div>
-      </h3>
+      </div>
       <button
         className='col-span-2 mr-auto rounded-3xl bg-secondary px-4 py-2 text-xl font-medium text-white mobile:px-3 mobile:py-1 mobile:text-base'
         onClick={() => setIsPaused(prev => !prev)}
       >
         {isPaused ? '다시시작' : '일시정지'}
       </button>
-    </div>
+    </section>
   );
 }
 

@@ -1,5 +1,5 @@
 import ExamCard from 'src/features/exam/components/examCard';
-import { ExamVerseDataList } from '@features/exam/types/examVerseData.types';
+import { ExamVerseDataList } from '@features/exam/types/examVerseData';
 import { useExamConfigStore } from '@store/exam/examConfigStore';
 import { CARD_SORT_METHODS } from '@/mock/mockData';
 
@@ -19,15 +19,15 @@ function ExamBoard({ data }: ExamBoardProps) {
   }
 
   return (
-    <div className='mb-2 mt-16 grid max-h-[calc(100vh-260px)] w-full grid-cols-2 place-content-start place-items-center overflow-auto mobile:mt-8 mobile:max-h-[calc(100vh-100px)] mobile:grid-cols-1'>
-      {items.map(data => (
-        <ExamCard
-          key={`exam-${data.idx}`}
-          data={data}
-          exposeOption={exposeOption}
-        />
-      ))}
-    </div>
+    <section aria-label='시험 보드' className='w-full'>
+      <ul className='mb-2 mt-16 grid max-h-[calc(100vh-260px)] w-full grid-cols-2 place-content-start place-items-center overflow-auto mobile:mt-8 mobile:max-h-[calc(100vh-100px)] mobile:grid-cols-1'>
+        {items.map(data => (
+          <li key={`exam-${data.idx}`}>
+            <ExamCard data={data} exposeOption={exposeOption} />
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
