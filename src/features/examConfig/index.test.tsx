@@ -102,6 +102,32 @@ describe('ExamConfig Rendering Test', () => {
 });
 
 describe('ExamConfig Integration Test', () => {
+  test(
+    'when the user clicks confirm button with proper configurations, ' +
+      'it navigates to exam page',
+    async () => {
+      const { user, CONFIRM_BUTTON_LABEL, LOADER_ID } = await setup();
+
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+
+      await waitForElementToBeRemovedIfExist(
+        screen.queryAllByTestId(LOADER_ID),
+      );
+
+      await user.click(
+        screen.getByRole('button', { name: CONFIRM_BUTTON_LABEL }),
+      );
+
+      await waitForElementToBeRemovedIfExist(
+        screen.queryAllByTestId(LOADER_ID),
+      );
+
+      expect(
+        screen.getByRole('heading', { level: 1, name: '시험보기' }),
+      ).toBeInTheDocument();
+    },
+  );
+
   test('when the user clicks confirm button with falsy time limit, alert pops up', async () => {
     const {
       user,
@@ -130,30 +156,4 @@ describe('ExamConfig Integration Test', () => {
 
     expect(window.alert).toHaveBeenCalledWith(INVALID_CONFIG_MESSAGE);
   });
-
-  test(
-    'when the user clicks confirm button with proper configurations, ' +
-      'it navigates to exam page',
-    async () => {
-      const { user, CONFIRM_BUTTON_LABEL, LOADER_ID } = await setup();
-
-      expect(screen.getByRole('dialog')).toBeInTheDocument();
-
-      await waitForElementToBeRemovedIfExist(
-        screen.queryAllByTestId(LOADER_ID),
-      );
-
-      await user.click(
-        screen.getByRole('button', { name: CONFIRM_BUTTON_LABEL }),
-      );
-
-      await waitForElementToBeRemovedIfExist(
-        screen.queryAllByTestId(LOADER_ID),
-      );
-
-      expect(
-        screen.getByRole('heading', { level: 1, name: '시험보기' }),
-      ).toBeInTheDocument();
-    },
-  );
 });
