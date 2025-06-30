@@ -2,6 +2,7 @@ import ExamCard from 'src/features/exam/components/examCard';
 import { ExamVerseDataList } from '@features/exam/types/examVerseData';
 import { useExamConfigStore } from '@store/exam/examConfigStore';
 import { CARD_SORT_METHODS } from '@/mock/mockData';
+import SubmitButton from '@features/exam/components/submitButton';
 
 type ExamBoardProps = {
   data: ExamVerseDataList;
@@ -19,7 +20,11 @@ function ExamBoard({ data }: ExamBoardProps) {
   }
 
   return (
-    <section aria-label='시험 보드' className='w-full'>
+    <section
+      aria-label='시험 보드'
+      className='flex w-full flex-col items-center'
+    >
+      <SubmitButton />
       <ul className='mb-2 mt-16 grid max-h-[calc(100vh-260px)] w-full grid-cols-2 place-content-start place-items-center overflow-auto mobile:mt-8 mobile:max-h-[calc(100vh-100px)] mobile:grid-cols-1'>
         {items.map(data => (
           <li key={`exam-${data.idx}`}>

@@ -4,7 +4,6 @@ import { useShallow } from 'zustand/react/shallow';
 import Timer from '@features/exam/components/timer';
 import RangeInfo from '@features/exam/components/rangeInfo';
 import ExamBoard from '@features/exam/components/examBoard';
-import SubmitButton from '@features/exam/components/submitButton';
 import { useExamStatusStore } from '@store/exam/examStatusStore';
 import { useEffect } from 'react';
 import { useExamVerses } from '@features/exam/api/getExamVerse';
@@ -35,7 +34,6 @@ function Exam() {
         <RangeInfo data={data} />
         <Timer time={time} />
       </div>
-      <SubmitButton />
       <ExamBoard data={data} />
     </div>
   );
