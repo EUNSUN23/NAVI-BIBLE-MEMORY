@@ -2,18 +2,18 @@ import { useExamStatusStore } from '@store/exam/examStatusStore';
 import getExamResultHTML from '@utils/getExamResultHTML';
 import { useState } from 'react';
 import parse from 'html-react-parser';
-
-import { EXPOSE_OPTIONS } from '@features/exam/constants/exposeOptions';
 import { ExamExposeOption } from '@features/exam/types/examExposeOptions.types';
+import { EXAM_EXPOSE_OPTIONS } from '@/mock/mockData';
 
 type ThemeInputProps = {
   exposeOption: ExamExposeOption;
   theme: string;
+  verseId: number;
 };
 
-const { THEME: EXPOSE_THEME } = EXPOSE_OPTIONS;
+const [_, EXPOSE_THEME] = EXAM_EXPOSE_OPTIONS;
 
-function ThemeInput({ exposeOption, theme }: ThemeInputProps) {
+function ThemeInput({ exposeOption, theme, verseId }: ThemeInputProps) {
   const isFinished = useExamStatusStore(state => state.isFinished);
   const [value, setValue] = useState('');
 
@@ -29,11 +29,11 @@ function ThemeInput({ exposeOption, theme }: ThemeInputProps) {
         </div>
       ) : (
         <>
-          <label htmlFor='theme' className='sr-only'>
+          <label htmlFor={`theme-${verseId}`} className='sr-only'>
             제목
           </label>
           <input
-            id='theme'
+            id={`theme-${verseId}`}
             type='text'
             value={value}
             placeholder='제목'

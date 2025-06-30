@@ -2,18 +2,18 @@ import { useState } from 'react';
 import { useExamStatusStore } from '@store/exam/examStatusStore';
 import getExamResultHTML from '@utils/getExamResultHTML';
 import parse from 'html-react-parser';
-
-import { EXPOSE_OPTIONS } from '@features/exam/constants/exposeOptions';
 import { ExamExposeOption } from '@features/exam/types/examExposeOptions.types';
+import { EXAM_EXPOSE_OPTIONS } from '@/mock/mockData';
 
 type AddressInputProps = {
   exposeOption: ExamExposeOption;
   address: string;
+  verseId: number;
 };
 
-const { ADDR: EXPOSE_ADDR, ADDR_THEME: EXPOSE_ADDR_THEME } = EXPOSE_OPTIONS;
+const [EXPOSE_ADDR, EXPOSE_ADDR_THEME] = EXAM_EXPOSE_OPTIONS;
 
-function AddressInput({ exposeOption, address }: AddressInputProps) {
+function AddressInput({ exposeOption, address, verseId }: AddressInputProps) {
   const isFinished = useExamStatusStore(state => state.isFinished);
   const [value, setValue] = useState('');
 
@@ -28,11 +28,11 @@ function AddressInput({ exposeOption, address }: AddressInputProps) {
         </div>
       ) : (
         <div className='w-full'>
-          <label htmlFor='address' className='sr-only'>
+          <label htmlFor={`address-${verseId}`} className='sr-only'>
             장절
           </label>
           <input
-            id='address'
+            id={`address-${verseId}`}
             type='text'
             value={value}
             placeholder='장절'

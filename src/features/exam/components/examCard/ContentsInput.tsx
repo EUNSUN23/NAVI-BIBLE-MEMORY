@@ -6,9 +6,10 @@ import { Textfit } from 'react-textfit';
 
 type ContentsInputProps = {
   contents: string;
+  verseId: number;
 };
 
-function ContentsInput({ contents }: ContentsInputProps) {
+function ContentsInput({ contents, verseId }: ContentsInputProps) {
   const isFinished = useExamStatusStore(state => state.isFinished);
   const [value, setValue] = useState('');
 
@@ -25,11 +26,11 @@ function ContentsInput({ contents }: ContentsInputProps) {
         </Textfit>
       ) : (
         <>
-          <label htmlFor='contents' className='sr-only'>
+          <label htmlFor={`contents-${verseId}`} className='sr-only'>
             내용
           </label>
           <textarea
-            id='contents'
+            id={`contents-${verseId}`}
             cols={30}
             rows={7}
             value={value}

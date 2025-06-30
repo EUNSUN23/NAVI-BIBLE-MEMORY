@@ -21,12 +21,14 @@ export type CommonComboboxProps = {
   items: CommonComboboxItem[];
   onChangeCombobox: (item: CommonComboboxItem) => void;
   selectedItem: CommonComboboxItem;
+  buttonLabel: string;
 };
 
 export function CommonCombobox({
   items,
   onChangeCombobox,
   selectedItem,
+  buttonLabel,
 }: CommonComboboxProps) {
   const handleChangeCombobox = (item: CommonComboboxItem) =>
     onChangeCombobox(item);
@@ -40,7 +42,7 @@ export function CommonCombobox({
           readOnly={true}
         />
         <ComboboxButton className='absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none'>
-          <span className='sr-only'>옵션 선택</span>
+          <span className='sr-only'>{buttonLabel}</span>
           <FaChevronDown
             className='size-5 text-gray-400 mobile:size-3'
             aria-hidden='true'
@@ -50,7 +52,7 @@ export function CommonCombobox({
         <ComboboxOptions className='absolute z-10 max-h-60 w-full overflow-auto rounded-md bg-white text-xl shadow-lg ring-1 ring-black/5 focus:outline-none mobile:text-sm'>
           {items.map(item => (
             <ComboboxOption
-              key={item.id}
+              key={`option-${item.id}`}
               value={item}
               className='group relative cursor-default select-none py-2 pl-10 pr-3 text-secondary data-[focus]:bg-secondary data-[focus]:text-white data-[focus]:outline-none mobile:pl-6'
             >

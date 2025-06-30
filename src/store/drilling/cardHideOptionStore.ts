@@ -1,7 +1,11 @@
 import { create } from 'zustand/index';
+import { CARD_HIDE_OPTIONS } from '@/mock/mockData';
+import { ApiResultType } from '@/shared/types/apiResult.type';
+import { getCardHideOptions } from '@features/cardHideOptionSelect/api/getCardHideOptions';
+import { ArrayElement } from '@/shared/types/arrayElement.type';
 
-import { CARD_HIDE_OPTIONS } from '@features/drilling/constants/cardHideOptions';
-import { CardHideOption } from '@features/drilling/types/cardHideOption.types';
+type CardHideOptionTypes = ApiResultType<typeof getCardHideOptions>;
+type CardHideOption = ArrayElement<CardHideOptionTypes>;
 
 type CardHideOptionState = {
   cardHideOption: CardHideOption;
@@ -13,8 +17,9 @@ type CardHideOptionAction = {
 
 type CardHideOptionStore = CardHideOptionState & CardHideOptionAction;
 
+const [HIDE_NONE] = CARD_HIDE_OPTIONS;
 const initialState: CardHideOptionState = {
-  cardHideOption: CARD_HIDE_OPTIONS.NONE,
+  cardHideOption: HIDE_NONE,
 };
 
 export const useCardHideOptionStore = create<CardHideOptionStore>()(set => ({

@@ -8,7 +8,7 @@ type ExamConfigModalAction = {
   setIsOpen: (isOpen: boolean) => void;
 };
 
-type ExamConfigModalStore = ExamConfigModalState & ExamConfigModalAction;
+export type ExamConfigModalStore = ExamConfigModalState & ExamConfigModalAction;
 
 const initialState: ExamConfigModalState = {
   isOpen: false,

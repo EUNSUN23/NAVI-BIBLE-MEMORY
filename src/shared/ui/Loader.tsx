@@ -23,7 +23,7 @@ function Loader({ size, ...props }: LoaderProps) {
     <>
       <div
         className='flex min-h-[50px] w-full items-center'
-        data-testid='loader'
+        data-testid={props.id ?? 'loader'}
       >
         <div className={cn(LoaderVariants({ size }), props.className)}>
           {props.children}

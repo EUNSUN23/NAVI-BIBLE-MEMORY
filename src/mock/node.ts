@@ -2,9 +2,12 @@ import { setupServer } from 'msw/node';
 import {
   getBibleVerseHandler,
   getCardHideOptionHandler,
-  getCardSortMethodHandler,
+  getCardSortMethodsHandler,
+  getExamExposeOptionsHandler,
+  getExamKorVerseAllByASCHandler,
   getSeriesHandler,
   getSubSeriesHandler,
+  getVerseDetailGaeHandler,
   getVerseDetailHandler,
   getVerseSummaryHandler,
 } from '@/mock/handler';
@@ -14,9 +17,12 @@ export const handlers = [
   getSubSeriesHandler,
   getVerseSummaryHandler,
   getBibleVerseHandler,
-  getCardSortMethodHandler,
   getCardHideOptionHandler,
   getVerseDetailHandler,
+  getVerseDetailGaeHandler,
+  getExamExposeOptionsHandler,
+  getCardSortMethodsHandler,
+  getExamKorVerseAllByASCHandler,
 ];
 
 export const server = setupServer(...handlers);

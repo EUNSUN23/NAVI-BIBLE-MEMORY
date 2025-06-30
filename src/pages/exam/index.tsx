@@ -3,7 +3,7 @@ import { Suspense, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Nav from '@/shared/ui/Nav';
 import { FaHome } from '@react-icons/all-files/fa/FaHome';
-import Index from '@features/exam';
+import Exam from '@features/exam';
 import Loader from '@/shared/ui/Loader';
 
 function ExamPage() {
@@ -25,8 +25,9 @@ function ExamPage() {
           <Nav.Link to={`/drilling`}>암송하기</Nav.Link>
         </Nav.Container>
       </Nav>
+      <h1 className='sr-only'>시험보기</h1>
       <Suspense fallback={<Loader size='lg' className='my-[100px]' />}>
-        <Index />
+        <Exam />
       </Suspense>
     </>
   );

@@ -106,6 +106,10 @@ export default {
           },
           margin: '0 auto',
         },
+        '.text-covered': {
+          backgroundColor: 'rgba(224, 242, 254, 0.7)',
+          color: 'transparent',
+        },
       });
 
       const errorMessageSizes = {

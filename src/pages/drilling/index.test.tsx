@@ -1,116 +1,225 @@
 import renderRoute from '@/lib/test/testUtils/renderRoute';
-import { userEvent } from '@testing-library/user-event';
-import mockVerseSelectStore from '@/lib/test/testUtils/mocks/mockVerseSelectStore';
-import mockScrollIntoView from '@/lib/test/testUtils/mocks/mockScrollIntoView';
-import { screen, waitFor, within } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import {
-  SERIES_DATA_NO_SUB,
+  BIBLE_VERSIONS,
+  CARD_HIDE_OPTIONS,
+  VERSE_DETAIL_DATA_GAE,
   VERSE_DETAIL_DATA_KOR,
-  VERSE_SUMMARY_DATA,
 } from '@/mock/mockData';
-import { createSeriesTabPanelId } from '@utils/componentUtils/seriesTab';
-import { createAllVerseOptionId } from '@utils/componentUtils/verseOption';
-import LINK_TEXTS from '@/constants/linkTexts';
-import PAGE_HEADING_TEXTS from '@/constants/pageHeadingTexts';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
-import COMBOBOX_LABEL_TEXTS from '@/constants/comboboxLabelTexts';
 import { createVerseCardTestId } from '@utils/componentUtils/verseCard';
 import waitForElementToBeRemovedIfExist from '@/lib/test/testUtils/waitForElementToBeRemovedIfExist';
+import { VerseStoreSelectorMock } from '@features/verseSelect/types/verseStoreSelectorMock.type';
+import { userEvent } from '@testing-library/user-event';
+import { describe } from 'vitest';
+import { getShortVerseAddress, getVerseAddress } from '@utils/common';
 
-describe('DrillingPage Test', () => {
-  beforeAll(() => {
-    mockScrollIntoView();
-    mockVerseSelectStore();
-    mockAnimationsApi();
-    renderRoute();
+const setup = async () => {
+  const user = userEvent.setup();
+
+  renderRoute('/drilling');
+
+  await waitForElementToBeRemovedIfExist(screen.queryByTestId('loader'));
+
+  const waitForBibleVersionLoaderRemoved = waitForElementToBeRemovedIfExist(
+    screen.queryByTestId('bibleVersionSelect-loader'),
+  );
+  const waitForCardHideOptionLoaderRemoved = waitForElementToBeRemovedIfExist(
+    screen.queryByTestId('cardHideOptionSelect-loader'),
+  );
+  const waitForVerseDisplayLoaderRemoved = waitForElementToBeRemovedIfExist(
+    screen.queryByTestId('verseDisplay-loader'),
+  );
+  await Promise.all([
+    waitForBibleVersionLoaderRemoved,
+    waitForCardHideOptionLoaderRemoved,
+    waitForVerseDisplayLoaderRemoved,
+  ]);
+
+  return {
+    user,
+    BV_OPTION: '성경버전',
+    HIDE_OPTION: '숨김',
+    NAV_TO_HOME: '홈으로',
+    NAV_TO_EXAM: '시험보기',
+    verses_kor: VERSE_DETAIL_DATA_KOR.map(verse => ({
+      ...verse,
+      contents: verse.verse_kor.trim(),
+    })),
+    verse_gae: VERSE_DETAIL_DATA_GAE.map(verse => ({
+      ...verse,
+      contents: verse.verse_gae.trim(),
+    })),
+  };
+};
+
+beforeAll(() => {
+  vi.mock('@store/verseSelectStore', async () => {
+    const verseSelectStore = await vi.importActual('@store/verseSelectStore');
+
+    return {
+      ...verseSelectStore,
+      useVerseSelectStore: vi
+        .fn()
+        .mockImplementation((selector: VerseStoreSelectorMock) =>
+          selector({
+            verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.idx),
+            hasAnyId: () => true,
+          }),
+        ),
+    };
   });
-
-  afterAll(() => {
-    vi.resetModules();
-    vi.restoreAllMocks();
+  vi.mock('@store/exam/examConfigModalStore', async () => {
+    return await vi.importActual('@store/exam/examConfigModalStore');
   });
+  mockAnimationsApi();
+});
 
-  // todo - navigate 시나리오/렌더링 테스트 분리할 수 있는 방법 찾기
-  test('renders "홈으로" and "시험보기" links, "성경버전" and "숨김" options, and card slide', async () => {
-    const user = userEvent.setup();
+describe('DrillingPage Test - rendering', () => {
+  test('render home and exam links, bible version and card hide options, verse cards', async () => {
+    const { NAV_TO_HOME, NAV_TO_EXAM, BV_OPTION, HIDE_OPTION, verses_kor } =
+      await setup();
 
-    await waitForElementToBeRemovedIfExist(screen.queryByTestId('loader'));
+    expect(screen.queryByRole('link', { name: NAV_TO_HOME })).not.toBeNull();
+    expect(screen.queryByRole('link', { name: NAV_TO_EXAM })).not.toBeNull();
 
-    const testTab = await screen.findByRole('tab', {
-      name: SERIES_DATA_NO_SUB.series_name,
+    expect(
+      screen.queryByRole('combobox', {
+        name: BV_OPTION,
+      }),
+    ).not.toBeNull();
+    expect(
+      screen.queryByRole('combobox', {
+        name: HIDE_OPTION,
+      }),
+    ).not.toBeNull();
+
+    verses_kor.forEach(verse => {
+      expect(screen.queryByTestId(createVerseCardTestId(verse))).not.toBeNull();
+    });
+  });
+});
+
+describe('DrillingPage Test - card hide option and verse card integration test', () => {
+  const COVERED_CLASSNAME = 'text-covered';
+  const CARD_HIDE_OPTION_BUTTON = '숨김 옵션 선택';
+
+  test('when user selects address hide option, hiding style applies to verse address', async () => {
+    const { user, verses_kor } = await setup();
+    const testVerseData = verses_kor[0];
+
+    const verseCard = screen.getByTestId(createVerseCardTestId(testVerseData));
+    const cardHideComboboxButton = screen.getByRole('button', {
+      name: CARD_HIDE_OPTION_BUTTON,
     });
 
-    const testTabPanel = await screen.findByTestId(
-      createSeriesTabPanelId(SERIES_DATA_NO_SUB.series_code),
+    await user.click(cardHideComboboxButton);
+
+    const listbox = screen.getByRole('listbox');
+    screen.debug(listbox);
+    const hideAddressOption = within(listbox).getByRole('option', {
+      name: CARD_HIDE_OPTIONS[1].name,
+    });
+
+    await user.click(hideAddressOption);
+
+    expect(
+      within(verseCard).getByText(getVerseAddress(testVerseData)).classList,
+    ).toContain(COVERED_CLASSNAME);
+  });
+
+  test('when user selects theme hide option, hiding style applies to verse theme', async () => {
+    const { user, verses_kor } = await setup();
+    const testVerseData = verses_kor[0];
+
+    screen.debug();
+
+    const verseCard = screen.getByTestId(createVerseCardTestId(testVerseData));
+    const cardHideComboboxButton = screen.getByRole('button', {
+      name: CARD_HIDE_OPTION_BUTTON,
+    });
+
+    await user.click(cardHideComboboxButton);
+
+    const hideThemeOption = within(screen.getByRole('listbox')).getByRole(
+      'option',
+      { name: CARD_HIDE_OPTIONS[2].name },
     );
 
-    expect(testTab.ariaExpanded).toBe('false');
-    expect(testTabPanel.hidden).toBe(true);
+    await user.click(hideThemeOption);
 
-    await user.click(testTab);
+    expect(
+      within(verseCard).getByText(testVerseData.theme).classList,
+    ).toContain(COVERED_CLASSNAME);
+  });
 
-    expect(testTab.ariaExpanded).toBe('true');
-    expect(testTabPanel.hidden).toBe(false);
+  test('when user selects contents hide option, hiding style applies to verse contents', async () => {
+    const { user, verses_kor } = await setup();
+    const testVerseData = verses_kor[0];
+
+    const verseCard = screen.getByTestId(createVerseCardTestId(testVerseData));
+    const cardHideComboboxButton = screen.getByRole('button', {
+      name: CARD_HIDE_OPTION_BUTTON,
+    });
+
+    await user.click(cardHideComboboxButton);
+
+    const hideContentsOption = within(screen.getByRole('listbox')).getByRole(
+      'option',
+      { name: CARD_HIDE_OPTIONS[3].name },
+    );
+
+    await user.click(hideContentsOption);
+
+    expect(
+      within(verseCard).getByText(testVerseData.contents).classList,
+    ).toContain(COVERED_CLASSNAME);
+  });
+});
+
+describe('DrillingPage Test - bible version option and verse card integration test', () => {
+  const BV_OPTION_BUTTON = '성경버전 선택';
+
+  test('when user selects bible version option, verse contents change to corresponding version', async () => {
+    const { user, verses_kor, verse_gae } = await setup();
+    const testVerseKorData = verses_kor[0];
+    const testVerseGaeData = verse_gae[0];
+
+    expect(testVerseGaeData.contents).not.eq(testVerseKorData.contents);
+
+    await user.click(
+      screen.getByRole('button', {
+        name: getShortVerseAddress(testVerseKorData),
+      }),
+    );
+
+    expect(
+      within(
+        screen.getByTestId(createVerseCardTestId(testVerseKorData)),
+      ).getByText(testVerseKorData.contents),
+    ).not.toBeNull();
+
+    const bibleVersionComboboxButton = screen.getByRole('button', {
+      name: BV_OPTION_BUTTON,
+    });
+
+    await user.click(bibleVersionComboboxButton);
+
+    const bibleGaeOption = within(screen.getByRole('listbox')).getByRole(
+      'option',
+      { name: BIBLE_VERSIONS[1].name },
+    );
+
+    await user.click(bibleGaeOption);
 
     await waitForElementToBeRemovedIfExist(
-      within(testTabPanel).queryByTestId('loader'),
-    );
-
-    const allCheckbox = within(testTabPanel).getByTestId(
-      createAllVerseOptionId(VERSE_SUMMARY_DATA[0].series_code),
-    );
-    expect(allCheckbox).not.toBeNull();
-
-    await user.click(allCheckbox);
-
-    const testNav = await screen.findByRole('link', {
-      name: LINK_TEXTS.DRILLING,
-    });
-
-    await user.click(testNav);
-
-    await waitFor(() => {
-      expect(
-        screen.queryByRole('heading', {
-          level: 1,
-          name: PAGE_HEADING_TEXTS.DRILLING,
-        }),
-      ).not.toBeNull();
-    });
-
-    expect(
-      screen.queryByRole('link', { name: LINK_TEXTS.HOME }),
-    ).not.toBeNull();
-    expect(
-      screen.queryByRole('link', { name: LINK_TEXTS.EXAM }),
-    ).not.toBeNull();
-
-    await waitForElementToBeRemovedIfExist(screen.queryAllByTestId('loader'));
-
-    expect(
-      screen.queryByRole('combobox', {
-        name: COMBOBOX_LABEL_TEXTS.BIBLE_VERSION,
-      }),
-    ).not.toBeNull();
-    expect(
-      screen.queryByRole('combobox', {
-        name: COMBOBOX_LABEL_TEXTS.CARD_HIDE_OPTION,
-      }),
+      screen.queryByTestId('verseDisplay-loader'),
     );
 
     expect(
-      screen.queryByRole('button', { name: '처음 구절로' }),
+      within(
+        screen.getByTestId(createVerseCardTestId(testVerseGaeData)),
+      ).getByText(testVerseGaeData.contents),
     ).not.toBeNull();
-    expect(
-      screen.queryByRole('button', { name: '다음 구절로' }),
-    ).not.toBeNull();
-    expect(
-      screen.queryByRole('button', { name: '이전 구절로' }),
-    ).not.toBeNull();
-    expect(screen.queryByRole('button', { name: '끝 구절로' })).not.toBeNull();
-
-    VERSE_DETAIL_DATA_KOR.forEach(data => {
-      expect(screen.queryByTestId(createVerseCardTestId(data))).not.toBeNull();
-    });
   });
 });

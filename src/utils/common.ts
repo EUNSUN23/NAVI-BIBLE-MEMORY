@@ -1,11 +1,14 @@
-import { VerseDetailData } from '@features/drilling/components/verseDisplay/verseCard/type';
+import { VerseDetailData } from '@features/verseDisplay/type';
 
-import { ExamVerseDataTypes } from '@features/exam/types/examVerseData.types';
-import { VerseSummaryDatum } from '@features/verseSelect/types/verseSummaryData.types';
+type GetVerseAddressParameter<T> =
+  T extends Pick<
+    VerseDetailData,
+    'bible_code' | 'chapter' | 'verse1' | 'verse2'
+  >
+    ? T
+    : never;
 
-export const getVerseAddress = (
-  data: VerseSummaryDatum | VerseDetailData | ExamVerseDataTypes,
-) => {
+export const getVerseAddress = <T>(data: GetVerseAddressParameter<T>) => {
   const {
     bible_code: { bible_name },
     chapter,
@@ -15,7 +18,7 @@ export const getVerseAddress = (
   return `${bible_name} ${chapter}:${verse2 ? verse1 + '-' + verse2 : verse1}`;
 };
 
-export const getShortVerseAddress = (data: VerseDetailData) => {
+export const getShortVerseAddress = <T>(data: GetVerseAddressParameter<T>) => {
   const {
     bible_code: { short_name },
     chapter,
