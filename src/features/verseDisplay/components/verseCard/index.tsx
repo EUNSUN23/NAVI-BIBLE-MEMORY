@@ -3,9 +3,9 @@ import { getVerseAddress } from '@utils/common';
 import { Textfit } from 'react-textfit';
 import { useCardHideOptionStore } from '@store/drilling/cardHideOptionStore';
 import { ClassValue } from 'clsx';
-import cn from '@utils/cn';
+import cn from '@/shared/styles/cn';
 import { createVerseCardTestId } from '@utils/componentUtils/verseCard';
-import { CARD_HIDE_OPTIONS } from '@/mock/mockData';
+import { CARD_HIDE_OPTIONS } from '@/lib/msw/mockData';
 
 const [_, HIDE_ADDR, HIDE_THEME, HIDE_CONTENTS] = CARD_HIDE_OPTIONS;
 

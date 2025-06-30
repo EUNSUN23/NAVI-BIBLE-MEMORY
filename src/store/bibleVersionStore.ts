@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { BibleVersion } from '@utils/type';
-import { BIBLE_VERSIONS } from '@/mock/mockData';
+import { BIBLE_VERSIONS } from '@/lib/msw/mockData';
 
 type BibleVersionState = {
   bibleVersion: BibleVersion;

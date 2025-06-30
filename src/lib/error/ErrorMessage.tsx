@@ -2,7 +2,7 @@ import { FallbackProps } from 'react-error-boundary';
 import { CgRedo } from '@react-icons/all-files/cg/CgRedo';
 import { HTMLAttributes } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
-import cn from '@utils/cn';
+import cn from '@/shared/styles/cn';
 import { HttpError } from '@/shared/utils/HttpError';
 import { IoIosWarning } from '@react-icons/all-files/io/IoIosWarning';
 

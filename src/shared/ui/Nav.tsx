@@ -1,5 +1,5 @@
 import { Link, LinkProps } from 'react-router-dom';
-import cn from '@utils/cn';
+import cn from '@/shared/styles/cn';
 import { HTMLAttributes } from 'react';
 
 function Nav({ ...props }: HTMLAttributes<HTMLElement>) {

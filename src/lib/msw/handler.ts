@@ -10,7 +10,7 @@ import {
   VERSE_DETAIL_DATA_GAE,
   VERSE_DETAIL_DATA_KOR,
   VERSE_SUMMARY_DATA,
-} from '@/mock/mockData';
+} from '@/lib/msw/mockData';
 import { SUPABASE_URL } from '@/lib/supabase/supabaseConfig';
 
 const baseURL = `${SUPABASE_URL}/rest/v1`;

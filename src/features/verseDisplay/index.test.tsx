@@ -1,10 +1,10 @@
 import { describe } from 'vitest';
 import { userEvent } from '@testing-library/user-event';
-import { render } from '@/lib/test/testUtils/render';
+import { render } from '@/lib/test/utils/render';
 import VerseDisplay from '@features/verseDisplay/index';
-import { VERSE_DETAIL_DATA_KOR } from '@/mock/mockData';
+import { VERSE_DETAIL_DATA_KOR } from '@/lib/msw/mockData';
 import { VerseStoreSelectorMock } from '@features/verseSelect/types/verseStoreSelectorMock.type';
-import waitForElementToBeRemovedIfExist from '@/lib/test/testUtils/waitForElementToBeRemovedIfExist';
+import waitForElementToBeRemovedIfExist from '@/lib/test/utils/waitForElementToBeRemovedIfExist';
 import { screen, within } from '@testing-library/react';
 import { getShortVerseAddress, getVerseAddress } from '@utils/common';
 import { createVerseCardTestId } from '@utils/componentUtils/verseCard';

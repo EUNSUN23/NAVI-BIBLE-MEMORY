@@ -1,11 +1,11 @@
 import { describe, test } from 'vitest';
-import { EXAM_VERSES_KOR_ALL_ASC } from '@/mock/mockData';
+import { EXAM_VERSES_KOR_ALL_ASC } from '@/lib/msw/mockData';
 import { StoreSelectorMock } from '@/types/common.types';
 import { ExamConfigStore } from '@store/exam/examConfigStore';
 import { VerseSelectStore } from '@store/verseSelectStore';
 import { userEvent } from '@testing-library/user-event';
-import renderRoute from '@/lib/test/testUtils/renderRoute';
-import waitForElementToBeRemovedIfExist from '@/lib/test/testUtils/waitForElementToBeRemovedIfExist';
+import renderRoute from '@/lib/test/utils/renderRoute';
+import waitForElementToBeRemovedIfExist from '@/lib/test/utils/waitForElementToBeRemovedIfExist';
 import { screen, waitFor, within } from '@testing-library/react';
 import { ExamVerseData } from '@features/exam/types/examVerseData';
 import { getVerseAddress } from '@utils/common';

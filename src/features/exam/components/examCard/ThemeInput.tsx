@@ -3,7 +3,7 @@ import getExamResultHTML from '@utils/getExamResultHTML';
 import { useState } from 'react';
 import parse from 'html-react-parser';
 import { ExamExposeOption } from '@features/exam/types/examExposeOptions.types';
-import { EXAM_EXPOSE_OPTIONS } from '@/mock/mockData';
+import { EXAM_EXPOSE_OPTIONS } from '@/lib/msw/mockData';
 
 type ThemeInputProps = {
   exposeOption: ExamExposeOption;

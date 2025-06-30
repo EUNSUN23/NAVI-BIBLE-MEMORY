@@ -4,7 +4,7 @@ import supabase from '@/lib/supabase';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { VerseId } from '@features/verseSelect/types/verseSummaryData.types';
 import { supabaseResponseHandler } from '@/lib/api/supabaseResponseHandler';
-import { BIBLE_VERSIONS } from '@/mock/mockData';
+import { BIBLE_VERSIONS } from '@/lib/msw/mockData';
 
 const getKorExamVerse = async (verseIds: Verse['idx'][], count: number) => {
   const res = await supabase

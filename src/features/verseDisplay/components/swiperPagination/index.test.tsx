@@ -1,4 +1,4 @@
-import { VERSE_DETAIL_DATA_KOR } from '@/mock/mockData';
+import { VERSE_DETAIL_DATA_KOR } from '@/lib/msw/mockData';
 import SwiperPagination from '@features/verseDisplay/components/swiperPagination/index';
 import { render, screen } from '@testing-library/react';
 import { getShortVerseAddress } from '@utils/common';

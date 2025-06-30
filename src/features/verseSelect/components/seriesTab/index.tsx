@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FaCaretUp } from '@react-icons/all-files/fa/FaCaretUp';
 import { FaCaretDown } from '@react-icons/all-files/fa/FaCaretDown';
 import SeriesContents from '@features/verseSelect/components/seriesContents';
-import cn from '@utils/cn';
+import cn from '@/shared/styles/cn';
 import { cva } from 'class-variance-authority';
 import { SeriesDatum } from '@features/verseSelect/types/seriesData.types';
 import { createSeriesTabPanelId } from '@utils/componentUtils/seriesTab';

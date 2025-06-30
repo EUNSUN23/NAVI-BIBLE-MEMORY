@@ -1,14 +1,14 @@
-import renderRoute from '@/lib/test/testUtils/renderRoute';
+import renderRoute from '@/lib/test/utils/renderRoute';
 import { screen, within } from '@testing-library/react';
 import {
   BIBLE_VERSIONS,
   CARD_HIDE_OPTIONS,
   VERSE_DETAIL_DATA_GAE,
   VERSE_DETAIL_DATA_KOR,
-} from '@/mock/mockData';
+} from '@/lib/msw/mockData';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
 import { createVerseCardTestId } from '@utils/componentUtils/verseCard';
-import waitForElementToBeRemovedIfExist from '@/lib/test/testUtils/waitForElementToBeRemovedIfExist';
+import waitForElementToBeRemovedIfExist from '@/lib/test/utils/waitForElementToBeRemovedIfExist';
 import { VerseStoreSelectorMock } from '@features/verseSelect/types/verseStoreSelectorMock.type';
 import { userEvent } from '@testing-library/user-event';
 import { describe } from 'vitest';
