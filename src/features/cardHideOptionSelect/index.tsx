@@ -1,6 +1,5 @@
 import { CommonCombobox } from '@/shared/ui/commonCombobox';
 import { Field } from '@headlessui/react';
-import COMBOBOX_LABEL_TEXTS from '@/constants/comboboxLabelTexts';
 import { ComposedBoundary } from '@/lib/error/ComposedBoundary';
 import ErrorMessage from '@/lib/error/ErrorMessage';
 import Loader from '@/shared/ui/Loader';
@@ -13,9 +12,7 @@ type CardHideOptionSelectProps = {
 function CardHideOptionSelect({ className = '' }: CardHideOptionSelectProps) {
   return (
     <Field className={className}>
-      <CommonCombobox.Label>
-        {COMBOBOX_LABEL_TEXTS.CARD_HIDE_OPTION}
-      </CommonCombobox.Label>
+      <CommonCombobox.Label>숨김</CommonCombobox.Label>
       <ComposedBoundary
         fallbackRender={({ error, resetErrorBoundary }) => (
           <ErrorMessage error={error} resetErrorBoundary={resetErrorBoundary} />

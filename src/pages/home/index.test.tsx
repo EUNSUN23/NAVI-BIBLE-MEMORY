@@ -5,11 +5,8 @@ import {
   VERSE_SUMMARY_DATA,
 } from '@/lib/msw/mockData';
 import { userEvent } from '@testing-library/user-event';
-import ALERT_MESSAGE from '@/constants/alertMessage';
 import { createSeriesTabPanelId } from '@utils/componentUtils/seriesTab';
 import { createVerseOptionId } from '@utils/componentUtils/verseOption';
-import LINK_TEXTS from '@/constants/linkTexts';
-import PAGE_HEADING_TEXTS from '@/constants/pageHeadingTexts';
 import renderRoute from '@/lib/test/utils/renderRoute';
 import mockAlert from '@/lib/test/utils/mocks/mockAlert';
 import mockScrollIntoView from '@/lib/test/utils/mocks/mockScrollIntoView';
@@ -20,6 +17,10 @@ const setup = () => {
   renderRoute();
 
   return {
+    HOME_LINK: '홈으로',
+    DRILLING_LINK: '암송하기',
+    EXAM_LINK: '시험보기',
+    HOME_HEADING: 'NAVI 성경 암송',
     user,
   };
 };
@@ -45,18 +46,12 @@ describe('HomePage Test', () => {
   });
 
   test('renders "홈으로","암송하기","시험보기" links and series tabs', async () => {
-    setup();
+    const { HOME_LINK, DRILLING_LINK, EXAM_LINK } = setup();
     await waitForElementToBeRemovedIfExist(screen.queryByTestId('loader'));
 
-    expect(
-      screen.queryByRole('link', { name: LINK_TEXTS.HOME }),
-    ).not.toBeNull();
-    expect(
-      screen.queryByRole('link', { name: LINK_TEXTS.DRILLING }),
-    ).not.toBeNull();
-    expect(
-      screen.queryByRole('link', { name: LINK_TEXTS.EXAM }),
-    ).not.toBeNull();
+    expect(screen.queryByRole('link', { name: HOME_LINK })).not.toBeNull();
+    expect(screen.queryByRole('link', { name: DRILLING_LINK })).not.toBeNull();
+    expect(screen.queryByRole('link', { name: EXAM_LINK })).not.toBeNull();
 
     SERIES_DATA.forEach(data => {
       expect(
@@ -69,43 +64,43 @@ describe('HomePage Test', () => {
   });
 
   test('when clicks "drilling" link without selecting verses, alert pops up', async () => {
-    const { user } = setup();
+    const { user, DRILLING_LINK, HOME_HEADING } = setup();
 
     const testNav = await screen.findByRole('link', {
-      name: LINK_TEXTS.DRILLING,
+      name: DRILLING_LINK,
     });
 
     await user.click(testNav);
-    expect(window.alert).toHaveBeenCalledWith(ALERT_MESSAGE.VERSE_NOT_SELECTED);
+    expect(window.alert).toHaveBeenCalledWith('암송 구절을 선택해주세요. 😊');
     expect(window.alert).toHaveBeenCalledTimes(1);
     expect(
       screen.queryByRole('heading', {
         level: 1,
-        name: PAGE_HEADING_TEXTS.HOME,
+        name: HOME_HEADING,
       }),
     ).not.toBeNull();
   });
 
   test('when clicks "exam" link without selecting verses, alert pops up and stop navigating', async () => {
-    const { user } = setup();
+    const { user, EXAM_LINK, HOME_HEADING } = setup();
 
     const testNav = await screen.findByRole('link', {
-      name: LINK_TEXTS.EXAM,
+      name: EXAM_LINK,
     });
 
     await user.click(testNav);
-    expect(window.alert).toHaveBeenCalledWith(ALERT_MESSAGE.VERSE_NOT_SELECTED);
+    expect(window.alert).toHaveBeenCalledWith('암송 구절을 선택해주세요. 😊');
     expect(window.alert).toHaveBeenCalledTimes(1);
     expect(
       screen.queryByRole('heading', {
         level: 1,
-        name: PAGE_HEADING_TEXTS.HOME,
+        name: HOME_HEADING,
       }),
     ).not.toBeNull();
   });
 
   test('when clicks "exam" link after selecting verses, "시험설정" dialog pops up', async () => {
-    const { user } = setup();
+    const { user, EXAM_LINK } = setup();
 
     const testTab = await screen.findByRole('tab', {
       name: SERIES_DATA_NO_SUB.series_name,
@@ -133,7 +128,7 @@ describe('HomePage Test', () => {
     expect(testOption.ariaChecked).toBe('true');
 
     const testNav = await screen.findByRole('link', {
-      name: LINK_TEXTS.EXAM,
+      name: EXAM_LINK,
     });
 
     await user.click(testNav);

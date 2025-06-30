@@ -5,8 +5,6 @@ import ExamConfigModal from 'src/features/examConfig';
 import { useVerseSelectStore } from '@store/verseSelectStore';
 import { useExamConfigModalStore } from '@store/exam/examConfigModalStore';
 import Nav from '@/shared/ui/Nav';
-import ALERT_MESSAGE from '@/constants/alertMessage';
-import PAGE_HEADING_TEXTS from '@/constants/pageHeadingTexts';
 import { MouseEvent, useTransition } from 'react';
 import { useExamConfigStore } from '@store/exam/examConfigStore';
 
@@ -29,14 +27,14 @@ function Home() {
   const handleDrillingLinkClick = (e: MouseEvent<HTMLAnchorElement>) => {
     if (!hasSelectedVerse()) {
       e.preventDefault();
-      alert(ALERT_MESSAGE.VERSE_NOT_SELECTED);
+      alert('암송 구절을 선택해주세요. 😊');
     }
   };
 
   const handleExamLinkClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (!hasSelectedVerse()) {
-      alert(ALERT_MESSAGE.VERSE_NOT_SELECTED);
+      alert('암송 구절을 선택해주세요. 😊');
       return;
     }
     setInitialExamVerseCount(selectedVerseCount);
@@ -63,7 +61,7 @@ function Home() {
       </Nav>
       <div className='mx-2 my-14 flex flex-col items-center justify-center'>
         <h1 className='flex items-center text-5xl font-semibold mobile:text-3xl'>
-          {PAGE_HEADING_TEXTS.HOME}
+          NAVI 성경 암송
         </h1>
         <VerseSelect />
       </div>
