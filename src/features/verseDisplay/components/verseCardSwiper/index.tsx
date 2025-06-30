@@ -8,7 +8,7 @@ import { useRef, useState } from 'react';
 import { useBibleVersionStore } from '@store/bibleVersionStore';
 import { useVerseSelectStore } from '@store/verseSelectStore';
 import { useShallow } from 'zustand/react/shallow';
-import { useVersesDetail } from '@features/verseSelect/api/getVersesDetail';
+import { useVersesDetail } from '@features/verseDisplay/api/getVersesDetail';
 import SwiperPagination from 'src/features/verseDisplay/components/swiperPagination';
 
 function VerseCardSwiper() {

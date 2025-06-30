@@ -1,14 +1,12 @@
 import { useVerseSelectStore } from '@store/verseSelectStore';
 import { useShallow } from 'zustand/react/shallow';
 import { ChangeEvent } from 'react';
-import { VerseSummaryDatum } from '@features/verseSelect/types/verseSummaryData.types';
-import {
-  createVerseOptionId,
-  createVerseOptionText,
-} from '@utils/componentUtils/verseOption';
+import { VerseSummaryData } from '@features/verseSelect/types/verseSummaryData.type';
+import { createVerseAddress } from '@utils/common';
+import { createVerseOptionId } from '@features/verseSelect/utils/createVerseOptionId';
 
 type VerseOptionProps = {
-  data: VerseSummaryDatum;
+  data: VerseSummaryData;
 };
 
 function VerseOption({ data }: VerseOptionProps) {
@@ -44,9 +42,7 @@ function VerseOption({ data }: VerseOptionProps) {
         className='flex max-w-[500px] grow items-center truncate text-xl font-medium mobile:text-base'
       >
         <span className='grow font-semibold'>{theme}</span>
-        <span className='mr-2 max-w-[140px]'>
-          {createVerseOptionText(data)}
-        </span>
+        <span className='mr-2 max-w-[140px]'>{createVerseAddress(data)}</span>
       </label>
     </li>
   );

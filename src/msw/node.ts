@@ -10,7 +10,7 @@ import {
   getVerseDetailGaeHandler,
   getVerseDetailHandler,
   getVerseSummaryHandler,
-} from '@/mock/handler';
+} from '@/msw/handler';
 
 export const handlers = [
   getSeriesHandler,

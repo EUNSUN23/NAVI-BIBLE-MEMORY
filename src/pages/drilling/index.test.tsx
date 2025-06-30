@@ -1,18 +1,19 @@
-import renderRoute from '@/lib/test/testUtils/renderRoute';
+import renderRoute from '@/test/utils/renderRoute';
 import { screen, within } from '@testing-library/react';
 import {
   BIBLE_VERSIONS,
   CARD_HIDE_OPTIONS,
   VERSE_DETAIL_DATA_GAE,
   VERSE_DETAIL_DATA_KOR,
-} from '@/mock/mockData';
+} from '@/msw/mockData';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
-import { createVerseCardTestId } from '@utils/componentUtils/verseCard';
-import waitForElementToBeRemovedIfExist from '@/lib/test/testUtils/waitForElementToBeRemovedIfExist';
-import { VerseStoreSelectorMock } from '@features/verseSelect/types/verseStoreSelectorMock.type';
+import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
 import { userEvent } from '@testing-library/user-event';
 import { describe } from 'vitest';
-import { getShortVerseAddress, getVerseAddress } from '@utils/common';
+import { createShortVerseAddress, createVerseAddress } from '@utils/common';
+import { StoreSelectorMock } from '@/types/common.types';
+import { VerseSelectStore } from '@store/verseSelectStore';
+import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
 
 const setup = async () => {
   const user = userEvent.setup();
@@ -61,7 +62,7 @@ beforeAll(() => {
       ...verseSelectStore,
       useVerseSelectStore: vi
         .fn()
-        .mockImplementation((selector: VerseStoreSelectorMock) =>
+        .mockImplementation((selector: StoreSelectorMock<VerseSelectStore>) =>
           selector({
             verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.idx),
             hasAnyId: () => true,
@@ -124,7 +125,7 @@ describe('DrillingPage Test - card hide option and verse card integration test',
     await user.click(hideAddressOption);
 
     expect(
-      within(verseCard).getByText(getVerseAddress(testVerseData)).classList,
+      within(verseCard).getByText(createVerseAddress(testVerseData)).classList,
     ).toContain(COVERED_CLASSNAME);
   });
 
@@ -189,7 +190,7 @@ describe('DrillingPage Test - bible version option and verse card integration te
 
     await user.click(
       screen.getByRole('button', {
-        name: getShortVerseAddress(testVerseKorData),
+        name: createShortVerseAddress(testVerseKorData),
       }),
     );
 

@@ -1,14 +1,15 @@
 import { describe } from 'vitest';
 import { userEvent } from '@testing-library/user-event';
-import { render } from '@/lib/test/testUtils/render';
+import { render } from '@/test/utils/render';
 import VerseDisplay from '@features/verseDisplay/index';
-import { VERSE_DETAIL_DATA_KOR } from '@/mock/mockData';
-import { VerseStoreSelectorMock } from '@features/verseSelect/types/verseStoreSelectorMock.type';
-import waitForElementToBeRemovedIfExist from '@/lib/test/testUtils/waitForElementToBeRemovedIfExist';
+import { VERSE_DETAIL_DATA_KOR } from '@/msw/mockData';
+import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
 import { screen, within } from '@testing-library/react';
-import { getShortVerseAddress, getVerseAddress } from '@utils/common';
-import { createVerseCardTestId } from '@utils/componentUtils/verseCard';
+import { createShortVerseAddress, createVerseAddress } from '@utils/common';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
+import { StoreSelectorMock } from '@/types/common.types';
+import { VerseSelectStore } from '@store/verseSelectStore';
+import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
 
 const setup = () => {
   const user = userEvent.setup();
@@ -44,7 +45,7 @@ describe('VerseDisplay Test', () => {
         ...verseSelectStore,
         useVerseSelectStore: vi
           .fn()
-          .mockImplementation((selector: VerseStoreSelectorMock) =>
+          .mockImplementation((selector: StoreSelectorMock<VerseSelectStore>) =>
             selector({
               verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.idx),
               hasAnyId: () => true,
@@ -82,7 +83,7 @@ describe('VerseDisplay Test', () => {
       Array.from({ length: PAGE_RANGE }, (_, i) => i).forEach(pageIndex => {
         expect(
           screen
-            .getByText(getShortVerseAddress(verseList[pageIndex]))
+            .getByText(createShortVerseAddress(verseList[pageIndex]))
             .closest('[role="button"]'),
         ).not.toBeNull();
       });
@@ -99,7 +100,7 @@ describe('VerseDisplay Test', () => {
         const testVerseCard = screen.getByTestId(createVerseCardTestId(verse));
         expect(within(testVerseCard).queryByText(verse.theme)).not.toBeNull();
         expect(
-          within(testVerseCard).queryByText(getVerseAddress(verse)),
+          within(testVerseCard).queryByText(createVerseAddress(verse)),
         ).not.toBeNull();
         expect(
           within(testVerseCard).queryByText(verse.contents),
@@ -121,7 +122,7 @@ describe('VerseDisplay Test', () => {
         );
 
         const testPageButton = screen.getByRole('button', {
-          name: getShortVerseAddress(testVerseData),
+          name: createShortVerseAddress(testVerseData),
         });
 
         await user.click(testPageButton);
@@ -131,7 +132,7 @@ describe('VerseDisplay Test', () => {
         );
 
         expect(
-          within(testVerseSlide).queryByText(getVerseAddress(testVerseData)),
+          within(testVerseSlide).queryByText(createVerseAddress(testVerseData)),
         ).not.toBeNull();
       },
     );
@@ -151,7 +152,7 @@ describe('VerseDisplay Test', () => {
       );
 
       const testPageButton = screen.getByRole('button', {
-        name: getShortVerseAddress(testVerseData),
+        name: createShortVerseAddress(testVerseData),
       });
 
       await user.click(testPageButton);
@@ -171,7 +172,7 @@ describe('VerseDisplay Test', () => {
       ).not.toBeNull();
       expect(
         screen.getByRole('button', {
-          name: getShortVerseAddress(firstVerseData),
+          name: createShortVerseAddress(firstVerseData),
         }).classList,
       ).toContain(ACTIVE_CLASS);
     },
@@ -191,7 +192,7 @@ describe('VerseDisplay Test', () => {
 
       await user.click(
         screen.getByRole('button', {
-          name: getShortVerseAddress(testVerseData),
+          name: createShortVerseAddress(testVerseData),
         }),
       );
 
@@ -206,7 +207,7 @@ describe('VerseDisplay Test', () => {
       ).not.toBeNull();
       expect(
         screen.getByRole('button', {
-          name: getShortVerseAddress(lastVerseData),
+          name: createShortVerseAddress(lastVerseData),
         }).classList,
       ).toContain(ACTIVE_CLASS);
     },

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useExamStatusStore } from '@store/exam/examStatusStore';
-import getExamResultHTML from '@utils/getExamResultHTML';
+import getExamResultHTML from '@/lib/getExamResultHTML';
 import parse from 'html-react-parser';
 import { Textfit } from 'react-textfit';
 

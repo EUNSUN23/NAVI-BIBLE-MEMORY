@@ -3,7 +3,7 @@ import RootComponent from '@/RootComponent';
 import Loader from '@/shared/ui/Loader';
 import Home from '@pages/home';
 import { getSeries } from '@features/verseSelect/api/getSeries';
-import { render } from '@/lib/test/testUtils/render';
+import { render } from '@/test/utils/render';
 import DrillingPage from '@pages/drilling';
 import Exam from '@pages/exam';
 

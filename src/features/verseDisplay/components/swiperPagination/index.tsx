@@ -1,10 +1,10 @@
-import { VerseDetailDataList } from '@features/verseDisplay/type';
 import { useSwiper } from 'swiper/react';
 import ReactPaginate from 'react-paginate';
 import { FiChevronsLeft } from '@react-icons/all-files/fi/FiChevronsLeft';
 import { FiChevronsRight } from '@react-icons/all-files/fi/FiChevronsRight';
-import { getShortVerseAddress } from '@utils/common';
+import { createShortVerseAddress } from '@utils/common';
 import { IoEllipsisHorizontal } from '@react-icons/all-files/io5/IoEllipsisHorizontal';
+import { VerseDetailDataList } from '@features/verseDisplay/types/verseDetail.type';
 
 type SwiperBulletProps = {
   verses: VerseDetailDataList;
@@ -53,8 +53,8 @@ function SwiperPagination({ verses, activeIndex }: SwiperBulletProps) {
           <span className='sr-only'>더 보기</span>
         </div>
       }
-      pageLabelBuilder={page => getShortVerseAddress(verses[page - 1])}
-      ariaLabelBuilder={page => getShortVerseAddress(verses[page - 1])}
+      pageLabelBuilder={page => createShortVerseAddress(verses[page - 1])}
+      ariaLabelBuilder={page => createShortVerseAddress(verses[page - 1])}
       containerClassName='w-[90%] flex items-center justify-center space-x-2 px-8 mt-6 mx-auto'
       pageClassName='mt-[55px] w-fit shrink-0'
       pageLinkClassName='swiper-custom-pagination-bullet'

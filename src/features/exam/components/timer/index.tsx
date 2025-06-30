@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { useExamStatusStore } from '@store/exam/examStatusStore';
+import { useShallow } from 'zustand/react/shallow';
 
 type TimerProps = {
   time: number;
 };
 function Timer({ time }: TimerProps) {
-  const setIsFinished = useExamStatusStore(state => state.setIsFinished);
+  const setIsFinished = useExamStatusStore(
+    useShallow(state => state.setIsFinished),
+  );
   const [isPaused, setIsPaused] = useState(false);
   const [leftSeconds, setLeftSeconds] = useState(() => time * 60);
 
@@ -18,16 +21,24 @@ function Timer({ time }: TimerProps) {
       }, 1000);
     }
 
-    if ((leftSeconds === 0 || isPaused) && intervalRef.current) {
+    if (leftSeconds === 0 && intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
-
-      if (leftSeconds === 0) {
-        if (confirm('시험이 종료되었습니다. 수고하셨습니다. 😊')) {
-          setIsFinished(true);
-        }
+      if (confirm('시험이 종료되었습니다. 수고하셨습니다. 😊')) {
+        setIsFinished(true);
       }
     }
+
+    // if ((leftSeconds === 0 || isPaused) && intervalRef.current) {
+    //   clearInterval(intervalRef.current);
+    //   intervalRef.current = null;
+    //
+    //   if (leftSeconds === 0) {
+    //     if (confirm('시험이 종료되었습니다. 수고하셨습니다. 😊')) {
+    //       setIsFinished(true);
+    //     }
+    //   }
+    // }
 
     return () => {
       if (intervalRef.current) {
@@ -42,6 +53,11 @@ function Timer({ time }: TimerProps) {
   const secValue = Number(((min - minValue) * 60).toFixed());
   const minString = minValue.toString().padStart(2, '0');
   const secString = secValue.toString().padStart(2, '0');
+
+  const handleOnClickButton = () => {
+    console.log('handle click...');
+    setIsPaused(prev => !prev);
+  };
 
   return (
     <section
@@ -68,9 +84,10 @@ function Timer({ time }: TimerProps) {
       </div>
       <button
         className='col-span-2 mr-auto rounded-3xl bg-secondary px-4 py-2 text-xl font-medium text-white mobile:px-3 mobile:py-1 mobile:text-base'
-        onClick={() => setIsPaused(prev => !prev)}
+        onClick={handleOnClickButton}
       >
-        {isPaused ? '다시시작' : '일시정지'}
+        일시정지
+        {/*{isPaused ? '다시시작' : '일시정지'}*/}
       </button>
     </section>
   );

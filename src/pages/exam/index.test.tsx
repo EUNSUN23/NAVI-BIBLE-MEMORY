@@ -1,14 +1,14 @@
 import { describe, test } from 'vitest';
-import { EXAM_VERSES_KOR_ALL_ASC } from '@/mock/mockData';
+import { EXAM_VERSES_KOR_ALL_ASC } from '@/msw/mockData';
 import { StoreSelectorMock } from '@/types/common.types';
 import { ExamConfigStore } from '@store/exam/examConfigStore';
 import { VerseSelectStore } from '@store/verseSelectStore';
 import { userEvent } from '@testing-library/user-event';
-import renderRoute from '@/lib/test/testUtils/renderRoute';
-import waitForElementToBeRemovedIfExist from '@/lib/test/testUtils/waitForElementToBeRemovedIfExist';
+import renderRoute from '@/test/utils/renderRoute';
+import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
 import { screen, waitFor, within } from '@testing-library/react';
-import { ExamVerseData } from '@features/exam/types/examVerseData';
-import { getVerseAddress } from '@utils/common';
+import { ExamVerseData } from '@features/exam/types/examVerseData.type';
+import { createVerseAddress } from '@utils/common';
 
 const setup = () => {
   const user = userEvent.setup();
@@ -163,7 +163,7 @@ describe('ExamPage Rendering Test', () => {
         createExamCardTestId(verse),
       );
       expect(
-        within(examCard).getByText(getVerseAddress(verse)),
+        within(examCard).getByText(createVerseAddress(verse)),
       ).toBeInTheDocument();
       expect(
         within(examCard).getByRole('textbox', { name: EXAM_CARD_THEME }),

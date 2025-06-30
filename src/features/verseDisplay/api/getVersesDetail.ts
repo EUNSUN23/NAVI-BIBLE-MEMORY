@@ -1,9 +1,8 @@
-import { Verse } from '@/types/data.types';
-import { BibleVersion } from '@utils/type';
-import supabase from '@/lib/supabase';
+import { BibleVersion, Verse } from '@/types/data.types';
+import supabase from 'src/supabase';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { supabaseResponseHandler } from '@/lib/api/supabaseResponseHandler';
-import { BIBLE_VERSIONS } from '@/mock/mockData';
+import { BIBLE_VERSIONS } from '@/msw/mockData';
 
 const getKorVersesDetail = async (verseIds: Verse['idx'][]) => {
   const res = await supabase

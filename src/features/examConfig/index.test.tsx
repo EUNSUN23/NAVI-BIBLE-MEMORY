@@ -3,14 +3,14 @@ import {
   CARD_SORT_METHODS,
   EXAM_EXPOSE_OPTIONS,
   VERSE_SUMMARY_DATA,
-} from '@/mock/mockData';
-import waitForElementToBeRemovedIfExist from '@/lib/test/testUtils/waitForElementToBeRemovedIfExist';
+} from '@/msw/mockData';
+import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
 import { act, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
-import mockAlert from '@/lib/test/testUtils/mocks/mockAlert';
+import mockAlert from '@/test/utils/mocks/mockAlert';
 import { VerseSelectStore } from '@store/verseSelectStore';
-import renderRoute from '@/lib/test/testUtils/renderRoute';
+import renderRoute from '@/test/utils/renderRoute';
 import { StoreSelectorMock } from '@/types/common.types';
 
 beforeAll(() => {
