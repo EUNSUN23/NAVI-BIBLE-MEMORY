@@ -1,11 +1,11 @@
-import { VerseDetailData } from '@features/verseDisplay/type';
-import { getVerseAddress } from '@utils/common';
+import { createVerseAddress } from '@utils/common';
 import { Textfit } from 'react-textfit';
 import { useCardHideOptionStore } from '@store/drilling/cardHideOptionStore';
 import { ClassValue } from 'clsx';
 import cn from '@/shared/styles/cn';
-import { createVerseCardTestId } from '@utils/componentUtils/verseCard';
-import { CARD_HIDE_OPTIONS } from '@/lib/msw/mockData';
+import { CARD_HIDE_OPTIONS } from '@/msw/mockData';
+import { VerseDetailData } from '@features/verseDisplay/types/verseDetail.type';
+import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
 
 const [_, HIDE_ADDR, HIDE_THEME, HIDE_CONTENTS] = CARD_HIDE_OPTIONS;
 
@@ -20,7 +20,7 @@ const cardTextClass = (isHidden: boolean, ...inputs: ClassValue[]) => {
 function VerseCard({ data }: CardProps) {
   const { theme, category, contents } = data;
   const { code } = useCardHideOptionStore(state => state.cardHideOption);
-  const address = getVerseAddress(data);
+  const address = createVerseAddress(data);
   return (
     <div
       className='my-4 flex h-[400px] flex-col items-start justify-center rounded-xl border border-[#bebebe] px-9 py-6 text-left shadow-lg mobile:h-[200px]'

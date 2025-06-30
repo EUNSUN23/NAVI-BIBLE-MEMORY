@@ -2,9 +2,9 @@ import { expect, test } from 'vitest';
 import { userEvent } from '@testing-library/user-event';
 import CardHideOptionSelect from '@features/cardHideOptionSelect/index';
 import { screen, waitFor, within } from '@testing-library/react';
-import waitForElementToBeRemovedIfExist from '@/lib/test/utils/waitForElementToBeRemovedIfExist';
-import { CARD_HIDE_OPTIONS } from '@/lib/msw/mockData';
-import { render } from '@/lib/test/utils/render';
+import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
+import { CARD_HIDE_OPTIONS } from '@/msw/mockData';
+import { render } from '@/test/utils/render';
 
 describe('CardHideOptionSelect Test', () => {
   beforeAll(() => {

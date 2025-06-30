@@ -1,5 +1,5 @@
 import { create } from 'zustand/index';
-import { CARD_HIDE_OPTIONS } from '@/lib/msw/mockData';
+import { CARD_HIDE_OPTIONS } from '@/msw/mockData';
 import { ApiResultType } from '@/shared/types/apiResult.type';
 import { getCardHideOptions } from '@features/cardHideOptionSelect/api/getCardHideOptions';
 import { ArrayElement } from '@/shared/types/arrayElement.type';

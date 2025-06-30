@@ -1,6 +1,6 @@
 import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
 import { IoIosWarning } from '@react-icons/all-files/io/IoIosWarning';
-import SupabaseResponseError from '@/lib/SupabaseResponseError';
+import SupabaseResponseError from '@/lib/error/SupabaseResponseError';
 
 function RouteErrorElement() {
   const error = useRouteError();

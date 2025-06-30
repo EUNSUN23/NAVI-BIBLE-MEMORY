@@ -1,7 +1,7 @@
-import { VERSE_DETAIL_DATA_KOR } from '@/lib/msw/mockData';
+import { VERSE_DETAIL_DATA_KOR } from '@/msw/mockData';
 import SwiperPagination from '@features/verseDisplay/components/swiperPagination/index';
 import { render, screen } from '@testing-library/react';
-import { getShortVerseAddress } from '@utils/common';
+import { createShortVerseAddress } from '@utils/common';
 import { userEvent } from '@testing-library/user-event';
 
 const setup = () => {
@@ -37,7 +37,7 @@ describe('SwiperPagination Test', () => {
     const { verses, user, ACTIVE_CLASS } = setup();
 
     const testPageButton = screen.getByRole('button', {
-      name: getShortVerseAddress(verses[1]),
+      name: createShortVerseAddress(verses[1]),
     });
 
     expect(testPageButton.classList).not.toContain(ACTIVE_CLASS);
@@ -51,7 +51,7 @@ describe('SwiperPagination Test', () => {
     const { TO_FIRST, verses, ACTIVE_CLASS, DISABLED_CLASS } = setup();
 
     expect(
-      screen.getByRole('button', { name: getShortVerseAddress(verses[0]) })
+      screen.getByRole('button', { name: createShortVerseAddress(verses[0]) })
         .classList,
     ).toContain(ACTIVE_CLASS);
 
@@ -73,7 +73,7 @@ describe('SwiperPagination Test', () => {
 
     expect(
       screen.getByRole('button', {
-        name: getShortVerseAddress(verses[verses.length - 1]),
+        name: createShortVerseAddress(verses[verses.length - 1]),
       }).classList,
     ).toContain(ACTIVE_CLASS);
 

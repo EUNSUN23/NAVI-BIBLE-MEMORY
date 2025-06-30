@@ -1,7 +1,7 @@
 import ExamCard from 'src/features/exam/components/examCard';
-import { ExamVerseDataList } from '@features/exam/types/examVerseData';
+import { ExamVerseDataList } from '@features/exam/types/examVerseData.type';
 import { useExamConfigStore } from '@store/exam/examConfigStore';
-import { CARD_SORT_METHODS } from '@/lib/msw/mockData';
+import { CARD_SORT_METHODS } from '@/msw/mockData';
 import SubmitButton from '@features/exam/components/submitButton';
 
 type ExamBoardProps = {

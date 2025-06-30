@@ -3,14 +3,14 @@ import {
   SERIES_DATA,
   SERIES_DATA_NO_SUB,
   VERSE_SUMMARY_DATA,
-} from '@/lib/msw/mockData';
+} from '@/msw/mockData';
 import { userEvent } from '@testing-library/user-event';
-import { createSeriesTabPanelId } from '@utils/componentUtils/seriesTab';
-import { createVerseOptionId } from '@utils/componentUtils/verseOption';
-import renderRoute from '@/lib/test/utils/renderRoute';
-import mockAlert from '@/lib/test/utils/mocks/mockAlert';
-import mockScrollIntoView from '@/lib/test/utils/mocks/mockScrollIntoView';
-import waitForElementToBeRemovedIfExist from '@/lib/test/utils/waitForElementToBeRemovedIfExist';
+import renderRoute from '@/test/utils/renderRoute';
+import mockAlert from '@/test/utils/mocks/mockAlert';
+import mockScrollIntoView from '@/test/utils/mocks/mockScrollIntoView';
+import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
+import { createSeriesTabPanelId } from '@features/verseSelect/utils/createSeriesTabPanelId';
+import { createVerseOptionId } from '@features/verseSelect/utils/createVerseOptionId';
 
 const setup = () => {
   const user = userEvent.setup();

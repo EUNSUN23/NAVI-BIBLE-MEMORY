@@ -1,7 +1,7 @@
-import { CardSortMethod } from '@features/exam/types/cardSortMethods.types';
-import { ExamExposeOption } from '@features/exam/types/examExposeOptions.types';
+import { CardSortMethod } from '@features/exam/types/cardSortMethod.type';
+import { ExamExposeOption } from '@features/exam/types/examExposeOption.type';
 import { create } from 'zustand/index';
-import { CARD_SORT_METHODS, EXAM_EXPOSE_OPTIONS } from '@/lib/msw/mockData';
+import { CARD_SORT_METHODS, EXAM_EXPOSE_OPTIONS } from '@/msw/mockData';
 
 type ExamConfigState = {
   time: number;

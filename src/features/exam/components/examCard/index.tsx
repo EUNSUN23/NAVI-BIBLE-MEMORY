@@ -1,9 +1,9 @@
-import { getVerseAddress } from '@utils/common';
+import { createVerseAddress } from '@utils/common';
 import AddressInput from '@features/exam/components/examCard/AddressInput';
 import ThemeInput from '@features/exam/components/examCard/ThemeInput';
 import ContentsInput from '@features/exam/components/examCard/ContentsInput';
-import { ExamExposeOption } from '@features/exam/types/examExposeOptions.types';
-import { ExamVerseData } from '@features/exam/types/examVerseData';
+import { ExamExposeOption } from '@features/exam/types/examExposeOption.type';
+import { ExamVerseData } from '@features/exam/types/examVerseData.type';
 
 type ExamCardProps = {
   data: ExamVerseData;
@@ -15,7 +15,7 @@ function ExamCard({ data, exposeOption }: ExamCardProps) {
   return (
     <div data-testid={`exam-verse-${idx}`} className='mb-4 flex flex-col'>
       <AddressInput
-        address={getVerseAddress(data)}
+        address={createVerseAddress(data)}
         exposeOption={exposeOption}
         verseId={idx}
       />

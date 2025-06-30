@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 import { userEvent } from '@testing-library/user-event';
 import Timer from '@features/exam/components/timer/index';
 import { act, screen } from '@testing-library/react';
-import { render } from '@/lib/test/utils/render';
+import { render } from '@/test/utils/render';
 
 const setup = () => {
   const user = userEvent.setup();

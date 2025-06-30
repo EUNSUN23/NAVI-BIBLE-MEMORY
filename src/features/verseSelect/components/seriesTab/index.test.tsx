@@ -10,17 +10,17 @@ import {
 import { cleanup, screen, within } from '@testing-library/react';
 import { UserEvent, userEvent } from '@testing-library/user-event';
 import SeriesTab from '@features/verseSelect/components/seriesTab/index';
-import { render } from '@/lib/test/utils/render';
+import { render } from '@/test/utils/render';
 import {
   SERIES_DATA,
   SERIES_DATA_HAS_SUB,
   SERIES_DATA_NO_SUB,
   SERIES_DATA_SUB,
   VERSE_SUMMARY_DATA,
-} from '@/lib/msw/mockData';
-import { createSeriesTabPanelId } from '@utils/componentUtils/seriesTab';
-import { createVerseOptionId } from '@utils/componentUtils/verseOption';
-import waitForElementToBeRemovedIfExist from '@/lib/test/utils/waitForElementToBeRemovedIfExist';
+} from '@/msw/mockData';
+import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
+import { createSeriesTabPanelId } from '@features/verseSelect/utils/createSeriesTabPanelId';
+import { createVerseOptionId } from '@features/verseSelect/utils/createVerseOptionId';
 
 describe('SeriesTab Test', () => {
   let user: UserEvent;

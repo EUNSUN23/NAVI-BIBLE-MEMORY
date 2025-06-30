@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-import { render } from '@/lib/test/utils/render';
+import { render } from '@/test/utils/render';
 import { cleanup, screen, waitFor, within } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import {
@@ -7,7 +7,7 @@ import {
   CommonComboboxItem,
 } from '@/shared/ui/commonCombobox/index';
 import { Field } from '@headlessui/react';
-import { BIBLE_VERSIONS } from '@/lib/msw/mockData';
+import { BIBLE_VERSIONS } from '@/msw/mockData';
 
 const label = '성경버전';
 const items: CommonComboboxItem[] = BIBLE_VERSIONS.map(({ name, code }) => ({

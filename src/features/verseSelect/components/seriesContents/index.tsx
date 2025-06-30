@@ -2,7 +2,7 @@ import VerseSelector from '@features/verseSelect/components/verseSelector';
 import { useEffect, useRef } from 'react';
 import SubSeriesTabs from '@features/verseSelect/components/subSeriesTabs';
 import { usePrefetchQuery } from '@tanstack/react-query';
-import { SeriesDatum } from '@features/verseSelect/types/seriesData.types';
+import { SeriesData } from '@features/verseSelect/types/seriesData.type';
 import {
   getSubSeries,
   SUB_SERIES_QUERY_KEY,
@@ -16,7 +16,7 @@ import ErrorMessage from '@/lib/error/ErrorMessage';
 import Loader from '@/shared/ui/Loader';
 
 export type SeriesContentsProps = {
-  data: SeriesDatum;
+  data: SeriesData;
   testId: string;
   isTabOpen: boolean;
 };

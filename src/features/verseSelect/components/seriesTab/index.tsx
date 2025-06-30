@@ -4,8 +4,9 @@ import { FaCaretDown } from '@react-icons/all-files/fa/FaCaretDown';
 import SeriesContents from '@features/verseSelect/components/seriesContents';
 import cn from '@/shared/styles/cn';
 import { cva } from 'class-variance-authority';
-import { SeriesDatum } from '@features/verseSelect/types/seriesData.types';
-import { createSeriesTabPanelId } from '@utils/componentUtils/seriesTab';
+import { SeriesData } from '@features/verseSelect/types/seriesData.type';
+
+import { createSeriesTabPanelId } from '@features/verseSelect/utils/createSeriesTabPanelId';
 
 const tabVariants = cva(
   'w-full rounded-2xl px-7 py-2.5 text-center mobile:px-2 flex items-center justify-between space-x-1',
@@ -33,7 +34,7 @@ const caretVariants = cva('flex size-10 items-center justify-center', {
 });
 
 type SeriesTabProps = {
-  data: SeriesDatum;
+  data: SeriesData;
 };
 
 function SeriesTab({ data }: SeriesTabProps) {

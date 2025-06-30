@@ -1,4 +1,4 @@
-import supabase from '@/lib/supabase';
+import supabase from 'src/supabase';
 import { supabaseResponseHandler } from '@/lib/api/supabaseResponseHandler';
 
 export const getSeries = async () => {

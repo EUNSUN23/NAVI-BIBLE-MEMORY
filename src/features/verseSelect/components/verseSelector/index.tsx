@@ -2,7 +2,6 @@ import { ChangeEvent } from 'react';
 import { useVerseSelectStore } from '@store/verseSelectStore';
 import VerseOption from '@features/verseSelect/components/verseOption';
 import { useVersesSummary } from '@features/verseSelect/api/getVersesSummary';
-import { createAllVerseOptionId } from '@utils/componentUtils/verseOption';
 
 type VerseSelectorProps = {
   series_code: string;
@@ -19,7 +18,7 @@ function VerseSelector({ series_code }: VerseSelectorProps) {
     else addSelected(data.map(v => v.idx));
   };
 
-  const allCheckboxId = createAllVerseOptionId(data[0].series_code);
+  const allCheckboxId = `${data[0].series_code}-all`;
 
   return (
     <ul

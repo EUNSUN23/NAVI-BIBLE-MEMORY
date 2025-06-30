@@ -1,6 +1,8 @@
-import { VerseDetailData } from '@features/verseDisplay/type';
+import { VerseSummaryData } from '@features/verseSelect/types/verseSummaryData.type';
+import { VerseDetailData } from '@features/verseDisplay/types/verseDetail.type';
+import { ExamVerseData } from '@features/exam/types/examVerseData.type';
 
-type GetVerseAddressParameter<T> =
+type VerseDetailLikeData<T> =
   T extends Pick<
     VerseDetailData,
     'bible_code' | 'chapter' | 'verse1' | 'verse2'
@@ -8,7 +10,9 @@ type GetVerseAddressParameter<T> =
     ? T
     : never;
 
-export const getVerseAddress = <T>(data: GetVerseAddressParameter<T>) => {
+export const createVerseAddress = <T>(
+  data: VerseSummaryData | ExamVerseData | VerseDetailLikeData<T>,
+) => {
   const {
     bible_code: { bible_name },
     chapter,
@@ -18,7 +22,7 @@ export const getVerseAddress = <T>(data: GetVerseAddressParameter<T>) => {
   return `${bible_name} ${chapter}:${verse2 ? verse1 + '-' + verse2 : verse1}`;
 };
 
-export const getShortVerseAddress = <T>(data: GetVerseAddressParameter<T>) => {
+export const createShortVerseAddress = <T>(data: VerseDetailLikeData<T>) => {
   const {
     bible_code: { short_name },
     chapter,
