@@ -21,24 +21,16 @@ function Timer({ time }: TimerProps) {
       }, 1000);
     }
 
-    if (leftSeconds === 0 && intervalRef.current) {
+    if ((leftSeconds === 0 || isPaused) && intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
-      if (confirm('시험이 종료되었습니다. 수고하셨습니다. 😊')) {
-        setIsFinished(true);
+
+      if (leftSeconds === 0) {
+        if (confirm('시험이 종료되었습니다. 수고하셨습니다. 😊')) {
+          setIsFinished(true);
+        }
       }
     }
-
-    // if ((leftSeconds === 0 || isPaused) && intervalRef.current) {
-    //   clearInterval(intervalRef.current);
-    //   intervalRef.current = null;
-    //
-    //   if (leftSeconds === 0) {
-    //     if (confirm('시험이 종료되었습니다. 수고하셨습니다. 😊')) {
-    //       setIsFinished(true);
-    //     }
-    //   }
-    // }
 
     return () => {
       if (intervalRef.current) {
@@ -86,8 +78,7 @@ function Timer({ time }: TimerProps) {
         className='col-span-2 mr-auto rounded-3xl bg-secondary px-4 py-2 text-xl font-medium text-white mobile:px-3 mobile:py-1 mobile:text-base'
         onClick={handleOnClickButton}
       >
-        일시정지
-        {/*{isPaused ? '다시시작' : '일시정지'}*/}
+        {isPaused ? '다시시작' : '일시정지'}
       </button>
     </section>
   );
