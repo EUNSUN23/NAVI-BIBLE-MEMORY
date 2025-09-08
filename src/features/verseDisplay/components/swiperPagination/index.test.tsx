@@ -9,7 +9,11 @@ const setup = () => {
   const verses = VERSE_DETAIL_DATA_KOR.map(data => ({
     ...data,
     contents: data.verse_kor.trim(),
-  }));
+  })).sort((a, b) =>
+    a.series_code.ord === b.series_code.ord
+      ? a.card_num - b.card_num
+      : a.series_code.ord - b.series_code.ord,
+  );
 
   render(<SwiperPagination verses={verses} activeIndex={0} />);
 

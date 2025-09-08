@@ -46,11 +46,19 @@ const setup = async () => {
     verses_kor: VERSE_DETAIL_DATA_KOR.map(verse => ({
       ...verse,
       contents: verse.verse_kor.trim(),
-    })),
+    })).sort((a, b) =>
+      a.series_code.ord === b.series_code.ord
+        ? a.card_num - b.card_num
+        : a.series_code.ord - b.series_code.ord,
+    ),
     verse_gae: VERSE_DETAIL_DATA_GAE.map(verse => ({
       ...verse,
       contents: verse.verse_gae.trim(),
-    })),
+    })).sort((a, b) =>
+      a.series_code.ord === b.series_code.ord
+        ? a.card_num - b.card_num
+        : a.series_code.ord - b.series_code.ord,
+    ),
   };
 };
 
@@ -183,8 +191,8 @@ describe('DrillingPage Test - bible version option and verse card integration te
 
   test('when user selects bible version option, verse contents change to corresponding version', async () => {
     const { user, verses_kor, verse_gae } = await setup();
-    const testVerseKorData = verses_kor[0];
-    const testVerseGaeData = verse_gae[0];
+    const testVerseKorData = verses_kor[1];
+    const testVerseGaeData = verse_gae[1];
 
     expect(testVerseGaeData.contents).not.eq(testVerseKorData.contents);
 
