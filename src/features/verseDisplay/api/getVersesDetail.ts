@@ -10,11 +10,16 @@ const getKorVersesDetail = async (verseIds: Verse['idx'][]) => {
     .select(
       'idx,card_num,series_code(ord, series_name),category,theme,bible_code(bible_name,short_name),chapter,verse1,verse2,verse_kor',
     )
-    .in('idx', [...verseIds])
-    .order('series_code(ord)', { ascending: true });
+    .in('idx', [...verseIds]);
 
   return supabaseResponseHandler(res, data =>
-    data.map(v => ({ ...v, contents: v.verse_kor.trim() })),
+    data
+      .map(v => ({ ...v, contents: v.verse_kor.trim() }))
+      .sort((a, b) => {
+        return a.series_code.ord === b.series_code.ord
+          ? a.card_num - b.card_num
+          : a.series_code.ord - b.series_code.ord;
+      }),
   );
 };
 
@@ -24,11 +29,16 @@ const getGaeVersesDetail = async (verseIds: Verse['idx'][]) => {
     .select(
       'idx,card_num,series_code(ord, series_name),category,theme,bible_code(bible_name,short_name),chapter,verse1,verse2,verse_gae',
     )
-    .in('idx', [...verseIds])
-    .order('series_code(ord)', { ascending: true });
+    .in('idx', [...verseIds]);
 
   return supabaseResponseHandler(res, data =>
-    data.map(v => ({ ...v, contents: v.verse_gae.trim() })),
+    data
+      .map(v => ({ ...v, contents: v.verse_gae.trim() }))
+      .sort((a, b) => {
+        return a.series_code.ord === b.series_code.ord
+          ? a.card_num - b.card_num
+          : a.series_code.ord - b.series_code.ord;
+      }),
   );
 };
 
