@@ -5,7 +5,7 @@
 * 성경의 대표 구절 495개를 주제별로 선택해 읽고 외울 수 있는 웹 애플리케이션 입니다.
 * 구절의 장절/제목/내용을 가려가며 읽을 수 있고, 필기 테스트를 통해 외운 말씀을 복습할 수 있습니다. </aside>
 
-### [👉 사이트 가기](https://navi-bible-memory.vercel.app/exam)
+### [👉 사이트 가기](https://navi-bible-memory.vercel.app)
 
 <br/>
 <br/>
