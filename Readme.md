@@ -1,7 +1,7 @@
 ## Contents
 
 - ### [프로젝트 개요](#프로젝트-개요)
-- ### [Site Overview](#site-overview)
+- ### [사이트 훑어보기](#사이트-훑어보기)
 
 <br/>
 
@@ -110,7 +110,7 @@ yarn dev
 
 <br/>
 
-## Site Overview
+## 사이트 훑어보기
 
 
 <br/>
