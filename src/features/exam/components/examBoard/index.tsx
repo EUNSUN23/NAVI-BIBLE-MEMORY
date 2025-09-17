@@ -16,7 +16,7 @@ function ExamBoard({ data }: ExamBoardProps) {
       className='flex w-full flex-col items-center'
     >
       <SubmitButton />
-      <ul className='mb-2 mt-16 grid max-h-[calc(100vh-260px)] w-full grid-cols-2 place-content-start place-items-center overflow-auto mobile:mt-8 mobile:max-h-[calc(100vh-100px)] mobile:grid-cols-1'>
+      <ul className='mb-2 mt-16 grid min-h-[calc(100vh-260px)] w-full grid-cols-2 place-content-start place-items-center overflow-auto mobile:mt-8 mobile:max-h-[calc(100vh-100px)] mobile:grid-cols-1'>
         {data.map(verse => (
           <li key={`exam-${verse.idx}`}>
             <ExamCard data={verse} exposeOption={exposeOption} />
