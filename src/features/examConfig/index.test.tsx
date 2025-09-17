@@ -1,9 +1,5 @@
 import { describe, test } from 'vitest';
-import {
-  CARD_SORT_METHODS,
-  EXAM_EXPOSE_OPTIONS,
-  VERSE_SUMMARY_DATA,
-} from '@/msw/mockData';
+import { EXAM_EXPOSE_OPTIONS, VERSE_SUMMARY_DATA } from '@/msw/mockData';
 import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
 import { act, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
@@ -61,7 +57,6 @@ const setup = async () => {
     user,
     TIME_LIMIT: { LABEL: '제한시간', DEFAULT: 30 },
     EXPOSE: { LABEL: '표시', DEFAULT: EXAM_EXPOSE_OPTIONS[0].name },
-    SORT: { LABEL: '순서', DEFAULT: CARD_SORT_METHODS[0].name },
     VERSE_COUNT: { LABEL: '구절 수', DEFAULT: VERSE_SUMMARY_DATA.length },
     INVALID_CONFIG_MESSAGE: '시험설정 입력을 완료해주세요.',
     CONFIRM_BUTTON_LABEL: '확인',
@@ -71,7 +66,7 @@ const setup = async () => {
 
 describe('ExamConfig Rendering Test', () => {
   test('render inputs for time, expose, verse count, sort options', async () => {
-    const { TIME_LIMIT, EXPOSE, SORT, VERSE_COUNT, LOADER_ID } = await setup();
+    const { TIME_LIMIT, EXPOSE, VERSE_COUNT, LOADER_ID } = await setup();
 
     expect(screen.getByRole('dialog')).toBeInTheDocument();
 
@@ -93,10 +88,6 @@ describe('ExamConfig Rendering Test', () => {
         name: VERSE_COUNT.LABEL,
         value: { now: VERSE_COUNT.DEFAULT },
       }),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole('combobox', { name: SORT.LABEL }),
     ).toBeInTheDocument();
   });
 });
