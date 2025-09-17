@@ -6,6 +6,7 @@ type TimerProps = {
   time: number;
 };
 function Timer({ time }: TimerProps) {
+  const isFinished = useExamStatusStore(state => state.isFinished);
   const setIsFinished = useExamStatusStore(
     useShallow(state => state.setIsFinished),
   );
@@ -15,7 +16,7 @@ function Timer({ time }: TimerProps) {
   const intervalRef = useRef<NodeJS.Timeout>(null);
 
   useEffect(() => {
-    if (!isPaused && intervalRef.current == null) {
+    if (!isFinished && !isPaused && intervalRef.current == null) {
       intervalRef.current = setInterval(() => {
         setLeftSeconds(prev => prev - 1);
       }, 1000);
@@ -38,7 +39,7 @@ function Timer({ time }: TimerProps) {
         intervalRef.current = null;
       }
     };
-  }, [isPaused, leftSeconds, setIsFinished]);
+  }, [isFinished, isPaused, leftSeconds, setIsFinished]);
 
   const min = Number((leftSeconds / 60).toFixed(2));
   const minValue = Math.floor(min);
