@@ -28,7 +28,7 @@ function VerseCard({ data }: CardProps) {
       <div
         className={cardTextClass(
           code === HIDE_THEME.code,
-          'text-[28px] font-semibold mobile:text-[18px]',
+          'text-[27px] font-semibold mobile:text-[17px]',
         )}
       >
         {theme}
@@ -50,14 +50,14 @@ function VerseCard({ data }: CardProps) {
           <div
             className={cardTextClass(
               code === HIDE_CONTENTS.code,
-              'max-h-[210px] mobile:max-h-[130px]',
+              'max-h-[180px] mobile:max-h-[130px]',
             )}
           >
             {contents}
           </div>
         </div>
       </div>
-      <div className='text-2xl font-semibold mobile:text-base'>{category}</div>
+      <div className='text-xl font-semibold mobile:text-[14px]'>{category}</div>
     </div>
   );
 }

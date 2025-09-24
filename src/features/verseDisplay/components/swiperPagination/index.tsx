@@ -3,8 +3,9 @@ import ReactPaginate from 'react-paginate';
 import { FiChevronsLeft } from '@react-icons/all-files/fi/FiChevronsLeft';
 import { FiChevronsRight } from '@react-icons/all-files/fi/FiChevronsRight';
 import { createShortVerseAddress } from '@utils/common';
-import { IoEllipsisHorizontal } from '@react-icons/all-files/io5/IoEllipsisHorizontal';
 import { VerseDetailDataList } from '@features/verseDisplay/types/verseDetail.type';
+import { useMediaQuery } from 'react-responsive';
+import { MAX_MOBILE } from '@/constnats/screenSize';
 
 type SwiperBulletProps = {
   verses: VerseDetailDataList;
@@ -12,19 +13,20 @@ type SwiperBulletProps = {
 };
 
 function SwiperPagination({ verses, activeIndex }: SwiperBulletProps) {
+  const isMobile = useMediaQuery({ query: `(max-width: ${MAX_MOBILE})` });
   const swiper = useSwiper();
 
-  const handleOnClickPagination = (slideIndex: number) => {
-    swiper.slideTo(slideIndex);
+  const handleOnChangePagination = (pageIndex: number) => {
+    swiper.slideTo(pageIndex);
   };
 
   return (
     <ReactPaginate
       pageCount={verses.length}
-      pageRangeDisplayed={4}
+      pageRangeDisplayed={isMobile ? 3 : 4}
       marginPagesDisplayed={0}
       forcePage={activeIndex}
-      onPageChange={({ selected }) => handleOnClickPagination(selected)}
+      onPageChange={({ selected }) => handleOnChangePagination(selected)}
       onClick={({ isPrevious, isNext }) => {
         if (isPrevious) {
           swiper.slideTo(0);
@@ -37,32 +39,32 @@ function SwiperPagination({ verses, activeIndex }: SwiperBulletProps) {
       }}
       previousLabel={
         <div className='flex items-center justify-center space-x-1'>
-          <FiChevronsLeft aria-hidden={true} className='size-10' />
-          <span className='text-2xl font-semibold'>처음으로</span>
+          <FiChevronsLeft
+            aria-hidden={true}
+            className='size-10 mobile:size-8'
+          />
+          <span className='sr-only'>처음으로</span>
         </div>
       }
       nextLabel={
         <div className='flex items-center justify-center space-x-1'>
-          <span className='text-2xl font-semibold'>끝으로</span>
-          <FiChevronsRight aria-hidden={true} className='size-10' />
-        </div>
-      }
-      breakLabel={
-        <div className='mt-[50px] flex items-center'>
-          <IoEllipsisHorizontal aria-hidden={true} className='size-8' />
-          <span className='sr-only'>더 보기</span>
+          <span className='sr-only'>끝으로</span>
+          <FiChevronsRight
+            aria-hidden={true}
+            className='size-10 mobile:size-8'
+          />
         </div>
       }
       pageLabelBuilder={page => createShortVerseAddress(verses[page - 1])}
       ariaLabelBuilder={page => createShortVerseAddress(verses[page - 1])}
-      containerClassName='w-[90%] flex items-center justify-center space-x-2 px-8 mt-6 mx-auto'
-      pageClassName='mt-[55px] w-fit shrink-0'
-      pageLinkClassName='swiper-custom-pagination-bullet'
-      activeLinkClassName='swiper-custom-pagination-bullet-active'
-      disabledLinkClassName='swiper-custom-nav-disabled'
-      previousClassName='mr-1 absolute bottom-[70px] left-0 z-100'
-      breakClassName='ml-2 text-3xl'
-      nextClassName='ml-1 absolute bottom-[70px] right-0'
+      containerClassName='mt-5 mobile:mt-0 relative flex-wrap h-[100px] w-full mobile:h-[75px] mobile:max-w-[75%] flex items-center justify-center space-x-2 mx-auto mobile:space-x-1'
+      pageClassName='w-fit shrink-0 bg-[#37323E] rounded-xl text-[#37323E] mobile:bg-white'
+      pageLinkClassName='inline-block text-center text-[22px] bg-[#DEB841] mobile:bg-white font-semibold px-[10px] py-[8px] rounded-xl scale-100 mobile:text-[20px] mobile:px-[6px] mobile:py-0 mobile:font-bold'
+      activeLinkClassName='text-white bg-transparent mobile:bg-transparent mobile:text-[#DEB841]'
+      disabledLinkClassName='text-[#9CA3AF]'
+      previousClassName='mr-2 z-100 mobile:-left-[14%] mobile:absolute'
+      breakClassName='hidden'
+      nextClassName='ml-2 right-0 mobile:-right-[14%] mobile:absolute'
     />
   );
 }

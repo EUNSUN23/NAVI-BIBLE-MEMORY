@@ -26,7 +26,7 @@ function VerseCardSwiper() {
   };
 
   return (
-    <div className='relative my-8 w-[640px] mobile:w-[360px]'>
+    <div className='relative my-8 w-full mobile:w-[360px]'>
       <Swiper
         modules={[Navigation, Pagination]}
         navigation={navigation}
