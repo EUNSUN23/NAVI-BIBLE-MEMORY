@@ -9,7 +9,7 @@ import { SeriesData } from '@features/verseSelect/types/seriesData.type';
 import { createSeriesTabPanelId } from '@features/verseSelect/utils/createSeriesTabPanelId';
 
 const tabVariants = cva(
-  'w-full rounded-2xl px-7 py-2.5 text-center mobile:px-2 flex items-center justify-between space-x-1',
+  'w-full rounded-2xl px-7 py-2.5 text-center mobile:px-4 flex items-center justify-between space-x-1',
   {
     variants: {
       size: {
@@ -59,7 +59,7 @@ function SeriesTab({ data }: SeriesTabProps) {
         )}
         onClick={handleClickSeriesTab}
       >
-        <span className={`min-w-[200px] text-left font-semibold`}>
+        <span className='min-w-[200px] text-left font-semibold'>
           {data.series_name}
         </span>
         <span
