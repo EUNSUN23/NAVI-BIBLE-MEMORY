@@ -22,7 +22,7 @@ function VerseCard({ data }: CardProps) {
   const address = createVerseAddress(data);
   return (
     <div
-      className='my-4 flex h-fit flex-col items-start justify-around space-y-8 rounded-xl border border-[#bebebe] px-9 py-6 text-left shadow-lg mobile:space-y-4 mobile:px-5 mobile:py-4'
+      className='flex h-fit flex-col items-start justify-around space-y-8 rounded-xl border border-[#bebebe] px-9 py-6 text-left shadow-lg mobile:space-y-4 mobile:px-5 mobile:py-4'
       data-testid={createVerseCardTestId(data)}
     >
       <div
@@ -50,7 +50,7 @@ function VerseCard({ data }: CardProps) {
           <div
             className={cardTextClass(
               code === HIDE_CONTENTS.code,
-              'max-h-[180px] mobile:max-h-[130px]',
+              'max-h-[170px] mobile:max-h-[130px]',
             )}
           >
             {contents}
