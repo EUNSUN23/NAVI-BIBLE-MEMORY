@@ -5,7 +5,7 @@ import { FiChevronsRight } from '@react-icons/all-files/fi/FiChevronsRight';
 import { createShortVerseAddress } from '@utils/common';
 import { VerseDetailDataList } from '@features/verseDisplay/types/verseDetail.type';
 import { useMediaQuery } from 'react-responsive';
-import { MAX_MOBILE } from '@/constnats/screenSize';
+import { MAX_MOBILE } from '@/constants/screenSize';
 
 type SwiperBulletProps = {
   verses: VerseDetailDataList;

@@ -41,7 +41,10 @@ function DrillingPage() {
       <Nav>
         <Nav.Container>
           <Nav.Link to='/'>
-            <FaHome aria-hidden={true} className='size-[32px]' />
+            <FaHome
+              aria-hidden={true}
+              className='size-[32px] mobile:size-[27px]'
+            />
             <span className='sr-only'>홈으로</span>
           </Nav.Link>
           <Nav.Link to='/exam' onClick={handleExamLinkClick}>
