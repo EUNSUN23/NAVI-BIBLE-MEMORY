@@ -7,7 +7,7 @@ function Nav({ ...props }: HTMLAttributes<HTMLElement>) {
     <nav
       {...props}
       className={cn(
-        'sticky top-0 h-[100px] w-full bg-white/80 backdrop-blur-md',
+        'sticky top-0 z-50 h-[100px] w-full bg-white/90 backdrop-blur-sm',
         props.className,
       )}
     >
