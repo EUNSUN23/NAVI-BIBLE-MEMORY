@@ -27,7 +27,8 @@
       "@features/*": ["src/features/*"],
       "@apis/*": ["src/apis/*"],
       "@store/*": ["src/store/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@msw/*": ["src/msw/*"]
     },
     "types": ["vitest/globals"]
   },
