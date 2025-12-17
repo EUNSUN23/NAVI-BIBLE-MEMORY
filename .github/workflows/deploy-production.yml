@@ -29,16 +29,15 @@ jobs:
       - name: Run tests
         run: yarn test
 
-      - name: Build project
-        if: ${{ success() }}
-        run: yarn build
-
       - name: Install Vercel CLI
         if: ${{ success() }}
         run: yarn global add vercel@latest
+
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
       - name: Build Project Artifacts
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
