@@ -7,10 +7,12 @@ beforeAll(() => {
 });
 
 afterAll(() => {
+  vi.resetAllMocks();
   server.close();
 });
 
 afterEach(() => {
+  vi.clearAllMocks();
   server.resetHandlers();
 });
 

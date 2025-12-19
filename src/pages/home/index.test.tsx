@@ -40,11 +40,6 @@ describe('HomePage Test', () => {
     mockAlert();
   });
 
-  afterEach(() => {
-    vi.resetModules();
-    vi.restoreAllMocks();
-  });
-
   test('renders "홈으로","암송하기","시험보기" links and series tabs', async () => {
     const { HOME_LINK, DRILLING_LINK, EXAM_LINK } = setup();
     await waitForElementToBeRemovedIfExist(screen.queryByTestId('loader'));
