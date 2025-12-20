@@ -1,7 +1,7 @@
 import { userEvent } from '@testing-library/user-event';
 import BibleVersionSelect from '@features/bibleVersionSelect/index';
-import { render } from '@/test/utils/render';
-import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
+import { render } from '@utils/test/render';
+import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { screen, waitFor, within } from '@testing-library/react';
 import { expect } from 'vitest';
 import { BIBLE_VERSIONS } from '@/msw/mockData';

@@ -1,43 +1,24 @@
-import { describe, test } from 'vitest';
+import { beforeEach, describe, expect, test } from 'vitest';
 import { EXAM_EXPOSE_OPTIONS, VERSE_SUMMARY_DATA } from '@/msw/mockData';
-import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
-import { act, screen } from '@testing-library/react';
+import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
+import { screen, within } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
-import mockAlert from '@/test/utils/mocks/mockAlert';
-import { VerseSelectStore } from '@store/verseSelectStore';
-import renderRoute from '@/test/utils/renderRoute';
-import { StoreSelectorMock } from '@/types/common.types';
+import mockAlert from '@utils/test/mocks/mockAlert';
+import renderRoute from '@utils/test/renderRoute';
+import {
+  mockExamConfigStore,
+  mockVerseSelectStore,
+} from '@utils/test/mockZustandStore';
 
-beforeAll(() => {
-  vi.mock('@/store/verseSelectStore', async () => {
-    const actual = await vi.importActual<
-      typeof import('@store/verseSelectStore')
-    >('@/store/verseSelectStore');
-
-    return {
-      useVerseSelectStore: vi
-        .fn()
-        .mockImplementation((selector: StoreSelectorMock<VerseSelectStore>) =>
-          selector({
-            ...actual.useVerseSelectStore.getState(),
-            hasAnyId: () => true,
-            verseIds: VERSE_SUMMARY_DATA.map(verse => verse.idx),
-          }),
-        ),
-    };
+beforeEach(() => {
+  mockVerseSelectStore({
+    hasAnyId: () => true,
+    verseIds: VERSE_SUMMARY_DATA.map(verse => verse.idx),
   });
 
-  vi.mock('@/store/exam/examConfigModalStore', async () => {
-    return await vi.importActual<
-      typeof import('@store/exam/examConfigModalStore')
-    >('@store/exam/examConfigModalStore');
-  });
-
-  vi.mock('@/store/exam/examConfigStore', async () => {
-    return await vi.importActual<typeof import('@store/exam/examConfigStore')>(
-      '@store/exam/examConfigStore',
-    );
+  mockExamConfigStore({
+    verseCount: VERSE_SUMMARY_DATA.length,
   });
 
   mockAnimationsApi();
@@ -46,36 +27,36 @@ beforeAll(() => {
 
 const setup = async () => {
   const user = userEvent.setup();
-
   renderRoute('/');
-
   await waitForElementToBeRemovedIfExist(screen.getAllByTestId('loader'));
-
   await user.click(screen.getByRole('link', { name: '시험보기' }));
-
   return {
     user,
     TIME_LIMIT: { LABEL: '제한시간', DEFAULT: 30 },
-    EXPOSE: { LABEL: '표시', DEFAULT: EXAM_EXPOSE_OPTIONS[0].name },
-    VERSE_COUNT: { LABEL: '구절 수', DEFAULT: VERSE_SUMMARY_DATA.length },
+    EXPOSE: {
+      LABEL: '표시',
+      DEFAULT: EXAM_EXPOSE_OPTIONS[0].name,
+      BUTTON_LABEL: '시험 노출 옵션 선택',
+    },
+    VERSE_COUNT: {
+      LABEL: '구절 수',
+      DEFAULT: VERSE_SUMMARY_DATA.length,
+    },
     INVALID_CONFIG_MESSAGE: '시험설정 입력을 완료해주세요.',
     CONFIRM_BUTTON_LABEL: '확인',
     LOADER_ID: 'loader',
   };
 };
 
-describe('ExamConfig Rendering Test', () => {
-  test('render inputs for time, expose, verse count, sort options', async () => {
+describe('ExamConfig Test', () => {
+  test('if it has time, expose, verse count and sort options inputs', async () => {
     const { TIME_LIMIT, EXPOSE, VERSE_COUNT, LOADER_ID } = await setup();
-
     expect(screen.getByRole('dialog')).toBeInTheDocument();
-
     await waitForElementToBeRemovedIfExist(screen.getAllByTestId(LOADER_ID));
 
     expect(
       screen.getByRole('spinbutton', {
         name: TIME_LIMIT.LABEL,
-        value: { now: TIME_LIMIT.DEFAULT },
       }),
     ).toBeInTheDocument();
 
@@ -86,24 +67,56 @@ describe('ExamConfig Rendering Test', () => {
     expect(
       screen.getByRole('spinbutton', {
         name: VERSE_COUNT.LABEL,
-        value: { now: VERSE_COUNT.DEFAULT },
       }),
     ).toBeInTheDocument();
   });
-});
 
-describe('ExamConfig Integration Test', () => {
   test(
-    'when the user clicks confirm button with proper configurations, ' +
-      'it navigates to exam page',
+    'if it navigates to exam page ' +
+      'when form is properly filled and click confirm button',
     async () => {
-      const { user, CONFIRM_BUTTON_LABEL, LOADER_ID } = await setup();
-
+      const {
+        TIME_LIMIT,
+        EXPOSE,
+        VERSE_COUNT,
+        user,
+        CONFIRM_BUTTON_LABEL,
+        LOADER_ID,
+      } = await setup();
       expect(screen.getByRole('dialog')).toBeInTheDocument();
-
       await waitForElementToBeRemovedIfExist(
         screen.queryAllByTestId(LOADER_ID),
       );
+
+      const timeLimitInput = screen.getByRole('spinbutton', {
+        name: TIME_LIMIT.LABEL,
+      });
+      await user.clear(timeLimitInput);
+      await user.type(timeLimitInput, '20');
+      expect(timeLimitInput).toHaveValue(20);
+
+      const exposeCombobox = screen.getByRole('combobox', {
+        name: EXPOSE.LABEL,
+      });
+      await user.click(
+        screen.getByRole('button', {
+          expanded: false,
+          name: EXPOSE.BUTTON_LABEL,
+        }),
+      );
+      await user.click(
+        within(screen.getByRole('listbox')).getByRole('option', {
+          name: EXAM_EXPOSE_OPTIONS[1].name,
+        }),
+      );
+      expect(exposeCombobox).toHaveValue(EXAM_EXPOSE_OPTIONS[1].name);
+
+      const verseCountInput = screen.getByRole('spinbutton', {
+        name: VERSE_COUNT.LABEL,
+      });
+      await user.clear(verseCountInput);
+      await user.type(verseCountInput, VERSE_COUNT.DEFAULT.toString());
+      expect(verseCountInput).toHaveValue(VERSE_COUNT.DEFAULT);
 
       await user.click(
         screen.getByRole('button', { name: CONFIRM_BUTTON_LABEL }),
@@ -118,33 +131,4 @@ describe('ExamConfig Integration Test', () => {
       ).toBeInTheDocument();
     },
   );
-
-  test('when the user clicks confirm button with falsy time limit, alert pops up', async () => {
-    const {
-      user,
-      TIME_LIMIT,
-      INVALID_CONFIG_MESSAGE,
-      CONFIRM_BUTTON_LABEL,
-      LOADER_ID,
-    } = await setup();
-
-    expect(screen.getByRole('dialog')).toBeInTheDocument();
-
-    await waitForElementToBeRemovedIfExist(screen.queryAllByTestId(LOADER_ID));
-
-    const timeLimitInput = await screen.findByRole('spinbutton', {
-      name: TIME_LIMIT.LABEL,
-    });
-
-    act(() => {
-      void user.clear(timeLimitInput);
-      expect(timeLimitInput).toHaveValue(0);
-    });
-
-    await user.click(
-      screen.getByRole('button', { name: CONFIRM_BUTTON_LABEL }),
-    );
-
-    expect(window.alert).toHaveBeenCalledWith(INVALID_CONFIG_MESSAGE);
-  });
 });

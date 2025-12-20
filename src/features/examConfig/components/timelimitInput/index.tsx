@@ -14,9 +14,10 @@ function TimeLimitInput() {
         <input
           type='number'
           inputMode='numeric'
-          id='timelimit'
           value={time}
           aria-valuenow={time}
+          min={1}
+          id='timelimit'
           className='block w-full rounded-md bg-white px-3 py-1.5 text-xl font-medium text-secondary outline outline-1 -outline-offset-2 outline-gray-300 placeholder:text-gray-400 focus:border-[#6b7280] focus:outline-1 focus:-outline-offset-2 focus:outline-gray-300 focus:ring-0 mobile:text-sm'
           onChange={e => setTime(Number(e.target.value))}
         />

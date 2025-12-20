@@ -1,4 +1,4 @@
-import renderRoute from '@/test/utils/renderRoute';
+import renderRoute from '@utils/test/renderRoute';
 import { screen, within } from '@testing-library/react';
 import {
   BIBLE_VERSIONS,
@@ -7,13 +7,12 @@ import {
   VERSE_DETAIL_DATA_KOR,
 } from '@/msw/mockData';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
-import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
+import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { userEvent } from '@testing-library/user-event';
 import { describe } from 'vitest';
 import { createShortVerseAddress, createVerseAddress } from '@utils/common';
-import { StoreSelectorMock } from '@/types/common.types';
-import { VerseSelectStore } from '@store/verseSelectStore';
 import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
+import { mockVerseSelectStore } from '@utils/test/mockZustandStore';
 
 const setup = async () => {
   const user = userEvent.setup();
@@ -62,22 +61,12 @@ const setup = async () => {
   };
 };
 
-beforeAll(() => {
-  vi.mock('@store/verseSelectStore', async () => {
-    const verseSelectStore = await vi.importActual('@store/verseSelectStore');
-
-    return {
-      ...verseSelectStore,
-      useVerseSelectStore: vi
-        .fn()
-        .mockImplementation((selector: StoreSelectorMock<VerseSelectStore>) =>
-          selector({
-            verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.idx),
-            hasAnyId: () => true,
-          }),
-        ),
-    };
+beforeEach(() => {
+  mockVerseSelectStore({
+    verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.idx),
+    hasAnyId: () => true,
   });
+
   vi.mock('@store/exam/examConfigModalStore', async () => {
     return await vi.importActual('@store/exam/examConfigModalStore');
   });

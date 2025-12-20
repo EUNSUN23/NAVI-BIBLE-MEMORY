@@ -5,10 +5,10 @@ import {
   VERSE_SUMMARY_DATA,
 } from '@/msw/mockData';
 import { userEvent } from '@testing-library/user-event';
-import renderRoute from '@/test/utils/renderRoute';
-import mockAlert from '@/test/utils/mocks/mockAlert';
-import mockScrollIntoView from '@/test/utils/mocks/mockScrollIntoView';
-import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
+import renderRoute from '@utils/test/renderRoute';
+import mockAlert from '@utils/test/mocks/mockAlert';
+import mockScrollIntoView from '@utils/test/mocks/mockScrollIntoView';
+import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { createSeriesTabPanelId } from '@features/verseSelect/utils/createSeriesTabPanelId';
 import { createVerseOptionId } from '@features/verseSelect/utils/createVerseOptionId';
 
@@ -31,9 +31,6 @@ describe('HomePage Test', () => {
   });
 
   beforeEach(() => {
-    vi.mock('@store/verseSelectStore', async () => {
-      return await vi.importActual('@store/verseSelectStore');
-    });
     vi.mock('@store/exam/examConfigModalStore', async () => {
       return await vi.importActual('@store/exam/examConfigModalStore');
     });
