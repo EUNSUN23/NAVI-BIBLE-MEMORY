@@ -7,12 +7,6 @@ import { CARD_HIDE_OPTIONS } from '@/msw/mockData';
 import { render } from '@utils/test/render';
 
 describe('CardHideOptionSelect Test', () => {
-  beforeAll(() => {
-    vi.mock('@/store/drilling/cardHideOptionStore', async () => {
-      return await vi.importActual('@/store/drilling/cardHideOptionStore');
-    });
-  });
-
   test('renders card hide option combobox after data loading finishes', async () => {
     const user = userEvent.setup();
     render(<CardHideOptionSelect />);

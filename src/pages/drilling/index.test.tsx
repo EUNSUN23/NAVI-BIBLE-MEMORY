@@ -66,10 +66,6 @@ beforeEach(() => {
     verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.idx),
     hasAnyId: () => true,
   });
-
-  vi.mock('@store/exam/examConfigModalStore', async () => {
-    return await vi.importActual('@store/exam/examConfigModalStore');
-  });
   mockAnimationsApi();
 });
 

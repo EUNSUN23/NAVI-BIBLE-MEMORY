@@ -17,9 +17,6 @@ const setup = () => {
 };
 
 beforeAll(() => {
-  vi.mock('@/store/exam/examStatusStore', async () => {
-    return await vi.importActual('@/store/exam/examStatusStore');
-  });
   vi.spyOn(window, 'confirm');
 });
 

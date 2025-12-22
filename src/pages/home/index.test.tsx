@@ -31,9 +31,6 @@ describe('HomePage Test', () => {
   });
 
   beforeEach(() => {
-    vi.mock('@store/exam/examConfigModalStore', async () => {
-      return await vi.importActual('@store/exam/examConfigModalStore');
-    });
     mockAlert();
   });
 

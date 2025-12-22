@@ -7,12 +7,6 @@ import { expect } from 'vitest';
 import { BIBLE_VERSIONS } from '@/msw/mockData';
 
 describe('BibleVersionSelect test', () => {
-  beforeAll(() => {
-    vi.mock('@/store/bibleVersionStore', async () => {
-      return await vi.importActual('@/store/bibleVersionStore');
-    });
-  });
-
   test('renders bible version combobox after data loading finishes', async () => {
     const user = userEvent.setup();
     render(<BibleVersionSelect />);

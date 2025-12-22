@@ -8,7 +8,7 @@ type ExamStatusAction = {
   setIsFinished: (isFinished: boolean) => void;
 };
 
-type ExamStatusStore = ExamStatusState & ExamStatusAction;
+export type ExamStatusStore = ExamStatusState & ExamStatusAction;
 
 const initialState: ExamStatusState = {
   isFinished: false,
