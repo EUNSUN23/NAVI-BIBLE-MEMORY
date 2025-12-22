@@ -8,6 +8,7 @@ const Provider = ({ children }: { children: React.ReactNode }) => {
     defaultOptions: {
       queries: {
         staleTime: 1000 * 10,
+        retry: false,
       },
     },
   });
