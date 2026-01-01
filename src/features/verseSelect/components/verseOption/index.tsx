@@ -25,7 +25,7 @@ function VerseOption({ data }: VerseOptionProps) {
   const checkboxId = createVerseOptionId(data);
 
   return (
-    <li className='flex items-center space-x-4 pb-1.5 pt-3 mobile:space-x-1 mobile:py-1.5'>
+    <li className='flex items-center space-x-4 pb-1.5 pt-3 mobile:py-1.5'>
       <div className='flex basis-[40px] justify-center'>
         <input
           type='checkbox'
@@ -39,12 +39,10 @@ function VerseOption({ data }: VerseOptionProps) {
       </div>
       <label
         htmlFor={checkboxId}
-        className='flex w-[500px] items-center justify-between space-x-4 overflow-auto text-xl font-medium mobile:w-[330px] mobile:text-base'
+        className='flex max-w-[500px] grow items-center truncate text-xl font-medium mobile:text-base'
       >
-        <div className='w-[200px] font-semibold mobile:w-[140px]'>{theme}</div>
-        <div className='mr-2 w-[240px] pr-2 text-right mobile:w-[200px]'>
-          {createVerseAddress(data)}
-        </div>
+        <span className='grow font-semibold'>{theme}</span>
+        <span className='mr-2 max-w-[140px]'>{createVerseAddress(data)}</span>
       </label>
     </li>
   );

@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-    width: 4px;  /* 스크롤바의 너비 */
+    width: 8px;  /* 스크롤바의 너비 */
     height: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
     height: 30%; /* 스크롤바의 길이 */
     background: #242D35; /* 스크롤바의 색상 */
+
     border-radius: 10px;
 }
 
@@ -47,4 +48,26 @@
 
 .swiper-pagination-bullets {
     padding: 12px 0;
+}
+
+.swiper-custom-pagination-bullet {
+    display: inline-block !important;
+    text-align: center;
+    font-size: 22px;
+    background-color:#DEB841 !important;
+    font-weight: 600;
+    opacity: 1 !important;
+    padding: 8px 10px !important;
+    border-radius: 10px !important;
+    transform:scale(1) !important;
+    color:#37323E !important;
+}
+
+.swiper-custom-pagination-bullet-active {
+    color: white !important;
+    background-color:#37323E !important;
+}
+
+.swiper-custom-nav-disabled {
+    color:#9CA3AF;
 }

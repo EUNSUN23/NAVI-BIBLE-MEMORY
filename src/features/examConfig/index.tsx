@@ -8,6 +8,7 @@ import ErrorMessage from '@/lib/error/ErrorMessage';
 import { Field } from '@headlessui/react';
 import { CommonCombobox } from '@/shared/ui/commonCombobox';
 import Loader from '@/shared/ui/Loader';
+import SortMethodSelect from 'src/features/examConfig/components/sortMethodSelector';
 import { useNavigate } from 'react-router-dom';
 import { useExamConfigStore } from '@store/exam/examConfigStore';
 import { useShallow } from 'zustand/react/shallow';
@@ -55,6 +56,21 @@ function ExamConfigModal() {
             </ComposedBoundary>
           </Field>
           <VerseCountInput />
+          <Field className='flex w-full flex-col items-start text-left'>
+            <CommonCombobox.Label>순서</CommonCombobox.Label>
+            <ComposedBoundary
+              fallbackRender={({ error, resetErrorBoundary }) => (
+                <ErrorMessage
+                  error={error}
+                  resetErrorBoundary={resetErrorBoundary}
+                  className='flex-col items-start'
+                />
+              )}
+              suspenseFallback={<Loader />}
+            >
+              <SortMethodSelect />
+            </ComposedBoundary>
+          </Field>
         </div>
       )}
     </Modal>

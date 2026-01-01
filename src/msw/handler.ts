@@ -2,6 +2,7 @@ import { http, HttpResponse } from 'msw';
 import {
   BIBLE_VERSIONS,
   CARD_HIDE_OPTIONS,
+  CARD_SORT_METHODS,
   EXAM_EXPOSE_OPTIONS,
   EXAM_VERSES_KOR_ALL_ASC,
   SERIES_DATA,
@@ -90,6 +91,16 @@ export const getExamExposeOptionsHandler = http.get(
   () => {
     return HttpResponse.json({
       data: EXAM_EXPOSE_OPTIONS,
+      error: null,
+    });
+  },
+);
+
+export const getCardSortMethodsHandler = http.get(
+  `${baseURL}/card_sort_method?select=*`,
+  () => {
+    return HttpResponse.json({
+      data: CARD_SORT_METHODS,
       error: null,
     });
   },

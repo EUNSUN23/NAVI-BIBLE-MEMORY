@@ -20,11 +20,7 @@ const setup = () => {
     versesAllByAsc: EXAM_VERSES_KOR_ALL_ASC.map(verse => ({
       ...verse,
       contents: verse.verse_kor,
-    })).sort((a, b) =>
-      a.series_code.ord === b.series_code.ord
-        ? a.card_num - b.card_num
-        : a.series_code.ord - b.series_code.ord,
-    ),
+    })),
     LOADER_ID: 'loader',
     HOME_LINK_LABEL: '홈으로',
     DRILLING_LINK_LABEL: '암송하기',

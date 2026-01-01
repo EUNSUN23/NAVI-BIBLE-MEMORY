@@ -1406,6 +1406,11 @@ export const EXAM_EXPOSE_OPTIONS = [
   { code: 'EXPOSE_003', name: '장절,제목' },
 ] as const;
 
+export const CARD_SORT_METHODS = [
+  { code: 'SORT_001', name: '기본 순' },
+  { code: 'SORT_002', name: '랜덤' },
+] as const;
+
 export const EXAM_VERSES_KOR_ALL_ASC = [
   {
     idx: 36,

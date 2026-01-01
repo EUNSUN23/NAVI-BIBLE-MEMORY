@@ -1,4 +1,5 @@
 import { createVerseAddress } from '@utils/common';
+import { Textfit } from 'react-textfit';
 import { useCardHideOptionStore } from '@store/drilling/cardHideOptionStore';
 import { ClassValue } from 'clsx';
 import cn from '@/shared/styles/cn';
@@ -22,42 +23,40 @@ function VerseCard({ data }: CardProps) {
   const address = createVerseAddress(data);
   return (
     <div
-      className='flex h-fit flex-col items-start justify-around space-y-8 rounded-xl border border-[#bebebe] px-9 py-6 text-left shadow-lg mobile:space-y-4 mobile:px-5 mobile:py-4'
+      className='my-4 flex h-[400px] flex-col items-start justify-center rounded-xl border border-[#bebebe] px-9 py-6 text-left shadow-lg mobile:h-[200px]'
       data-testid={createVerseCardTestId(data)}
     >
       <div
         className={cardTextClass(
           code === HIDE_THEME.code,
-          'text-[27px] font-semibold mobile:text-[17px]',
+          'mb-3 mt-2 text-[28px] font-semibold mobile:text-[20px]',
         )}
       >
         {theme}
       </div>
-      <div>
-        <div
-          className={cardTextClass(
-            code === HIDE_ADDR.code,
-            'mb-1 text-[26px] font-medium mobile:text-base',
-          )}
-        >
-          {address}
-        </div>
-        <div
-          className={
-            'flex size-fit items-center overflow-auto text-wrap text-2xl leading-relaxed mobile:text-base'
-          }
-        >
-          <div
-            className={cardTextClass(
-              code === HIDE_CONTENTS.code,
-              'max-h-[170px] mobile:max-h-[130px]',
-            )}
-          >
-            {contents}
-          </div>
-        </div>
+      <div
+        className={cardTextClass(
+          code === HIDE_ADDR.code,
+          'mt-2 text-[26px] font-medium mobile:text-[18px]',
+        )}
+      >
+        {address}
       </div>
-      <div className='text-xl font-semibold mobile:text-[14px]'>{category}</div>
+      <Textfit
+        mode='multi'
+        min={12}
+        max={24}
+        className={
+          'h-[220px] w-[500px] text-wrap rounded-xl py-4 leading-8 mobile:h-[150px] mobile:leading-4'
+        }
+      >
+        <span className={cardTextClass(code === HIDE_CONTENTS.code, '')}>
+          {contents}
+        </span>
+      </Textfit>
+      <div className='mt-5 text-xl font-semibold mobile:text-base'>
+        {category}
+      </div>
     </div>
   );
 }

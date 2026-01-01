@@ -16,11 +16,7 @@ const setup = () => {
   const verseList = VERSE_DETAIL_DATA_KOR.map(data => ({
     ...data,
     contents: data.verse_kor.trim(),
-  })).sort((a, b) =>
-    a.series_code.ord === b.series_code.ord
-      ? a.card_num - b.card_num
-      : a.series_code.ord - b.series_code.ord,
-  );
+  }));
 
   render(<VerseDisplay />);
 
@@ -30,6 +26,9 @@ const setup = () => {
     PAGE_RANGE: 4,
     TO_FIRST: '처음으로',
     TO_LAST: '끝으로',
+    BREAK: '더 보기',
+    ACTIVE_CLASS: 'swiper-custom-pagination-bullet-active',
+    DISABLED_CLASS: 'swiper-custom-nav-disabled',
     LOADER_TESTID: 'verseDisplay-loader',
   };
 };
@@ -59,7 +58,7 @@ describe('VerseDisplay Test', () => {
 
   describe('rendering test', () => {
     test('render nav-to-first, nav-to-last and break buttons', async () => {
-      const { TO_FIRST, TO_LAST, LOADER_TESTID } = setup();
+      const { TO_FIRST, TO_LAST, BREAK, LOADER_TESTID } = setup();
 
       await waitForElementToBeRemovedIfExist(
         screen.queryByTestId(LOADER_TESTID),
@@ -71,6 +70,7 @@ describe('VerseDisplay Test', () => {
       expect(
         screen.getByText(TO_LAST).closest('[role="button"]'),
       ).not.toBeNull();
+      expect(screen.getByText(BREAK).closest('[role="button"]')).not.toBeNull();
     });
 
     test('render pagination buttons as much as page range, which present shortened verse addresses ', async () => {
@@ -138,55 +138,78 @@ describe('VerseDisplay Test', () => {
     );
   });
 
-  test('when user clicks nav-to-first button, the first verse slide comes in ', async () => {
-    const { user, LOADER_TESTID, verseList, TO_FIRST } = setup();
-    const testVerseData = verseList[1];
-    const firstVerseData = verseList[0];
+  test(
+    'when user clicks nav-to-first button, the first verse slide comes in ' +
+      'and the first page button becomes active',
+    async () => {
+      const { user, LOADER_TESTID, verseList, TO_FIRST, ACTIVE_CLASS } =
+        setup();
+      const testVerseData = verseList[1];
+      const firstVerseData = verseList[0];
 
-    await waitForElementToBeRemovedIfExist(screen.queryByTestId(LOADER_TESTID));
+      await waitForElementToBeRemovedIfExist(
+        screen.queryByTestId(LOADER_TESTID),
+      );
 
-    const testPageButton = screen.getByRole('button', {
-      name: createShortVerseAddress(testVerseData),
-    });
-
-    await user.click(testPageButton);
-
-    expect(
-      screen.getByTestId(createVerseCardTestId(testVerseData)),
-    ).not.toBeNull();
-
-    const navToFirstButton = screen
-      .getByText(TO_FIRST)
-      .closest('[role="button"]')!;
-
-    await user.click(navToFirstButton);
-
-    expect(
-      screen.getByTestId(createVerseCardTestId(firstVerseData)),
-    ).not.toBeNull();
-  });
-
-  test('when user clicks nav-to-last button, the last verse slide comes in', async () => {
-    const { user, LOADER_TESTID, verseList, TO_LAST } = setup();
-    const testVerseData = verseList[2];
-    const lastVerseData = verseList[verseList.length - 1];
-
-    await waitForElementToBeRemovedIfExist(screen.queryByTestId(LOADER_TESTID));
-
-    await user.click(
-      screen.getByRole('button', {
+      const testPageButton = screen.getByRole('button', {
         name: createShortVerseAddress(testVerseData),
-      }),
-    );
+      });
 
-    expect(
-      screen.getByTestId(createVerseCardTestId(testVerseData)),
-    ).not.toBeNull();
+      await user.click(testPageButton);
 
-    await user.click(screen.getByText(TO_LAST).closest('[role="button"]')!);
+      expect(
+        screen.getByTestId(createVerseCardTestId(testVerseData)),
+      ).not.toBeNull();
 
-    expect(
-      screen.getByTestId(createVerseCardTestId(lastVerseData)),
-    ).not.toBeNull();
-  });
+      const navToFirstButton = screen
+        .getByText(TO_FIRST)
+        .closest('[role="button"]')!;
+
+      await user.click(navToFirstButton);
+
+      expect(
+        screen.getByTestId(createVerseCardTestId(firstVerseData)),
+      ).not.toBeNull();
+      expect(
+        screen.getByRole('button', {
+          name: createShortVerseAddress(firstVerseData),
+        }).classList,
+      ).toContain(ACTIVE_CLASS);
+    },
+  );
+
+  test(
+    'when user clicks nav-to-last button, the last verse slide comes in' +
+      ' and the last page button becomes active',
+    async () => {
+      const { user, LOADER_TESTID, verseList, TO_LAST, ACTIVE_CLASS } = setup();
+      const testVerseData = verseList[2];
+      const lastVerseData = verseList[verseList.length - 1];
+
+      await waitForElementToBeRemovedIfExist(
+        screen.queryByTestId(LOADER_TESTID),
+      );
+
+      await user.click(
+        screen.getByRole('button', {
+          name: createShortVerseAddress(testVerseData),
+        }),
+      );
+
+      expect(
+        screen.getByTestId(createVerseCardTestId(testVerseData)),
+      ).not.toBeNull();
+
+      await user.click(screen.getByText(TO_LAST).closest('[role="button"]')!);
+
+      expect(
+        screen.getByTestId(createVerseCardTestId(lastVerseData)),
+      ).not.toBeNull();
+      expect(
+        screen.getByRole('button', {
+          name: createShortVerseAddress(lastVerseData),
+        }).classList,
+      ).toContain(ACTIVE_CLASS);
+    },
+  );
 });

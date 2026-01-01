@@ -1,18 +1,5 @@
 import '@testing-library/jest-dom/vitest';
-import { afterAll, afterEach, beforeAll, vi } from 'vitest';
-import { server } from '@/msw/node';
-
-beforeAll(() => {
-  server.listen({ onUnhandledRequest: 'error' });
-});
-
-afterAll(() => {
-  server.close();
-});
-
-afterEach(() => {
-  server.resetHandlers();
-});
+import { vi } from 'vitest';
 
 const ResizeObserverMock = vi.fn(() => ({
   observe: vi.fn(),
