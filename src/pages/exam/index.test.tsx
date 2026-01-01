@@ -1,28 +1,26 @@
 import { beforeEach, describe, test } from 'vitest';
-import { EXAM_VERSES_KOR_ALL_ASC } from '@/msw/mockData';
+import { VERSE_DETAIL_DATA_KOR } from '@/msw/mockData';
 import { userEvent } from '@testing-library/user-event';
 import renderRoute from '@utils/test/renderRoute';
 import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { screen, waitFor, within } from '@testing-library/react';
-import { ExamVerseData } from '@features/exam/types/examVerseData.type';
 import { createVerseAddress } from '@utils/common';
 import {
   mockExamConfigStore,
   mockVerseSelectStore,
 } from '@utils/test/mockZustandStore';
+import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
 
 const setup = () => {
   const user = userEvent.setup();
   renderRoute('/exam');
   return {
     user,
-    versesAllByAsc: EXAM_VERSES_KOR_ALL_ASC.map(verse => ({
-      ...verse,
-      contents: verse.verse_kor,
-    })).sort((a, b) =>
-      a.series_code.ord === b.series_code.ord
-        ? a.card_num - b.card_num
-        : a.series_code.ord - b.series_code.ord,
+    versesAllByAsc: orderVerseDetails(
+      VERSE_DETAIL_DATA_KOR.map(verse => ({
+        ...verse,
+        contents: verse.contents.trim(),
+      })),
     ),
     LOADER_ID: 'loader',
     HOME_LINK_LABEL: '홈으로',
@@ -34,7 +32,7 @@ const setup = () => {
     },
     VERSE_COUNT: {
       LABEL: '구절 수',
-      TEXT: '32',
+      TEXT: '6',
     },
     TIMELIMIT_SECTION_LABEL: '제한시간 정보',
     TIME_LIMIT: {
@@ -45,17 +43,17 @@ const setup = () => {
     EXAM_CARD_ADDR: '장절',
     EXAM_CARD_THEME: '제목',
     EXAM_CARD_CONTENTS: '내용',
-    createExamCardTestId: (verse: ExamVerseData) => {
-      return `exam-verse-${verse.idx}`;
+    createExamCardTestId: (verseId: number) => {
+      return `exam-verse-${verseId}`;
     },
   };
 };
 
 beforeEach(() => {
-  mockExamConfigStore({ verseCount: EXAM_VERSES_KOR_ALL_ASC.length });
+  mockExamConfigStore({ verseCount: 6 });
   mockVerseSelectStore({
     hasAnyId: () => true,
-    verseIds: EXAM_VERSES_KOR_ALL_ASC.map(verse => verse.idx),
+    verseIds: VERSE_DETAIL_DATA_KOR.map(verse => verse.card_info.idx),
   });
 });
 
@@ -77,7 +75,7 @@ describe('ExamPage Rendering Test', () => {
     const { LOADER_ID, RANGE_SECTION_LABEL, VERSE_RANGE, VERSE_COUNT } =
       setup();
 
-    await waitForElementToBeRemovedIfExist(screen.queryByTestId(LOADER_ID));
+    await waitForElementToBeRemovedIfExist(screen.getByTestId(LOADER_ID));
 
     const rangeInfoSection = screen.getByRole('region', {
       name: RANGE_SECTION_LABEL,
@@ -127,7 +125,7 @@ describe('ExamPage Rendering Test', () => {
 
     versesAllByAsc.forEach(verse => {
       const examCard = within(examCardSection).getByTestId(
-        createExamCardTestId(verse),
+        createExamCardTestId(verse.card_info.idx),
       );
       expect(
         within(examCard).getByText(createVerseAddress(verse)),

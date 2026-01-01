@@ -13,6 +13,7 @@ import { describe } from 'vitest';
 import { createShortVerseAddress, createVerseAddress } from '@utils/common';
 import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
 import { mockVerseSelectStore } from '@utils/test/mockZustandStore';
+import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
 
 const setup = async () => {
   const user = userEvent.setup();
@@ -42,28 +43,24 @@ const setup = async () => {
     HIDE_OPTION: '숨김',
     NAV_TO_HOME: '홈으로',
     NAV_TO_EXAM: '시험보기',
-    verses_kor: VERSE_DETAIL_DATA_KOR.map(verse => ({
-      ...verse,
-      contents: verse.verse_kor.trim(),
-    })).sort((a, b) =>
-      a.series_code.ord === b.series_code.ord
-        ? a.card_num - b.card_num
-        : a.series_code.ord - b.series_code.ord,
+    verses_kor: orderVerseDetails(
+      VERSE_DETAIL_DATA_KOR.map(verse => ({
+        ...verse,
+        contents: verse.contents.trim(),
+      })),
     ),
-    verse_gae: VERSE_DETAIL_DATA_GAE.map(verse => ({
-      ...verse,
-      contents: verse.verse_gae.trim(),
-    })).sort((a, b) =>
-      a.series_code.ord === b.series_code.ord
-        ? a.card_num - b.card_num
-        : a.series_code.ord - b.series_code.ord,
+    verse_gae: orderVerseDetails(
+      VERSE_DETAIL_DATA_GAE.map(verse => ({
+        ...verse,
+        contents: verse.contents.trim(),
+      })),
     ),
   };
 };
 
 beforeEach(() => {
   mockVerseSelectStore({
-    verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.idx),
+    verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.card_info.idx),
     hasAnyId: () => true,
   });
   mockAnimationsApi();
@@ -90,7 +87,7 @@ describe('DrillingPage Test - rendering', () => {
 
     verses_kor.forEach(verse => {
       expect(
-        screen.getByTestId(createVerseCardTestId(verse)),
+        screen.getByTestId(createVerseCardTestId(verse.card_info.idx)),
       ).toBeInTheDocument();
     });
   });
@@ -104,7 +101,9 @@ describe('DrillingPage Test - card hide option and verse card integration test',
     const { user, verses_kor } = await setup();
     const testVerseData = verses_kor[0];
 
-    const verseCard = screen.getByTestId(createVerseCardTestId(testVerseData));
+    const verseCard = screen.getByTestId(
+      createVerseCardTestId(testVerseData.card_info.idx),
+    );
     const cardHideComboboxButton = screen.getByRole('button', {
       name: CARD_HIDE_OPTION_BUTTON,
     });
@@ -127,7 +126,9 @@ describe('DrillingPage Test - card hide option and verse card integration test',
     const { user, verses_kor } = await setup();
     const testVerseData = verses_kor[0];
 
-    const verseCard = screen.getByTestId(createVerseCardTestId(testVerseData));
+    const verseCard = screen.getByTestId(
+      createVerseCardTestId(testVerseData.card_info.idx),
+    );
     const cardHideComboboxButton = screen.getByRole('button', {
       name: CARD_HIDE_OPTION_BUTTON,
     });
@@ -142,7 +143,7 @@ describe('DrillingPage Test - card hide option and verse card integration test',
     await user.click(hideThemeOption);
 
     expect(
-      within(verseCard).getByText(testVerseData.theme).classList,
+      within(verseCard).getByText(testVerseData.card_info.theme).classList,
     ).toContain(COVERED_CLASSNAME);
   });
 
@@ -150,7 +151,9 @@ describe('DrillingPage Test - card hide option and verse card integration test',
     const { user, verses_kor } = await setup();
     const testVerseData = verses_kor[0];
 
-    const verseCard = screen.getByTestId(createVerseCardTestId(testVerseData));
+    const verseCard = screen.getByTestId(
+      createVerseCardTestId(testVerseData.card_info.idx),
+    );
     const cardHideComboboxButton = screen.getByRole('button', {
       name: CARD_HIDE_OPTION_BUTTON,
     });
@@ -188,7 +191,9 @@ describe('DrillingPage Test - bible version option and verse card integration te
 
     expect(
       within(
-        screen.getByTestId(createVerseCardTestId(testVerseKorData)),
+        screen.getByTestId(
+          createVerseCardTestId(testVerseKorData.card_info.idx),
+        ),
       ).getByText(testVerseKorData.contents),
     ).toBeInTheDocument();
 
@@ -211,7 +216,9 @@ describe('DrillingPage Test - bible version option and verse card integration te
 
     expect(
       within(
-        screen.getByTestId(createVerseCardTestId(testVerseGaeData)),
+        screen.getByTestId(
+          createVerseCardTestId(testVerseGaeData.card_info.idx),
+        ),
       ).getByText(testVerseGaeData.contents),
     ).toBeInTheDocument();
   });

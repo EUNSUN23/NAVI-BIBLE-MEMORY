@@ -1,6 +1,5 @@
 import { VerseSummaryData } from '@features/verseSelect/types/verseSummaryData.type';
 import { VerseDetailData } from '@features/verseDisplay/types/verseDetail.type';
-import { ExamVerseData } from '@features/exam/types/examVerseData.type';
 
 type VerseDetailLikeData<T> =
   T extends Pick<
@@ -10,8 +9,8 @@ type VerseDetailLikeData<T> =
     ? T
     : never;
 
-export const createVerseAddress = <T>(
-  data: VerseSummaryData | ExamVerseData | VerseDetailLikeData<T>,
+export const createVerseAddress = (
+  data: VerseSummaryData | VerseDetailData,
 ) => {
   const {
     bible_code: { bible_name },

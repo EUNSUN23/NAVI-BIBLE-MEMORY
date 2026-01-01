@@ -3,15 +3,18 @@ import AddressInput from '@features/exam/components/examCard/AddressInput';
 import ThemeInput from '@features/exam/components/examCard/ThemeInput';
 import ContentsInput from '@features/exam/components/examCard/ContentsInput';
 import { ExamExposeOption } from '@features/exam/types/examExposeOption.type';
-import { ExamVerseData } from '@features/exam/types/examVerseData.type';
+import { VerseDetailData } from '@features/verseDisplay/types/verseDetail.type';
 
 type ExamCardProps = {
-  data: ExamVerseData;
+  data: VerseDetailData;
   exposeOption: ExamExposeOption;
 };
 
 function ExamCard({ data, exposeOption }: ExamCardProps) {
-  const { theme, contents, idx } = data;
+  const {
+    card_info: { theme, idx },
+    contents,
+  } = data;
   return (
     <div data-testid={`exam-verse-${idx}`} className='mb-4 flex flex-col'>
       <AddressInput

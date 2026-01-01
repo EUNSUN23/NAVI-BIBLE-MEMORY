@@ -2,59 +2,35 @@ import { BibleVersion, Verse } from '@/types/data.types';
 import supabase from 'src/supabase';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { supabaseResponseHandler } from '@/lib/api/supabaseResponseHandler';
-import { BIBLE_VERSIONS } from '@/msw/mockData';
-
-const getKorVersesDetail = async (verseIds: Verse['idx'][]) => {
-  const res = await supabase
-    .from('verse')
-    .select(
-      'idx,card_num,series_code(ord, series_name),category,theme,bible_code(bible_name,short_name),chapter,verse1,verse2,verse_kor',
-    )
-    .in('idx', [...verseIds]);
-
-  return supabaseResponseHandler(res, data =>
-    data
-      .map(v => ({ ...v, contents: v.verse_kor.trim() }))
-      .sort((a, b) => {
-        return a.series_code.ord === b.series_code.ord
-          ? a.card_num - b.card_num
-          : a.series_code.ord - b.series_code.ord;
-      }),
-  );
-};
-
-const getGaeVersesDetail = async (verseIds: Verse['idx'][]) => {
-  const res = await supabase
-    .from('verse')
-    .select(
-      'idx,card_num,series_code(ord, series_name),category,theme,bible_code(bible_name,short_name),chapter,verse1,verse2,verse_gae',
-    )
-    .in('idx', [...verseIds]);
-
-  return supabaseResponseHandler(res, data =>
-    data
-      .map(v => ({ ...v, contents: v.verse_gae.trim() }))
-      .sort((a, b) => {
-        return a.series_code.ord === b.series_code.ord
-          ? a.card_num - b.card_num
-          : a.series_code.ord - b.series_code.ord;
-      }),
-  );
-};
-
-const [BV_KOR, BV_GAE] = BIBLE_VERSIONS;
 
 export const getVersesDetail = async (
   verseIds: Verse['idx'][],
   bibleVersion: BibleVersion,
 ) => {
-  if (bibleVersion.code === BV_KOR.code) {
-    return await getKorVersesDetail(verseIds);
-  } else if (bibleVersion.code === BV_GAE.code) {
-    return await getGaeVersesDetail(verseIds);
-  } else {
-    throw new Error(`Unknown Bible Version: ${bibleVersion.code}`);
-  }
+  const res = await supabase
+    .from('verse_contents')
+    .select(
+      `card_info:verse_card_id(
+        idx,
+        card_num, 
+        series_code(ord, series_name),
+        category,
+        theme
+      ),
+      bible_code(
+        bible_name,
+        short_name
+      ),
+      chapter,
+      verse1,
+      verse2,
+      contents`,
+    )
+    .in('verse_card_id', [...verseIds])
+    .eq('bible_version_code', bibleVersion.code);
+  return supabaseResponseHandler(res, data =>
+    data.map(v => ({ ...v, contents: v.contents.trim() })),
+  );
 };
 
 export const VERSES_DETAIL_QUERY_KEY = 'verseDetails';

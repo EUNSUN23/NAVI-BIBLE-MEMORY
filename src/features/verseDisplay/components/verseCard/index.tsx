@@ -17,13 +17,16 @@ const cardTextClass = (isHidden: boolean, ...inputs: ClassValue[]) => {
 };
 
 function VerseCard({ data }: CardProps) {
-  const { theme, category, contents } = data;
+  const {
+    card_info: { theme, category },
+    contents,
+  } = data;
   const { code } = useCardHideOptionStore(state => state.cardHideOption);
   const address = createVerseAddress(data);
   return (
     <div
       className='flex h-fit flex-col items-start justify-around space-y-8 rounded-xl border border-[#bebebe] px-9 py-6 text-left shadow-lg mobile:space-y-4 mobile:px-5 mobile:py-4'
-      data-testid={createVerseCardTestId(data)}
+      data-testid={createVerseCardTestId(data.card_info.idx)}
     >
       <div
         className={cardTextClass(

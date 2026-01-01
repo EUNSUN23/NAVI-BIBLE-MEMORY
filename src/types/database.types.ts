@@ -369,36 +369,43 @@ export type Database = {
       };
       verse_contents: {
         Row: {
-          bible_code: string | null;
+          bible_code: string;
           bible_version_code: string;
-          chapter: number | null;
-          contents: string | null;
+          chapter: number;
+          contents: string;
           created_at: string;
           verse_card_id: number;
-          verse1: number | null;
-          verse2: number | null;
+          verse1: number;
+          verse2: number;
         };
         Insert: {
-          bible_code?: string | null;
+          bible_code: string;
           bible_version_code: string;
-          chapter?: number | null;
-          contents?: string | null;
+          chapter: number;
+          contents: string;
           created_at?: string;
           verse_card_id: number;
-          verse1?: number | null;
-          verse2?: number | null;
+          verse1: number;
+          verse2: number;
         };
         Update: {
-          bible_code?: string | null;
+          bible_code?: string;
           bible_version_code?: string;
-          chapter?: number | null;
-          contents?: string | null;
+          chapter?: number;
+          contents?: string;
           created_at?: string;
           verse_card_id?: number;
-          verse1?: number | null;
-          verse2?: number | null;
+          verse1?: number;
+          verse2?: number;
         };
         Relationships: [
+          {
+            foreignKeyName: 'verse_contents_bible_code_fkey';
+            columns: ['bible_code'];
+            isOneToOne: false;
+            referencedRelation: 'bible_code';
+            referencedColumns: ['bible_code'];
+          },
           {
             foreignKeyName: 'verse_contents_bible_version_code_fkey';
             columns: ['bible_version_code'];

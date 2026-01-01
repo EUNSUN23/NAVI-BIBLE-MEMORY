@@ -10,12 +10,15 @@ import { useVerseSelectStore } from '@store/verseSelectStore';
 import { useShallow } from 'zustand/react/shallow';
 import { useVersesDetail } from '@features/verseDisplay/api/getVersesDetail';
 import SwiperPagination from 'src/features/verseDisplay/components/swiperPagination';
+import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
 
 function VerseCardSwiper() {
   const bibleVersion = useBibleVersionStore(state => state.bibleVersion);
   const verseIds = useVerseSelectStore(useShallow(state => state.verseIds));
 
   const { data } = useVersesDetail(verseIds, bibleVersion);
+
+  const verseDetails = orderVerseDetails(data);
 
   const swiperRef = useRef<SwiperCore>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -33,12 +36,12 @@ function VerseCardSwiper() {
         onSwiper={swiper => (swiperRef.current = swiper)}
         onSlideChange={swiper => setActiveIndex(swiper.activeIndex)}
       >
-        {data.map(v => (
-          <SwiperSlide key={`card-${v.idx}`}>
+        {verseDetails.map(v => (
+          <SwiperSlide key={`card-${v.card_info.idx}`}>
             <VerseCard data={v} />
           </SwiperSlide>
         ))}
-        <SwiperPagination verses={data} activeIndex={activeIndex} />
+        <SwiperPagination verses={verseDetails} activeIndex={activeIndex} />
       </Swiper>
     </div>
   );

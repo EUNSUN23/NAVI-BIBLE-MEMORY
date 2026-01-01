@@ -3,7 +3,6 @@ import {
   getBibleVerseHandler,
   getCardHideOptionHandler,
   getExamExposeOptionsHandler,
-  getExamKorVerseAllByASCHandler,
   getSeriesHandler,
   getSubSeriesHandler,
   getVerseDetailGaeHandler,
@@ -20,7 +19,6 @@ export const handlers = [
   getVerseDetailHandler,
   getVerseDetailGaeHandler,
   getExamExposeOptionsHandler,
-  getExamKorVerseAllByASCHandler,
 ];
 
 export const server = setupServer(...handlers);

@@ -9,16 +9,15 @@ import { createShortVerseAddress, createVerseAddress } from '@utils/common';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
 import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
 import { mockVerseSelectStore } from '@utils/test/mockZustandStore';
+import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
 
 const setup = () => {
   const user = userEvent.setup();
-  const verseList = VERSE_DETAIL_DATA_KOR.map(data => ({
-    ...data,
-    contents: data.verse_kor.trim(),
-  })).sort((a, b) =>
-    a.series_code.ord === b.series_code.ord
-      ? a.card_num - b.card_num
-      : a.series_code.ord - b.series_code.ord,
+  const verseList = orderVerseDetails(
+    VERSE_DETAIL_DATA_KOR.map(data => ({
+      ...data,
+      contents: data.contents.trim(),
+    })),
   );
   render(<VerseDisplay />);
   return {
@@ -33,7 +32,7 @@ const setup = () => {
 
 beforeEach(() => {
   mockVerseSelectStore({
-    verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.idx),
+    verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.card_info.idx),
     hasAnyId: () => true,
   });
   mockAnimationsApi();
@@ -46,8 +45,12 @@ describe('VerseDisplay Test', () => {
     await waitForElementToBeRemovedIfExist(screen.getByTestId(LOADER_TESTID));
 
     verseList.forEach(verse => {
-      const testVerseCard = screen.getByTestId(createVerseCardTestId(verse));
-      expect(within(testVerseCard).getByText(verse.theme)).toBeInTheDocument();
+      const testVerseCard = screen.getByTestId(
+        createVerseCardTestId(verse.card_info.idx),
+      );
+      expect(
+        within(testVerseCard).getByText(verse.card_info.theme),
+      ).toBeInTheDocument();
       expect(
         within(testVerseCard).getByText(createVerseAddress(verse)),
       ).toBeInTheDocument();
@@ -69,7 +72,9 @@ describe('VerseDisplay Test', () => {
 
     await user.click(bulletButton);
 
-    const verseSlide = screen.getByTestId(createVerseCardTestId(verseData));
+    const verseSlide = screen.getByTestId(
+      createVerseCardTestId(verseData.card_info.idx),
+    );
 
     expect(
       within(verseSlide).getByText(createVerseAddress(verseData)),
@@ -89,7 +94,7 @@ describe('VerseDisplay Test', () => {
       }),
     );
     expect(
-      screen.getByTestId(createVerseCardTestId(secondVerseData)),
+      screen.getByTestId(createVerseCardTestId(secondVerseData.card_info.idx)),
     ).toBeInTheDocument();
 
     const navToFirstButton = screen
@@ -99,7 +104,7 @@ describe('VerseDisplay Test', () => {
     await user.click(navToFirstButton);
 
     expect(
-      screen.getByTestId(createVerseCardTestId(firstVerseData)),
+      screen.getByTestId(createVerseCardTestId(firstVerseData.card_info.idx)),
     ).toBeInTheDocument();
   });
 
@@ -116,7 +121,7 @@ describe('VerseDisplay Test', () => {
       }),
     );
     expect(
-      screen.getByTestId(createVerseCardTestId(secondVerseData)),
+      screen.getByTestId(createVerseCardTestId(secondVerseData.card_info.idx)),
     ).toBeInTheDocument();
 
     const navToLastButton = screen
@@ -125,7 +130,7 @@ describe('VerseDisplay Test', () => {
     await user.click(navToLastButton);
 
     expect(
-      screen.getByTestId(createVerseCardTestId(lastVerseData)),
+      screen.getByTestId(createVerseCardTestId(lastVerseData.card_info.idx)),
     ).toBeInTheDocument();
   });
 });
