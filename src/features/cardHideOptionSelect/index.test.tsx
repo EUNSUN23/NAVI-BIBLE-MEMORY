@@ -12,10 +12,10 @@ describe('CardHideOptionSelect Test', () => {
     render(<CardHideOptionSelect />);
 
     await waitForElementToBeRemovedIfExist(
-      screen.queryByTestId('cardHideOptionSelect-loader'),
+      screen.getByTestId('cardHideOptionSelect-loader'),
     );
 
-    expect(screen.queryByRole('combobox', { name: '숨김' })).not.toBeNull();
+    expect(screen.getByRole('combobox', { name: '숨김' })).not.toBeNull();
 
     const comboboxButton = await screen.findByRole('button', {
       expanded: false,
@@ -28,7 +28,7 @@ describe('CardHideOptionSelect Test', () => {
     await waitFor(() => {
       CARD_HIDE_OPTIONS.forEach(v => {
         expect(
-          within(listbox).queryByRole('option', { name: v.name }),
+          within(listbox).getByRole('option', { name: v.name }),
         ).not.toBeNull();
       });
     });

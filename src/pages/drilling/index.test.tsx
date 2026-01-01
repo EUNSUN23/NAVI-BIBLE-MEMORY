@@ -74,22 +74,22 @@ describe('DrillingPage Test - rendering', () => {
     const { NAV_TO_HOME, NAV_TO_EXAM, BV_OPTION, HIDE_OPTION, verses_kor } =
       await setup();
 
-    expect(screen.queryByRole('link', { name: NAV_TO_HOME })).not.toBeNull();
-    expect(screen.queryByRole('link', { name: NAV_TO_EXAM })).not.toBeNull();
+    expect(screen.getByRole('link', { name: NAV_TO_HOME })).not.toBeNull();
+    expect(screen.getByRole('link', { name: NAV_TO_EXAM })).not.toBeNull();
 
     expect(
-      screen.queryByRole('combobox', {
+      screen.getByRole('combobox', {
         name: BV_OPTION,
       }),
     ).not.toBeNull();
     expect(
-      screen.queryByRole('combobox', {
+      screen.getByRole('combobox', {
         name: HIDE_OPTION,
       }),
     ).not.toBeNull();
 
     verses_kor.forEach(verse => {
-      expect(screen.queryByTestId(createVerseCardTestId(verse))).not.toBeNull();
+      expect(screen.getByTestId(createVerseCardTestId(verse))).not.toBeNull();
     });
   });
 });

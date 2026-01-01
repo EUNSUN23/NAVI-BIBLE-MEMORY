@@ -28,7 +28,7 @@ test('renders series tabs with loaded data', async () => {
   await waitFor(() => {
     SERIES_DATA.forEach(data => {
       expect(
-        screen.queryByRole('tab', { name: data.series_name, expanded: false }),
+        screen.getByRole('tab', { name: data.series_name, expanded: false }),
       ).not.toBeNull();
     });
   });

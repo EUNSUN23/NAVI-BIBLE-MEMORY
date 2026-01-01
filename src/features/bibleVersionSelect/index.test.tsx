@@ -12,10 +12,10 @@ describe('BibleVersionSelect test', () => {
     render(<BibleVersionSelect />);
 
     await waitForElementToBeRemovedIfExist(
-      screen.queryByTestId('bibleVersionSelect-loader'),
+      screen.getByTestId('bibleVersionSelect-loader'),
     );
 
-    expect(screen.queryByRole('combobox', { name: '성경버전' })).not.toBeNull();
+    expect(screen.getByRole('combobox', { name: '성경버전' })).not.toBeNull();
 
     const comboboxButton = await screen.findByRole('button', {
       expanded: false,
@@ -28,7 +28,7 @@ describe('BibleVersionSelect test', () => {
     await waitFor(() => {
       BIBLE_VERSIONS.forEach(v => {
         expect(
-          within(listbox).queryByRole('option', { name: v.name }),
+          within(listbox).getByRole('option', { name: v.name }),
         ).not.toBeNull();
       });
     });

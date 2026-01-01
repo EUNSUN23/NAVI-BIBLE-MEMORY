@@ -43,18 +43,16 @@ describe('VerseDisplay Test', () => {
   test('if each verse slide has theme, address, and contents', async () => {
     const { verseList, LOADER_TESTID } = setup();
 
-    await waitForElementToBeRemovedIfExist(screen.queryByTestId(LOADER_TESTID));
+    await waitForElementToBeRemovedIfExist(screen.getByTestId(LOADER_TESTID));
 
     verseList.forEach(verse => {
       const testVerseCard = screen.getByTestId(createVerseCardTestId(verse));
+      expect(within(testVerseCard).getByText(verse.theme)).toBeInTheDocument();
       expect(
-        within(testVerseCard).queryByText(verse.theme),
+        within(testVerseCard).getByText(createVerseAddress(verse)),
       ).toBeInTheDocument();
       expect(
-        within(testVerseCard).queryByText(createVerseAddress(verse)),
-      ).toBeInTheDocument();
-      expect(
-        within(testVerseCard).queryByText(verse.contents),
+        within(testVerseCard).getByText(verse.contents),
       ).toBeInTheDocument();
     });
   });
@@ -63,7 +61,7 @@ describe('VerseDisplay Test', () => {
     const { user, LOADER_TESTID, verseList } = setup();
     const verseData = verseList[1];
 
-    await waitForElementToBeRemovedIfExist(screen.queryByTestId(LOADER_TESTID));
+    await waitForElementToBeRemovedIfExist(screen.getByTestId(LOADER_TESTID));
 
     const bulletButton = screen.getByRole('button', {
       name: createShortVerseAddress(verseData),
@@ -74,7 +72,7 @@ describe('VerseDisplay Test', () => {
     const verseSlide = screen.getByTestId(createVerseCardTestId(verseData));
 
     expect(
-      within(verseSlide).queryByText(createVerseAddress(verseData)),
+      within(verseSlide).getByText(createVerseAddress(verseData)),
     ).toBeInTheDocument();
   });
 
@@ -83,7 +81,7 @@ describe('VerseDisplay Test', () => {
     const secondVerseData = verseList[1];
     const firstVerseData = verseList[0];
 
-    await waitForElementToBeRemovedIfExist(screen.queryByTestId(LOADER_TESTID));
+    await waitForElementToBeRemovedIfExist(screen.getByTestId(LOADER_TESTID));
 
     await user.click(
       screen.getByRole('button', {
@@ -110,7 +108,7 @@ describe('VerseDisplay Test', () => {
     const secondVerseData = verseList[2];
     const lastVerseData = verseList[verseList.length - 1];
 
-    await waitForElementToBeRemovedIfExist(screen.queryByTestId(LOADER_TESTID));
+    await waitForElementToBeRemovedIfExist(screen.getByTestId(LOADER_TESTID));
 
     await user.click(
       screen.getByRole('button', {

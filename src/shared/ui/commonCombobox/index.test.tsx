@@ -36,9 +36,9 @@ describe('CommonCombobox Test', () => {
 
   test('Combobox renders', async () => {
     await waitFor(() => {
-      expect(screen.queryByRole('combobox', { name: label })).not.toBeNull();
-      expect(screen.queryByRole('button', { expanded: false })).not.toBeNull();
-      expect(screen.queryByDisplayValue(selectedItem.name)).not.toBeNull();
+      expect(screen.getByRole('combobox', { name: label })).not.toBeNull();
+      expect(screen.getByRole('button', { expanded: false })).not.toBeNull();
+      expect(screen.getByDisplayValue(selectedItem.name)).not.toBeNull();
     });
   });
 
@@ -52,7 +52,7 @@ describe('CommonCombobox Test', () => {
     await user.click(comboboxButton);
 
     expect(comboboxButton.ariaExpanded).toBe('true');
-    expect(screen.queryByRole('listbox')).not.toBeNull();
+    expect(screen.getByRole('listbox')).not.toBeNull();
 
     await user.click(comboboxButton);
 
@@ -74,7 +74,7 @@ describe('CommonCombobox Test', () => {
     await waitFor(() => {
       items.forEach(v => {
         expect(
-          within(listbox).queryByRole('option', { name: v.name }),
+          within(listbox).getByRole('option', { name: v.name }),
         ).not.toBeNull();
       });
     });

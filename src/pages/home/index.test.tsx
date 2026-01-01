@@ -38,13 +38,13 @@ describe('HomePage Test', () => {
     const { HOME_LINK, DRILLING_LINK, EXAM_LINK } = setup();
     await waitForElementToBeRemovedIfExist(screen.queryByTestId('loader'));
 
-    expect(screen.queryByRole('link', { name: HOME_LINK })).not.toBeNull();
-    expect(screen.queryByRole('link', { name: DRILLING_LINK })).not.toBeNull();
-    expect(screen.queryByRole('link', { name: EXAM_LINK })).not.toBeNull();
+    expect(screen.getByRole('link', { name: HOME_LINK })).not.toBeNull();
+    expect(screen.getByRole('link', { name: DRILLING_LINK })).not.toBeNull();
+    expect(screen.getByRole('link', { name: EXAM_LINK })).not.toBeNull();
 
     SERIES_DATA.forEach(data => {
       expect(
-        screen.queryByRole('tab', {
+        screen.getByRole('tab', {
           name: data.series_name,
           expanded: false,
         }),
@@ -63,7 +63,7 @@ describe('HomePage Test', () => {
     expect(window.alert).toHaveBeenCalledWith('암송 구절을 선택해주세요. 😊');
     expect(window.alert).toHaveBeenCalledTimes(1);
     expect(
-      screen.queryByRole('heading', {
+      screen.getByRole('heading', {
         level: 1,
         name: HOME_HEADING,
       }),
@@ -81,7 +81,7 @@ describe('HomePage Test', () => {
     expect(window.alert).toHaveBeenCalledWith('암송 구절을 선택해주세요. 😊');
     expect(window.alert).toHaveBeenCalledTimes(1);
     expect(
-      screen.queryByRole('heading', {
+      screen.getByRole('heading', {
         level: 1,
         name: HOME_HEADING,
       }),
@@ -124,7 +124,7 @@ describe('HomePage Test', () => {
 
     await waitFor(() => {
       expect(
-        screen.queryByRole('heading', {
+        screen.getByRole('heading', {
           level: 3,
           name: '시험설정',
         }),

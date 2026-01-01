@@ -87,7 +87,7 @@ describe('SeriesTab Test', () => {
 
     SERIES_DATA_SUB.forEach(data => {
       expect(
-        within(testTabPanel).queryByRole('tab', {
+        within(testTabPanel).getByRole('tab', {
           name: data.series_name,
           expanded: false,
         }),
@@ -127,7 +127,7 @@ describe('SeriesTab Test', () => {
     expect(testTabPanel.hidden).toBe(false);
 
     await waitForElementToBeRemovedIfExist(
-      within(testTabPanel).queryByTestId('loader'),
+      within(testTabPanel).getByTestId('loader'),
     );
 
     VERSE_SUMMARY_DATA.forEach(data => {
