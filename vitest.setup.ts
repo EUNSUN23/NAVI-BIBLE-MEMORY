@@ -7,10 +7,12 @@ beforeAll(() => {
 });
 
 afterAll(() => {
+  vi.resetAllMocks();
   server.close();
 });
 
 afterEach(() => {
+  vi.clearAllMocks();
   server.resetHandlers();
 });
 
@@ -22,3 +24,5 @@ const ResizeObserverMock = vi.fn(() => ({
 
 // Stub the global ResizeObserver
 vi.stubGlobal('ResizeObserver', ResizeObserverMock);
+
+vi.mock('zustand');

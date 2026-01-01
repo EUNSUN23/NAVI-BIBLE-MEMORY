@@ -1,4 +1,4 @@
-import renderRoute from '@/test/utils/renderRoute';
+import renderRoute from '@utils/test/renderRoute';
 import { screen, within } from '@testing-library/react';
 import {
   BIBLE_VERSIONS,
@@ -7,13 +7,12 @@ import {
   VERSE_DETAIL_DATA_KOR,
 } from '@/msw/mockData';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
-import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
+import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { userEvent } from '@testing-library/user-event';
 import { describe } from 'vitest';
 import { createShortVerseAddress, createVerseAddress } from '@utils/common';
-import { StoreSelectorMock } from '@/types/common.types';
-import { VerseSelectStore } from '@store/verseSelectStore';
 import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
+import { mockVerseSelectStore } from '@utils/test/mockZustandStore';
 
 const setup = async () => {
   const user = userEvent.setup();
@@ -62,24 +61,10 @@ const setup = async () => {
   };
 };
 
-beforeAll(() => {
-  vi.mock('@store/verseSelectStore', async () => {
-    const verseSelectStore = await vi.importActual('@store/verseSelectStore');
-
-    return {
-      ...verseSelectStore,
-      useVerseSelectStore: vi
-        .fn()
-        .mockImplementation((selector: StoreSelectorMock<VerseSelectStore>) =>
-          selector({
-            verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.idx),
-            hasAnyId: () => true,
-          }),
-        ),
-    };
-  });
-  vi.mock('@store/exam/examConfigModalStore', async () => {
-    return await vi.importActual('@store/exam/examConfigModalStore');
+beforeEach(() => {
+  mockVerseSelectStore({
+    verseIds: VERSE_DETAIL_DATA_KOR.map(data => data.idx),
+    hasAnyId: () => true,
   });
   mockAnimationsApi();
 });
@@ -89,22 +74,24 @@ describe('DrillingPage Test - rendering', () => {
     const { NAV_TO_HOME, NAV_TO_EXAM, BV_OPTION, HIDE_OPTION, verses_kor } =
       await setup();
 
-    expect(screen.queryByRole('link', { name: NAV_TO_HOME })).not.toBeNull();
-    expect(screen.queryByRole('link', { name: NAV_TO_EXAM })).not.toBeNull();
+    expect(screen.getByRole('link', { name: NAV_TO_HOME })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: NAV_TO_EXAM })).toBeInTheDocument();
 
     expect(
-      screen.queryByRole('combobox', {
+      screen.getByRole('combobox', {
         name: BV_OPTION,
       }),
-    ).not.toBeNull();
+    ).toBeInTheDocument();
     expect(
-      screen.queryByRole('combobox', {
+      screen.getByRole('combobox', {
         name: HIDE_OPTION,
       }),
-    ).not.toBeNull();
+    ).toBeInTheDocument();
 
     verses_kor.forEach(verse => {
-      expect(screen.queryByTestId(createVerseCardTestId(verse))).not.toBeNull();
+      expect(
+        screen.getByTestId(createVerseCardTestId(verse)),
+      ).toBeInTheDocument();
     });
   });
 });
@@ -125,7 +112,6 @@ describe('DrillingPage Test - card hide option and verse card integration test',
     await user.click(cardHideComboboxButton);
 
     const listbox = screen.getByRole('listbox');
-    screen.debug(listbox);
     const hideAddressOption = within(listbox).getByRole('option', {
       name: CARD_HIDE_OPTIONS[1].name,
     });
@@ -140,8 +126,6 @@ describe('DrillingPage Test - card hide option and verse card integration test',
   test('when user selects theme hide option, hiding style applies to verse theme', async () => {
     const { user, verses_kor } = await setup();
     const testVerseData = verses_kor[0];
-
-    screen.debug();
 
     const verseCard = screen.getByTestId(createVerseCardTestId(testVerseData));
     const cardHideComboboxButton = screen.getByRole('button', {
@@ -206,7 +190,7 @@ describe('DrillingPage Test - bible version option and verse card integration te
       within(
         screen.getByTestId(createVerseCardTestId(testVerseKorData)),
       ).getByText(testVerseKorData.contents),
-    ).not.toBeNull();
+    ).toBeInTheDocument();
 
     const bibleVersionComboboxButton = screen.getByRole('button', {
       name: BV_OPTION_BUTTON,
@@ -229,6 +213,6 @@ describe('DrillingPage Test - bible version option and verse card integration te
       within(
         screen.getByTestId(createVerseCardTestId(testVerseGaeData)),
       ).getByText(testVerseGaeData.contents),
-    ).not.toBeNull();
+    ).toBeInTheDocument();
   });
 });

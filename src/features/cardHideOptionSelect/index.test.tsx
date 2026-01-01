@@ -2,26 +2,20 @@ import { expect, test } from 'vitest';
 import { userEvent } from '@testing-library/user-event';
 import CardHideOptionSelect from '@features/cardHideOptionSelect/index';
 import { screen, waitFor, within } from '@testing-library/react';
-import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
+import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { CARD_HIDE_OPTIONS } from '@/msw/mockData';
-import { render } from '@/test/utils/render';
+import { render } from '@utils/test/render';
 
 describe('CardHideOptionSelect Test', () => {
-  beforeAll(() => {
-    vi.mock('@/store/drilling/cardHideOptionStore', async () => {
-      return await vi.importActual('@/store/drilling/cardHideOptionStore');
-    });
-  });
-
   test('renders card hide option combobox after data loading finishes', async () => {
     const user = userEvent.setup();
     render(<CardHideOptionSelect />);
 
     await waitForElementToBeRemovedIfExist(
-      screen.queryByTestId('cardHideOptionSelect-loader'),
+      screen.getByTestId('cardHideOptionSelect-loader'),
     );
 
-    expect(screen.queryByRole('combobox', { name: '숨김' })).not.toBeNull();
+    expect(screen.getByRole('combobox', { name: '숨김' })).toBeInTheDocument();
 
     const comboboxButton = await screen.findByRole('button', {
       expanded: false,
@@ -34,8 +28,8 @@ describe('CardHideOptionSelect Test', () => {
     await waitFor(() => {
       CARD_HIDE_OPTIONS.forEach(v => {
         expect(
-          within(listbox).queryByRole('option', { name: v.name }),
-        ).not.toBeNull();
+          within(listbox).getByRole('option', { name: v.name }),
+        ).toBeInTheDocument();
       });
     });
   });

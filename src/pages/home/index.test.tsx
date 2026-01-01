@@ -5,10 +5,10 @@ import {
   VERSE_SUMMARY_DATA,
 } from '@/msw/mockData';
 import { userEvent } from '@testing-library/user-event';
-import renderRoute from '@/test/utils/renderRoute';
-import mockAlert from '@/test/utils/mocks/mockAlert';
-import mockScrollIntoView from '@/test/utils/mocks/mockScrollIntoView';
-import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
+import renderRoute from '@utils/test/renderRoute';
+import mockAlert from '@utils/test/mocks/mockAlert';
+import mockScrollIntoView from '@utils/test/mocks/mockScrollIntoView';
+import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { createSeriesTabPanelId } from '@features/verseSelect/utils/createSeriesTabPanelId';
 import { createVerseOptionId } from '@features/verseSelect/utils/createVerseOptionId';
 
@@ -31,35 +31,26 @@ describe('HomePage Test', () => {
   });
 
   beforeEach(() => {
-    vi.mock('@store/verseSelectStore', async () => {
-      return await vi.importActual('@store/verseSelectStore');
-    });
-    vi.mock('@store/exam/examConfigModalStore', async () => {
-      return await vi.importActual('@store/exam/examConfigModalStore');
-    });
     mockAlert();
-  });
-
-  afterEach(() => {
-    vi.resetModules();
-    vi.restoreAllMocks();
   });
 
   test('renders "홈으로","암송하기","시험보기" links and series tabs', async () => {
     const { HOME_LINK, DRILLING_LINK, EXAM_LINK } = setup();
     await waitForElementToBeRemovedIfExist(screen.queryByTestId('loader'));
 
-    expect(screen.queryByRole('link', { name: HOME_LINK })).not.toBeNull();
-    expect(screen.queryByRole('link', { name: DRILLING_LINK })).not.toBeNull();
-    expect(screen.queryByRole('link', { name: EXAM_LINK })).not.toBeNull();
+    expect(screen.getByRole('link', { name: HOME_LINK })).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: DRILLING_LINK }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: EXAM_LINK })).toBeInTheDocument();
 
     SERIES_DATA.forEach(data => {
       expect(
-        screen.queryByRole('tab', {
+        screen.getByRole('tab', {
           name: data.series_name,
           expanded: false,
         }),
-      ).not.toBeNull();
+      ).toBeInTheDocument();
     });
   });
 
@@ -74,11 +65,11 @@ describe('HomePage Test', () => {
     expect(window.alert).toHaveBeenCalledWith('암송 구절을 선택해주세요. 😊');
     expect(window.alert).toHaveBeenCalledTimes(1);
     expect(
-      screen.queryByRole('heading', {
+      screen.getByRole('heading', {
         level: 1,
         name: HOME_HEADING,
       }),
-    ).not.toBeNull();
+    ).toBeInTheDocument();
   });
 
   test('when clicks "exam" link without selecting verses, alert pops up and stop navigating', async () => {
@@ -92,11 +83,11 @@ describe('HomePage Test', () => {
     expect(window.alert).toHaveBeenCalledWith('암송 구절을 선택해주세요. 😊');
     expect(window.alert).toHaveBeenCalledTimes(1);
     expect(
-      screen.queryByRole('heading', {
+      screen.getByRole('heading', {
         level: 1,
         name: HOME_HEADING,
       }),
-    ).not.toBeNull();
+    ).toBeInTheDocument();
   });
 
   test('when clicks "exam" link after selecting verses, "시험설정" dialog pops up', async () => {
@@ -135,11 +126,11 @@ describe('HomePage Test', () => {
 
     await waitFor(() => {
       expect(
-        screen.queryByRole('heading', {
+        screen.getByRole('heading', {
           level: 3,
           name: '시험설정',
         }),
-      ).not.toBeNull();
+      ).toBeInTheDocument();
     });
   });
 });

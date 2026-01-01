@@ -1,20 +1,19 @@
-import { describe, test } from 'vitest';
+import { beforeEach, describe, test } from 'vitest';
 import { EXAM_VERSES_KOR_ALL_ASC } from '@/msw/mockData';
-import { StoreSelectorMock } from '@/types/common.types';
-import { ExamConfigStore } from '@store/exam/examConfigStore';
-import { VerseSelectStore } from '@store/verseSelectStore';
 import { userEvent } from '@testing-library/user-event';
-import renderRoute from '@/test/utils/renderRoute';
-import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
+import renderRoute from '@utils/test/renderRoute';
+import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { screen, waitFor, within } from '@testing-library/react';
 import { ExamVerseData } from '@features/exam/types/examVerseData.type';
 import { createVerseAddress } from '@utils/common';
+import {
+  mockExamConfigStore,
+  mockVerseSelectStore,
+} from '@utils/test/mockZustandStore';
 
 const setup = () => {
   const user = userEvent.setup();
-
   renderRoute('/exam');
-
   return {
     user,
     versesAllByAsc: EXAM_VERSES_KOR_ALL_ASC.map(verse => ({
@@ -52,47 +51,11 @@ const setup = () => {
   };
 };
 
-beforeAll(() => {
-  vi.mock('@/store/bibleVersionStore', async () => {
-    return await vi.importActual('@/store/bibleVersionStore');
-  });
-
-  vi.mock('@/store/exam/examConfigStore', async () => {
-    const actual = await vi.importActual<
-      typeof import('@store/exam/examConfigStore')
-    >('@store/exam/examConfigStore');
-    return {
-      useExamConfigStore: vi
-        .fn()
-        .mockImplementation((selector: StoreSelectorMock<ExamConfigStore>) =>
-          selector({
-            ...actual.useExamConfigStore.getState(),
-            verseCount: EXAM_VERSES_KOR_ALL_ASC.length,
-          }),
-        ),
-    };
-  });
-
-  vi.mock('@/store/verseSelectStore', async () => {
-    const actual = await vi.importActual<
-      typeof import('@/store/verseSelectStore')
-    >('@/store/verseSelectStore');
-
-    return {
-      useVerseSelectStore: vi
-        .fn()
-        .mockImplementation((selector: StoreSelectorMock<VerseSelectStore>) =>
-          selector({
-            ...actual.useVerseSelectStore.getState(),
-            hasAnyId: () => true,
-            verseIds: EXAM_VERSES_KOR_ALL_ASC.map(verse => verse.idx),
-          }),
-        ),
-    };
-  });
-
-  vi.mock('@/store/exam/examStatusStore', async () => {
-    return await vi.importActual('@/store/exam/examStatusStore');
+beforeEach(() => {
+  mockExamConfigStore({ verseCount: EXAM_VERSES_KOR_ALL_ASC.length });
+  mockVerseSelectStore({
+    hasAnyId: () => true,
+    verseIds: EXAM_VERSES_KOR_ALL_ASC.map(verse => verse.idx),
   });
 });
 

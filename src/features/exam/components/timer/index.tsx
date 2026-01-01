@@ -48,7 +48,6 @@ function Timer({ time }: TimerProps) {
   const secString = secValue.toString().padStart(2, '0');
 
   const handleOnClickButton = () => {
-    console.log('handle click...');
     setIsPaused(prev => !prev);
   };
 
@@ -76,10 +75,11 @@ function Timer({ time }: TimerProps) {
         </div>
       </div>
       <button
+        data-testid='timerToggleButton'
         className='col-span-2 mr-auto rounded-3xl bg-secondary px-4 py-2 text-xl font-medium text-white mobile:px-3 mobile:py-1 mobile:text-base'
         onClick={handleOnClickButton}
       >
-        {isPaused ? '다시시작' : '일시정지'}
+        {isPaused ? '재시작' : '일시정지'}
       </button>
     </section>
   );

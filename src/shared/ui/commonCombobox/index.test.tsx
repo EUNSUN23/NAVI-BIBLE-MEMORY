@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-import { render } from '@/test/utils/render';
+import { render } from '@utils/test/render';
 import { cleanup, screen, waitFor, within } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import {
@@ -36,9 +36,11 @@ describe('CommonCombobox Test', () => {
 
   test('Combobox renders', async () => {
     await waitFor(() => {
-      expect(screen.queryByRole('combobox', { name: label })).not.toBeNull();
-      expect(screen.queryByRole('button', { expanded: false })).not.toBeNull();
-      expect(screen.queryByDisplayValue(selectedItem.name)).not.toBeNull();
+      expect(screen.getByRole('combobox', { name: label })).toBeInTheDocument();
+      expect(
+        screen.getByRole('button', { expanded: false }),
+      ).toBeInTheDocument();
+      expect(screen.getByDisplayValue(selectedItem.name)).toBeInTheDocument();
     });
   });
 
@@ -52,12 +54,12 @@ describe('CommonCombobox Test', () => {
     await user.click(comboboxButton);
 
     expect(comboboxButton.ariaExpanded).toBe('true');
-    expect(screen.queryByRole('listbox')).not.toBeNull();
+    expect(screen.getByRole('listbox')).toBeInTheDocument();
 
     await user.click(comboboxButton);
 
     expect(comboboxButton.ariaExpanded).toBe('false');
-    expect(screen.queryByRole('listbox')).toBeNull();
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
   });
 
   test('Associated listbox renders a list of options', async () => {
@@ -74,8 +76,8 @@ describe('CommonCombobox Test', () => {
     await waitFor(() => {
       items.forEach(v => {
         expect(
-          within(listbox).queryByRole('option', { name: v.name }),
-        ).not.toBeNull();
+          within(listbox).getByRole('option', { name: v.name }),
+        ).toBeInTheDocument();
       });
     });
   });

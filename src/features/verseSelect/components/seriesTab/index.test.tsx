@@ -10,7 +10,7 @@ import {
 import { cleanup, screen, within } from '@testing-library/react';
 import { UserEvent, userEvent } from '@testing-library/user-event';
 import SeriesTab from '@features/verseSelect/components/seriesTab/index';
-import { render } from '@/test/utils/render';
+import { render } from '@utils/test/render';
 import {
   SERIES_DATA,
   SERIES_DATA_HAS_SUB,
@@ -18,7 +18,7 @@ import {
   SERIES_DATA_SUB,
   VERSE_SUMMARY_DATA,
 } from '@/msw/mockData';
-import waitForElementToBeRemovedIfExist from '@/test/utils/waitForElementToBeRemovedIfExist';
+import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { createSeriesTabPanelId } from '@features/verseSelect/utils/createSeriesTabPanelId';
 import { createVerseOptionId } from '@features/verseSelect/utils/createVerseOptionId';
 
@@ -87,11 +87,11 @@ describe('SeriesTab Test', () => {
 
     SERIES_DATA_SUB.forEach(data => {
       expect(
-        within(testTabPanel).queryByRole('tab', {
+        within(testTabPanel).getByRole('tab', {
           name: data.series_name,
           expanded: false,
         }),
-      ).not.toBeNull();
+      ).toBeInTheDocument();
     });
 
     await user.click(testTab);
@@ -127,7 +127,7 @@ describe('SeriesTab Test', () => {
     expect(testTabPanel.hidden).toBe(false);
 
     await waitForElementToBeRemovedIfExist(
-      within(testTabPanel).queryByTestId('loader'),
+      within(testTabPanel).getByTestId('loader'),
     );
 
     VERSE_SUMMARY_DATA.forEach(data => {

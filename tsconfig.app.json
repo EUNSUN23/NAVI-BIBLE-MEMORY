@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": { "composite": true },
+  "include": ["src"],
+  "exclude": [
+    "**/*.test.*",
+    "src/utils/test",
+    "__mocks__",
+    "vitest.config.ts",
+    "vitest.setup.ts"
+  ]
+}
