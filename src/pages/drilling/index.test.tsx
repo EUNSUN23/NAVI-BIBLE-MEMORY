@@ -112,7 +112,6 @@ describe('DrillingPage Test - card hide option and verse card integration test',
     await user.click(cardHideComboboxButton);
 
     const listbox = screen.getByRole('listbox');
-    screen.debug(listbox);
     const hideAddressOption = within(listbox).getByRole('option', {
       name: CARD_HIDE_OPTIONS[1].name,
     });
@@ -127,8 +126,6 @@ describe('DrillingPage Test - card hide option and verse card integration test',
   test('when user selects theme hide option, hiding style applies to verse theme', async () => {
     const { user, verses_kor } = await setup();
     const testVerseData = verses_kor[0];
-
-    screen.debug();
 
     const verseCard = screen.getByTestId(createVerseCardTestId(testVerseData));
     const cardHideComboboxButton = screen.getByRole('button', {
