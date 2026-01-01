@@ -91,7 +91,7 @@ describe('SeriesTab Test', () => {
           name: data.series_name,
           expanded: false,
         }),
-      ).not.toBeNull();
+      ).toBeInTheDocument();
     });
 
     await user.click(testTab);

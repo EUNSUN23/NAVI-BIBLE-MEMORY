@@ -36,9 +36,11 @@ describe('CommonCombobox Test', () => {
 
   test('Combobox renders', async () => {
     await waitFor(() => {
-      expect(screen.getByRole('combobox', { name: label })).not.toBeNull();
-      expect(screen.getByRole('button', { expanded: false })).not.toBeNull();
-      expect(screen.getByDisplayValue(selectedItem.name)).not.toBeNull();
+      expect(screen.getByRole('combobox', { name: label })).toBeInTheDocument();
+      expect(
+        screen.getByRole('button', { expanded: false }),
+      ).toBeInTheDocument();
+      expect(screen.getByDisplayValue(selectedItem.name)).toBeInTheDocument();
     });
   });
 
@@ -52,12 +54,12 @@ describe('CommonCombobox Test', () => {
     await user.click(comboboxButton);
 
     expect(comboboxButton.ariaExpanded).toBe('true');
-    expect(screen.getByRole('listbox')).not.toBeNull();
+    expect(screen.getByRole('listbox')).toBeInTheDocument();
 
     await user.click(comboboxButton);
 
     expect(comboboxButton.ariaExpanded).toBe('false');
-    expect(screen.queryByRole('listbox')).toBeNull();
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
   });
 
   test('Associated listbox renders a list of options', async () => {
@@ -75,7 +77,7 @@ describe('CommonCombobox Test', () => {
       items.forEach(v => {
         expect(
           within(listbox).getByRole('option', { name: v.name }),
-        ).not.toBeNull();
+        ).toBeInTheDocument();
       });
     });
   });

@@ -74,22 +74,24 @@ describe('DrillingPage Test - rendering', () => {
     const { NAV_TO_HOME, NAV_TO_EXAM, BV_OPTION, HIDE_OPTION, verses_kor } =
       await setup();
 
-    expect(screen.getByRole('link', { name: NAV_TO_HOME })).not.toBeNull();
-    expect(screen.getByRole('link', { name: NAV_TO_EXAM })).not.toBeNull();
+    expect(screen.getByRole('link', { name: NAV_TO_HOME })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: NAV_TO_EXAM })).toBeInTheDocument();
 
     expect(
       screen.getByRole('combobox', {
         name: BV_OPTION,
       }),
-    ).not.toBeNull();
+    ).toBeInTheDocument();
     expect(
       screen.getByRole('combobox', {
         name: HIDE_OPTION,
       }),
-    ).not.toBeNull();
+    ).toBeInTheDocument();
 
     verses_kor.forEach(verse => {
-      expect(screen.getByTestId(createVerseCardTestId(verse))).not.toBeNull();
+      expect(
+        screen.getByTestId(createVerseCardTestId(verse)),
+      ).toBeInTheDocument();
     });
   });
 });
@@ -191,7 +193,7 @@ describe('DrillingPage Test - bible version option and verse card integration te
       within(
         screen.getByTestId(createVerseCardTestId(testVerseKorData)),
       ).getByText(testVerseKorData.contents),
-    ).not.toBeNull();
+    ).toBeInTheDocument();
 
     const bibleVersionComboboxButton = screen.getByRole('button', {
       name: BV_OPTION_BUTTON,
@@ -214,6 +216,6 @@ describe('DrillingPage Test - bible version option and verse card integration te
       within(
         screen.getByTestId(createVerseCardTestId(testVerseGaeData)),
       ).getByText(testVerseGaeData.contents),
-    ).not.toBeNull();
+    ).toBeInTheDocument();
   });
 });

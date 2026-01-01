@@ -15,7 +15,7 @@ describe('CardHideOptionSelect Test', () => {
       screen.getByTestId('cardHideOptionSelect-loader'),
     );
 
-    expect(screen.getByRole('combobox', { name: '숨김' })).not.toBeNull();
+    expect(screen.getByRole('combobox', { name: '숨김' })).toBeInTheDocument();
 
     const comboboxButton = await screen.findByRole('button', {
       expanded: false,
@@ -29,7 +29,7 @@ describe('CardHideOptionSelect Test', () => {
       CARD_HIDE_OPTIONS.forEach(v => {
         expect(
           within(listbox).getByRole('option', { name: v.name }),
-        ).not.toBeNull();
+        ).toBeInTheDocument();
       });
     });
   });

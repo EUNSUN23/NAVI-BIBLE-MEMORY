@@ -15,7 +15,9 @@ describe('BibleVersionSelect test', () => {
       screen.getByTestId('bibleVersionSelect-loader'),
     );
 
-    expect(screen.getByRole('combobox', { name: '성경버전' })).not.toBeNull();
+    expect(
+      screen.getByRole('combobox', { name: '성경버전' }),
+    ).toBeInTheDocument();
 
     const comboboxButton = await screen.findByRole('button', {
       expanded: false,
@@ -29,7 +31,7 @@ describe('BibleVersionSelect test', () => {
       BIBLE_VERSIONS.forEach(v => {
         expect(
           within(listbox).getByRole('option', { name: v.name }),
-        ).not.toBeNull();
+        ).toBeInTheDocument();
       });
     });
   });

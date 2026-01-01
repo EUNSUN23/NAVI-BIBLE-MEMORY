@@ -29,7 +29,7 @@ test('renders series tabs with loaded data', async () => {
     SERIES_DATA.forEach(data => {
       expect(
         screen.getByRole('tab', { name: data.series_name, expanded: false }),
-      ).not.toBeNull();
+      ).toBeInTheDocument();
     });
   });
 });

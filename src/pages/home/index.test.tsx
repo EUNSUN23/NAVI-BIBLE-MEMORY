@@ -38,9 +38,11 @@ describe('HomePage Test', () => {
     const { HOME_LINK, DRILLING_LINK, EXAM_LINK } = setup();
     await waitForElementToBeRemovedIfExist(screen.queryByTestId('loader'));
 
-    expect(screen.getByRole('link', { name: HOME_LINK })).not.toBeNull();
-    expect(screen.getByRole('link', { name: DRILLING_LINK })).not.toBeNull();
-    expect(screen.getByRole('link', { name: EXAM_LINK })).not.toBeNull();
+    expect(screen.getByRole('link', { name: HOME_LINK })).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: DRILLING_LINK }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: EXAM_LINK })).toBeInTheDocument();
 
     SERIES_DATA.forEach(data => {
       expect(
@@ -48,7 +50,7 @@ describe('HomePage Test', () => {
           name: data.series_name,
           expanded: false,
         }),
-      ).not.toBeNull();
+      ).toBeInTheDocument();
     });
   });
 
@@ -67,7 +69,7 @@ describe('HomePage Test', () => {
         level: 1,
         name: HOME_HEADING,
       }),
-    ).not.toBeNull();
+    ).toBeInTheDocument();
   });
 
   test('when clicks "exam" link without selecting verses, alert pops up and stop navigating', async () => {
@@ -85,7 +87,7 @@ describe('HomePage Test', () => {
         level: 1,
         name: HOME_HEADING,
       }),
-    ).not.toBeNull();
+    ).toBeInTheDocument();
   });
 
   test('when clicks "exam" link after selecting verses, "시험설정" dialog pops up', async () => {
@@ -128,7 +130,7 @@ describe('HomePage Test', () => {
           level: 3,
           name: '시험설정',
         }),
-      ).not.toBeNull();
+      ).toBeInTheDocument();
     });
   });
 });
