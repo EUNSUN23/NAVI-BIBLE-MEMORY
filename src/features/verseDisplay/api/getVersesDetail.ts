@@ -13,12 +13,12 @@ export const getVersesDetail = async (
       `card_info:verse_card_id(
         idx,
         card_num, 
-        series_code(ord, series_name),
+        series:series_code(ord, name:series_name),
         category,
         theme
       ),
-      bible_code(
-        bible_name,
+      bible:bible_code(
+        name:bible_name,
         short_name
       ),
       chapter,

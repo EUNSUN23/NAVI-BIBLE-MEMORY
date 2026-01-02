@@ -9,7 +9,7 @@ function RangeInfo({ data }: RangeInfoProps) {
   const init: string[] = [];
   const seriesNames = data
     .reduce((acc, curr) => {
-      const currSeries = curr.card_info.series_code.series_name;
+      const currSeries = curr.card_info.series.name;
       return acc.includes(currSeries) ? acc : [...acc, currSeries];
     }, init)
     .join(', ');

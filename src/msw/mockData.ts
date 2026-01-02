@@ -114,8 +114,8 @@ export const VERSE_SUMMARY_DATA = [
     chapter: 5,
     verse1: 11,
     verse2: 12,
-    bible_code: {
-      bible_name: '요한일서',
+    bible: {
+      name: '요한일서',
     },
   },
   {
@@ -127,8 +127,8 @@ export const VERSE_SUMMARY_DATA = [
     chapter: 16,
     verse1: 24,
     verse2: 0,
-    bible_code: {
-      bible_name: '요한복음',
+    bible: {
+      name: '요한복음',
     },
   },
   {
@@ -140,8 +140,8 @@ export const VERSE_SUMMARY_DATA = [
     chapter: 10,
     verse1: 13,
     verse2: 0,
-    bible_code: {
-      bible_name: '고린도전서',
+    bible: {
+      name: '고린도전서',
     },
   },
   {
@@ -153,8 +153,8 @@ export const VERSE_SUMMARY_DATA = [
     chapter: 1,
     verse1: 9,
     verse2: 0,
-    bible_code: {
-      bible_name: '요한일서',
+    bible: {
+      name: '요한일서',
     },
   },
   {
@@ -166,8 +166,8 @@ export const VERSE_SUMMARY_DATA = [
     chapter: 3,
     verse1: 5,
     verse2: 6,
-    bible_code: {
-      bible_name: '잠언',
+    bible: {
+      name: '잠언',
     },
   },
 ];
@@ -179,9 +179,9 @@ export const VERSE_DETAIL_DATA_KOR = [
       card_num: 7,
       category: 'IV. 기도 2. 기도의 약속과 축복',
       theme: '하나님의 뜻을 알게 됨',
-      series_code: {
+      series: {
         ord: 13,
-        series_name: 'DEP 242구절',
+        name: 'DEP 242구절',
       },
     },
     chapter: 33,
@@ -189,8 +189,8 @@ export const VERSE_DETAIL_DATA_KOR = [
     verse2: 0,
     contents:
       '너는 내게 부르짖으라 내가 네게 응답하겠고 네가 알지 못하는 크고 비밀한 일을 네게 보이리라',
-    bible_code: {
-      bible_name: '예레미야',
+    bible: {
+      name: '예레미야',
       short_name: '렘',
     },
   },
@@ -200,9 +200,9 @@ export const VERSE_DETAIL_DATA_KOR = [
       card_num: 11,
       category: 'IV. 기도 2. 기도의 약속과 축복',
       theme: '담대함을 주심',
-      series_code: {
+      series: {
         ord: 13,
-        series_name: 'DEP 242구절',
+        name: 'DEP 242구절',
       },
     },
     chapter: 4,
@@ -210,8 +210,8 @@ export const VERSE_DETAIL_DATA_KOR = [
     verse2: 0,
     contents:
       ' 빌기를 다하매 모인 곳이 진동하더니 무리가 다 성령이 충만하여 담대히 하나님의 말씀을 전하니라',
-    bible_code: {
-      bible_name: '사도행전',
+    bible: {
+      name: '사도행전',
       short_name: '행',
     },
   },
@@ -221,17 +221,17 @@ export const VERSE_DETAIL_DATA_KOR = [
       card_num: 1,
       category: 'IV. 기도 1. 기도의 명령',
       theme: '쉬지 말고 기도할 것',
-      series_code: {
+      series: {
         ord: 13,
-        series_name: 'DEP 242구절',
+        name: 'DEP 242구절',
       },
     },
     chapter: 5,
     verse1: 17,
     verse2: 0,
     contents: ' 쉬지 말고 기도하라',
-    bible_code: {
-      bible_name: '데살로니가전서',
+    bible: {
+      name: '데살로니가전서',
       short_name: '살전',
     },
   },
@@ -241,17 +241,17 @@ export const VERSE_DETAIL_DATA_KOR = [
       card_num: 2,
       category: 'IV. 기도 1. 기도의 명령',
       theme: '기도를 힘쓸 것',
-      series_code: {
+      series: {
         ord: 13,
-        series_name: 'DEP 242구절',
+        name: 'DEP 242구절',
       },
     },
     chapter: 4,
     verse1: 2,
     verse2: 0,
     contents: ' 기도를 항상 힘쓰고 기도에 감사함으로 깨어 있으라',
-    bible_code: {
-      bible_name: '골로새서',
+    bible: {
+      name: '골로새서',
       short_name: '골',
     },
   },
@@ -261,9 +261,9 @@ export const VERSE_DETAIL_DATA_KOR = [
       card_num: 3,
       category: 'IV. 기도 1. 기도의 명령',
       theme: '깨어 기도할 것',
-      series_code: {
+      series: {
         ord: 13,
-        series_name: 'DEP 242구절',
+        name: 'DEP 242구절',
       },
     },
     chapter: 4,
@@ -271,8 +271,8 @@ export const VERSE_DETAIL_DATA_KOR = [
     verse2: 0,
     contents:
       ' 만물의 마지막이 가까웠으니 그러므로 너희는 정신을 차리고 근신하여 기도하라',
-    bible_code: {
-      bible_name: '베드로전서',
+    bible: {
+      name: '베드로전서',
       short_name: '벧전',
     },
   },
@@ -282,9 +282,9 @@ export const VERSE_DETAIL_DATA_KOR = [
       card_num: 5,
       category: 'IV. 기도 2. 기도의 약속과 축복',
       theme: '응답의 약속',
-      series_code: {
+      series: {
         ord: 13,
-        series_name: 'DEP 242구절',
+        name: 'DEP 242구절',
       },
     },
     chapter: 14,
@@ -292,8 +292,8 @@ export const VERSE_DETAIL_DATA_KOR = [
     verse2: 14,
     contents:
       ' 너희가 내 이름으로 무엇을 구하든지 내가 시행하리니 이는 아버지로 하여금 아들을 인하여 영광을 얻으시게 하려 함이라 내 이름으로 무엇이든지 내게 구하면 내가 시행하리라',
-    bible_code: {
-      bible_name: '요한복음',
+    bible: {
+      name: '요한복음',
       short_name: '요',
     },
   },
@@ -306,9 +306,9 @@ export const VERSE_DETAIL_DATA_GAE = [
       card_num: 7,
       category: 'IV. 기도 2. 기도의 약속과 축복',
       theme: '하나님의 뜻을 알게 됨',
-      series_code: {
+      series: {
         ord: 13,
-        series_name: 'DEP 242구절',
+        name: 'DEP 242구절',
       },
     },
     chapter: 33,
@@ -316,8 +316,8 @@ export const VERSE_DETAIL_DATA_GAE = [
     verse2: 0,
     contents:
       '너는 내게 부르짖으라 내가 네게 응답하겠고 네가 알지 못하는 크고 은밀한 일을 네게 보이리라 ',
-    bible_code: {
-      bible_name: '예레미야',
+    bible: {
+      name: '예레미야',
       short_name: '렘',
     },
   },
@@ -327,9 +327,9 @@ export const VERSE_DETAIL_DATA_GAE = [
       card_num: 11,
       category: 'IV. 기도 2. 기도의 약속과 축복',
       theme: '담대함을 주심',
-      series_code: {
+      series: {
         ord: 13,
-        series_name: 'DEP 242구절',
+        name: 'DEP 242구절',
       },
     },
     chapter: 4,
@@ -337,8 +337,8 @@ export const VERSE_DETAIL_DATA_GAE = [
     verse2: 0,
     contents:
       '빌기를 다하매 모인 곳이 진동하더니 무리가 다 성령이 충만하여 담대히 하나님의 말씀을 전하니라 ',
-    bible_code: {
-      bible_name: '사도행전',
+    bible: {
+      name: '사도행전',
       short_name: '행',
     },
   },
@@ -348,17 +348,17 @@ export const VERSE_DETAIL_DATA_GAE = [
       card_num: 1,
       category: 'IV. 기도 1. 기도의 명령',
       theme: '쉬지 말고 기도할 것',
-      series_code: {
+      series: {
         ord: 13,
-        series_name: 'DEP 242구절',
+        name: 'DEP 242구절',
       },
     },
     chapter: 5,
     verse1: 17,
     verse2: 0,
     contents: '쉬지 말고 기도하라 ',
-    bible_code: {
-      bible_name: '데살로니가전서',
+    bible: {
+      name: '데살로니가전서',
       short_name: '살전',
     },
   },
@@ -368,17 +368,17 @@ export const VERSE_DETAIL_DATA_GAE = [
       card_num: 2,
       category: 'IV. 기도 1. 기도의 명령',
       theme: '기도를 힘쓸 것',
-      series_code: {
+      series: {
         ord: 13,
-        series_name: 'DEP 242구절',
+        name: 'DEP 242구절',
       },
     },
     chapter: 4,
     verse1: 2,
     verse2: 0,
     contents: '기도를 계속하고 기도에 감사함으로 깨어 있으라 ',
-    bible_code: {
-      bible_name: '골로새서',
+    bible: {
+      name: '골로새서',
       short_name: '골',
     },
   },
@@ -388,9 +388,9 @@ export const VERSE_DETAIL_DATA_GAE = [
       card_num: 3,
       category: 'IV. 기도 1. 기도의 명령',
       theme: '깨어 기도할 것',
-      series_code: {
+      series: {
         ord: 13,
-        series_name: 'DEP 242구절',
+        name: 'DEP 242구절',
       },
     },
     chapter: 4,
@@ -398,8 +398,8 @@ export const VERSE_DETAIL_DATA_GAE = [
     verse2: 0,
     contents:
       '만물의 마지막이 가까이 왔으니 그러므로 너희는 정신을 차리고 근신하여 기도하라 ',
-    bible_code: {
-      bible_name: '베드로전서',
+    bible: {
+      name: '베드로전서',
       short_name: '벧전',
     },
   },
@@ -409,9 +409,9 @@ export const VERSE_DETAIL_DATA_GAE = [
       card_num: 5,
       category: 'IV. 기도 2. 기도의 약속과 축복',
       theme: '응답의 약속',
-      series_code: {
+      series: {
         ord: 13,
-        series_name: 'DEP 242구절',
+        name: 'DEP 242구절',
       },
     },
     chapter: 14,
@@ -419,8 +419,8 @@ export const VERSE_DETAIL_DATA_GAE = [
     verse2: 14,
     contents:
       '너희가 내 이름으로 무엇을 구하든지 내가 행하리니 이는 아버지로 하여금 아들로 말미암아 영광을 받으시게 하려 함이라 내 이름으로 무엇이든지 내게 구하면 내가 행하리라 ',
-    bible_code: {
-      bible_name: '요한복음',
+    bible: {
+      name: '요한복음',
       short_name: '요',
     },
   },
