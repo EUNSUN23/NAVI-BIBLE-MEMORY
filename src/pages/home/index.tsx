@@ -8,7 +8,7 @@ import Nav from '@/shared/ui/Nav';
 import { MouseEvent, useTransition } from 'react';
 import { useExamConfigStore } from '@store/exam/examConfigStore';
 
-function Home() {
+export function HomePage() {
   const [_, startTransition] = useTransition();
   const setInitialExamVerseCount = useExamConfigStore(
     state => state.setVerseCount,
@@ -72,5 +72,3 @@ function Home() {
     </>
   );
 }
-
-export default Home;

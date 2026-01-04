@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 import { screen, waitFor } from '@testing-library/react';
 import RootComponent from '@/RootComponent.tsx';
-import Home from '@pages/home';
+import { HomePage } from '@pages/home';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { render } from '@utils/test/render.tsx';
 import { SERIES_DATA } from '@/msw/mockData.ts';
@@ -16,7 +16,7 @@ test('renders series tabs with loaded data', async () => {
       children: [
         {
           path: '/',
-          element: <Home />,
+          element: <HomePage />,
           loader: getSeries,
         },
       ],

@@ -6,7 +6,7 @@ import { FaHome } from '@react-icons/all-files/fa/FaHome';
 import Exam from '@features/exam';
 import Loader from '@/shared/ui/Loader';
 
-function ExamPage() {
+export function ExamPage() {
   const navigate = useNavigate();
   const hasSelectedVerse = useVerseSelectStore(state => state.hasAnyId);
 
@@ -35,5 +35,3 @@ function ExamPage() {
     </>
   );
 }
-
-export default ExamPage;

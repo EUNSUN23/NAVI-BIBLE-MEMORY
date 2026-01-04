@@ -10,7 +10,7 @@ import { useExamConfigModalStore } from '@store/exam/examConfigModalStore';
 import ExamConfigModal from '@features/examConfig';
 import { useNavigate } from 'react-router-dom';
 
-function DrillingPage() {
+export function DrillingPage() {
   const navigate = useNavigate();
   const [_, startTransition] = useTransition();
   const setInitialExamVerseCount = useExamConfigStore(
@@ -66,5 +66,3 @@ function DrillingPage() {
     </>
   );
 }
-
-export default DrillingPage;

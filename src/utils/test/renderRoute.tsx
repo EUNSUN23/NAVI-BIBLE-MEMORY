@@ -1,11 +1,11 @@
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import RootComponent from '@/RootComponent';
 import Loader from '@/shared/ui/Loader';
-import Home from '@pages/home';
+import { HomePage } from '@pages/home';
 import { getSeries } from '@features/verseSelect/api/getSeries';
 import { render } from '@utils/test/render';
-import DrillingPage from '@pages/drilling';
-import Exam from '@pages/exam';
+import { DrillingPage } from '@pages/drilling';
+import { ExamPage } from '@pages/exam';
 
 const renderRoute = (initialEntry = '/') => {
   const router = createMemoryRouter(
@@ -16,7 +16,7 @@ const renderRoute = (initialEntry = '/') => {
         children: [
           {
             path: '/',
-            element: <Home />,
+            element: <HomePage />,
             loader: getSeries,
           },
           {
@@ -25,7 +25,7 @@ const renderRoute = (initialEntry = '/') => {
           },
           {
             path: '/exam',
-            element: <Exam />,
+            element: <ExamPage />,
           },
         ],
       },
