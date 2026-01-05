@@ -14,11 +14,12 @@ import { createShortVerseAddress, createVerseAddress } from '@utils/common';
 import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
 import { mockVerseSelectStore } from '@utils/test/mockZustandStore';
 import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
+import { routePaths } from '@/shared/constants/routePaths';
 
 const setup = async () => {
   const user = userEvent.setup();
 
-  renderRoute('/drilling');
+  renderRoute(routePaths.drilling);
 
   await waitForElementToBeRemovedIfExist(screen.queryByTestId('loader'));
 

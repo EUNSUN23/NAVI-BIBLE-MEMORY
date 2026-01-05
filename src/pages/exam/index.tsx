@@ -5,13 +5,14 @@ import Nav from '@/shared/ui/Nav';
 import { FaHome } from '@react-icons/all-files/fa/FaHome';
 import Exam from '@features/exam';
 import Loader from '@/shared/ui/Loader';
+import { routePaths } from '@/shared/constants/routePaths';
 
 export function ExamPage() {
   const navigate = useNavigate();
   const hasSelectedVerse = useVerseSelectStore(state => state.hasAnyId);
 
   useEffect(() => {
-    if (!hasSelectedVerse()) void navigate('/', { replace: true });
+    if (!hasSelectedVerse()) void navigate(routePaths.home, { replace: true });
   }, [hasSelectedVerse, navigate]);
 
   return (
@@ -25,7 +26,7 @@ export function ExamPage() {
             />
             <span className='sr-only'>홈으로</span>
           </Nav.Link>
-          <Nav.Link to={`/drilling`}>암송하기</Nav.Link>
+          <Nav.Link to={routePaths.drilling}>암송하기</Nav.Link>
         </Nav.Container>
       </Nav>
       <h1 className='sr-only'>시험보기</h1>

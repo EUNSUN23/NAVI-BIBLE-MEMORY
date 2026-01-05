@@ -10,10 +10,11 @@ import {
   mockVerseSelectStore,
 } from '@utils/test/mockZustandStore';
 import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
+import { routePaths } from '@/shared/constants/routePaths';
 
 const setup = () => {
   const user = userEvent.setup();
-  renderRoute('/exam');
+  renderRoute(routePaths.exam);
   return {
     user,
     versesAllByAsc: orderVerseDetails(

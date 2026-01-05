@@ -11,6 +11,7 @@ import Loader from '@/shared/ui/Loader';
 import { useNavigate } from 'react-router-dom';
 import { useExamConfigStore } from '@store/exam/examConfigStore';
 import { useShallow } from 'zustand/react/shallow';
+import { routePaths } from '@/shared/constants/routePaths';
 
 function ExamConfigModal() {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ function ExamConfigModal() {
       alert('시험설정 입력을 완료해주세요.');
       return;
     }
-    void navigate('/exam');
+    void navigate(routePaths.exam);
   };
 
   return (

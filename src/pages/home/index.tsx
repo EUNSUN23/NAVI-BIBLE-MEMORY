@@ -7,6 +7,7 @@ import { useExamConfigModalStore } from '@store/exam/examConfigModalStore';
 import Nav from '@/shared/ui/Nav';
 import { MouseEvent, useTransition } from 'react';
 import { useExamConfigStore } from '@store/exam/examConfigStore';
+import { routePaths } from '@/shared/constants/routePaths';
 
 export function HomePage() {
   const [_, startTransition] = useTransition();
@@ -47,17 +48,17 @@ export function HomePage() {
     <>
       <Nav>
         <Nav.Container>
-          <Nav.Link to='/'>
+          <Nav.Link to={routePaths.home}>
             <FaHome
               aria-hidden={true}
               className='size-[32px] mobile:size-[27px]'
             />
             <span className='sr-only'>홈으로</span>
           </Nav.Link>
-          <Nav.Link to='/drilling' onClick={handleDrillingLinkClick}>
+          <Nav.Link to={routePaths.drilling} onClick={handleDrillingLinkClick}>
             암송하기
           </Nav.Link>
-          <Nav.Link to='/exam' onClick={handleExamLinkClick}>
+          <Nav.Link to={routePaths.exam} onClick={handleExamLinkClick}>
             시험보기
           </Nav.Link>
         </Nav.Container>

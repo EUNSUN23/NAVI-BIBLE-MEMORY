@@ -9,6 +9,7 @@ import { useExamConfigStore } from '@store/exam/examConfigStore';
 import { useExamConfigModalStore } from '@store/exam/examConfigModalStore';
 import ExamConfigModal from '@features/examConfig';
 import { useNavigate } from 'react-router-dom';
+import { routePaths } from '@/shared/constants/routePaths';
 
 export function DrillingPage() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export function DrillingPage() {
   );
 
   useEffect(() => {
-    if (!hasSelectedVerse()) void navigate('/', { replace: true });
+    if (!hasSelectedVerse()) void navigate(routePaths.home, { replace: true });
   }, [hasSelectedVerse, navigate]);
 
   const handleExamLinkClick = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -40,14 +41,14 @@ export function DrillingPage() {
     <>
       <Nav>
         <Nav.Container>
-          <Nav.Link to='/'>
+          <Nav.Link to={routePaths.home}>
             <FaHome
               aria-hidden={true}
               className='size-[32px] mobile:size-[27px]'
             />
             <span className='sr-only'>홈으로</span>
           </Nav.Link>
-          <Nav.Link to='/exam' onClick={handleExamLinkClick}>
+          <Nav.Link to={routePaths.exam} onClick={handleExamLinkClick}>
             시험보기
           </Nav.Link>
         </Nav.Container>

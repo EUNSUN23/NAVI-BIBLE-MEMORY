@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import RootComponent from './RootComponent';
 import RouteErrorElement from '@/lib/error/RouteErrorElement';
 import { getSeries } from '@features/verseSelect/api/getSeries';
+import { routePaths } from '@/shared/constants/routePaths';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     errorElement: <RouteErrorElement />,
     children: [
       {
-        path: '/',
+        path: routePaths.home,
         loader: getSeries,
         lazy: async () => {
           const { HomePage } = await import('@pages/home');
@@ -30,14 +31,14 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: '/drilling',
+        path: routePaths.drilling,
         lazy: async () => {
           const { DrillingPage } = await import('@pages/drilling');
           return { Component: DrillingPage };
         },
       },
       {
-        path: '/exam',
+        path: routePaths.exam,
         lazy: async () => {
           const { ExamPage } = await import('@pages/exam');
           return { Component: ExamPage };
