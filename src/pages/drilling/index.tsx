@@ -5,7 +5,7 @@ import CardHideOptionSelect from '@features/cardHideOptionSelect';
 import VerseDisplay from '@features/verseDisplay';
 import ExamConfigModal from '@features/examConfig';
 import { useNavigate } from 'react-router-dom';
-import { routePaths } from '@/shared/constants/routePaths';
+import { routes } from '@/shared/constants/routes';
 
 export function DrillingPage() {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ export function DrillingPage() {
   const hasSelectedVerse = useVerseSelectStore(state => state.hasAnyId);
 
   useEffect(() => {
-    if (!hasSelectedVerse()) void navigate(routePaths.home, { replace: true });
+    if (!hasSelectedVerse()) void navigate(routes.home.path, { replace: true });
   }, [hasSelectedVerse, navigate]);
 
   return (

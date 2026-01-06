@@ -14,12 +14,12 @@ import { createShortVerseAddress, createVerseAddress } from '@utils/common';
 import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
 import { mockVerseSelectStore } from '@utils/test/mockZustandStore';
 import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
-import { routePaths } from '@/shared/constants/routePaths';
+import { routes } from '@/shared/constants/routes';
 
 const setup = async () => {
   const user = userEvent.setup();
 
-  renderRoute(routePaths.drilling);
+  renderRoute(routes.drilling.path);
 
   await waitForElementToBeRemovedIfExist(screen.queryByTestId('loader'));
 
@@ -42,8 +42,8 @@ const setup = async () => {
     user,
     BV_OPTION: '성경버전',
     HIDE_OPTION: '숨김',
-    NAV_TO_HOME: '홈으로',
-    NAV_TO_EXAM: '시험보기',
+    NAV_TO_HOME: routes.home.label,
+    NAV_TO_EXAM: routes.exam.label,
     verses_kor: orderVerseDetails(
       VERSE_DETAIL_DATA_KOR.map(verse => ({
         ...verse,

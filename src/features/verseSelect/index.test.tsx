@@ -7,7 +7,7 @@ import { render } from '@utils/test/render.tsx';
 import { SERIES_DATA } from '@/msw/mockData.ts';
 import Loader from '@/shared/ui/Loader';
 import { getSeries } from '@features/verseSelect/api/getSeries';
-import { routePaths } from '@/shared/constants/routePaths';
+import { routes } from '@/shared/constants/routes';
 
 test('renders series tabs with loaded data', async () => {
   const router = createMemoryRouter([
@@ -16,7 +16,7 @@ test('renders series tabs with loaded data', async () => {
       HydrateFallback: Loader,
       children: [
         {
-          path: routePaths.home,
+          path: routes.home.path,
           element: <HomePage />,
           loader: getSeries,
         },

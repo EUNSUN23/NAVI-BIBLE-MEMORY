@@ -4,7 +4,7 @@ import { useExamConfigStore } from '@store/exam/examConfigStore';
 import { useExamConfigModalStore } from '@store/exam/examConfigModalStore';
 import { useVerseSelectStore } from '@store/verseSelectStore';
 import { useShallow } from 'zustand/react/shallow';
-import { routePaths } from '@/shared/constants/routePaths';
+import { routes } from '@/shared/constants/routes';
 
 export function ExamPageNavLink() {
   const [_, startTransition] = useTransition();
@@ -35,7 +35,7 @@ export function ExamPageNavLink() {
   };
 
   return (
-    <Nav.Link to={routePaths.exam} onClick={handleOnClickLink}>
+    <Nav.Link to={routes.exam.path} onClick={handleOnClickLink}>
       시험보기
     </Nav.Link>
   );

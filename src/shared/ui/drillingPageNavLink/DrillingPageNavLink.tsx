@@ -2,7 +2,7 @@ import Nav from '@/shared/ui/Nav';
 import { MouseEvent } from 'react';
 import { useVerseSelectStore } from '@store/verseSelectStore';
 import { useShallow } from 'zustand/react/shallow';
-import { routePaths } from '@/shared/constants/routePaths';
+import { routes } from '@/shared/constants/routes';
 
 export function DrillingPageNavLink() {
   const hasSelectedVerse = useVerseSelectStore(
@@ -17,8 +17,8 @@ export function DrillingPageNavLink() {
   };
 
   return (
-    <Nav.Link to={routePaths.drilling} onClick={handleOnClickLink}>
-      암송하기
+    <Nav.Link to={routes.drilling.path} onClick={handleOnClickLink}>
+      {routes.drilling.label}
     </Nav.Link>
   );
 }

@@ -1,9 +1,9 @@
 import Nav from '@/shared/ui/Nav';
-import { routePaths } from '@/shared/constants/routePaths';
+import { routes } from '@/shared/constants/routes';
 import { FaHome } from '@react-icons/all-files/fa/FaHome';
 import { useLocation } from 'react-router-dom';
 import { ExamPageNavLink } from '@/shared/ui/ExamPageNavLink';
-import { DrillingPageNavLink } from '@/shared/ui/DrillingPageNavLink';
+import { DrillingPageNavLink } from '@/shared/ui/drillingPageNavLink/DrillingPageNavLink';
 
 export function Header() {
   const { pathname } = useLocation();
@@ -11,7 +11,7 @@ export function Header() {
   let navElement = null;
 
   switch (pathname) {
-    case routePaths.home:
+    case routes.home.path:
       navElement = (
         <>
           <DrillingPageNavLink />
@@ -19,17 +19,17 @@ export function Header() {
         </>
       );
       break;
-    case routePaths.drilling:
+    case routes.drilling.path:
       navElement = <ExamPageNavLink />;
       break;
-    case routePaths.exam:
+    case routes.exam.path:
       navElement = <DrillingPageNavLink />;
   }
 
   return (
     <Nav>
       <Nav.Container>
-        <Nav.Link to={routePaths.home}>
+        <Nav.Link to={routes.home.path}>
           <FaHome
             aria-hidden={true}
             className='size-[32px] mobile:size-[27px]'

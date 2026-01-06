@@ -10,11 +10,11 @@ import {
   mockVerseSelectStore,
 } from '@utils/test/mockZustandStore';
 import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
-import { routePaths } from '@/shared/constants/routePaths';
+import { routes } from '@/shared/constants/routes';
 
 const setup = () => {
   const user = userEvent.setup();
-  renderRoute(routePaths.exam);
+  renderRoute(routes.exam.path);
   return {
     user,
     versesAllByAsc: orderVerseDetails(
@@ -24,8 +24,8 @@ const setup = () => {
       })),
     ),
     LOADER_ID: 'loader',
-    HOME_LINK_LABEL: '홈으로',
-    DRILLING_LINK_LABEL: '암송하기',
+    HOME_LINK_LABEL: routes.home.label,
+    DRILLING_LINK_LABEL: routes.drilling.label,
     RANGE_SECTION_LABEL: '시험 범위 정보',
     VERSE_RANGE: {
       LABEL: '범위',

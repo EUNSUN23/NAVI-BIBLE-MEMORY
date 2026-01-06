@@ -6,9 +6,9 @@ import { getSeries } from '@features/verseSelect/api/getSeries';
 import { render } from '@utils/test/render';
 import { DrillingPage } from '@pages/drilling';
 import { ExamPage } from '@pages/exam';
-import { routePaths } from '@/shared/constants/routePaths';
+import { routes } from '@/shared/constants/routes';
 
-const renderRoute = (initialEntry: string = routePaths.home) => {
+const renderRoute = (initialEntry: string = routes.home.path) => {
   const router = createMemoryRouter(
     [
       {
@@ -16,16 +16,16 @@ const renderRoute = (initialEntry: string = routePaths.home) => {
         HydrateFallback: Loader,
         children: [
           {
-            path: routePaths.home,
+            path: routes.home.path,
             element: <HomePage />,
             loader: getSeries,
           },
           {
-            path: routePaths.drilling,
+            path: routes.drilling.path,
             element: <DrillingPage />,
           },
           {
-            path: routePaths.exam,
+            path: routes.exam.path,
             element: <ExamPage />,
           },
         ],

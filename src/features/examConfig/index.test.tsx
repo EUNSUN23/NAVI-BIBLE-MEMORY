@@ -11,7 +11,7 @@ import {
 import ExamConfigModal from '@features/examConfig/index';
 import { render } from '@utils/test/render';
 import { userEvent } from '@testing-library/user-event';
-import { routePaths } from '@/shared/constants/routePaths';
+import { routes } from '@/shared/constants/routes';
 
 const setup = {
   TIME_LIMIT: { LABEL: '제한시간', DEFAULT: 30 },
@@ -120,7 +120,7 @@ describe('ExamConfig Test', () => {
           screen.getByRole('button', { name: CONFIRM_BUTTON_LABEL }),
         );
 
-        expect(navigateFn).toHaveBeenCalledWith(routePaths.exam);
+        expect(navigateFn).toHaveBeenCalledWith(routes.exam.path);
       },
     );
   });

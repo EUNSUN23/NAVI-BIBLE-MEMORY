@@ -3,14 +3,14 @@ import { Suspense, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Exam from '@features/exam';
 import Loader from '@/shared/ui/Loader';
-import { routePaths } from '@/shared/constants/routePaths';
+import { routes } from '@/shared/constants/routes';
 
 export function ExamPage() {
   const navigate = useNavigate();
   const hasSelectedVerse = useVerseSelectStore(state => state.hasAnyId);
 
   useEffect(() => {
-    if (!hasSelectedVerse()) void navigate(routePaths.home, { replace: true });
+    if (!hasSelectedVerse()) void navigate(routes.home.path, { replace: true });
   }, [hasSelectedVerse, navigate]);
 
   return (

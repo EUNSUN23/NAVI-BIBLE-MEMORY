@@ -11,15 +11,16 @@ import mockScrollIntoView from '@utils/test/mocks/mockScrollIntoView';
 import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { createSeriesTabPanelId } from '@features/verseSelect/utils/createSeriesTabPanelId';
 import { createVerseOptionId } from '@features/verseSelect/utils/createVerseOptionId';
+import { routes } from '@/shared/constants/routes';
 
 const setup = () => {
   const user = userEvent.setup();
   renderRoute();
 
   return {
-    HOME_LINK: '홈으로',
-    DRILLING_LINK: '암송하기',
-    EXAM_LINK: '시험보기',
+    HOME_LINK: routes.home.label,
+    DRILLING_LINK: routes.drilling.label,
+    EXAM_LINK: routes.exam.label,
     HOME_HEADING: 'NAVI 성경 암송',
     user,
   };
