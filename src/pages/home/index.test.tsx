@@ -45,13 +45,15 @@ describe('HomePage Test', () => {
     ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: EXAM_LINK })).toBeInTheDocument();
 
-    SERIES_DATA.forEach(data => {
-      expect(
-        screen.getByRole('tab', {
-          name: data.series_name,
-          expanded: false,
-        }),
-      ).toBeInTheDocument();
+    await waitFor(() => {
+      SERIES_DATA.forEach(data => {
+        expect(
+          screen.getByRole('tab', {
+            name: data.series_name,
+            expanded: false,
+          }),
+        ).toBeInTheDocument();
+      });
     });
   });
 

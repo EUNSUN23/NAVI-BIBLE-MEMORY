@@ -1,5 +1,7 @@
 import VerseSelect from '@features/verseSelect';
 import ExamConfigModal from 'src/features/examConfig';
+import Loader from '@/shared/ui/Loader';
+import { Suspense } from 'react';
 
 export function HomePage() {
   return (
@@ -8,7 +10,9 @@ export function HomePage() {
         <h1 className='flex items-center text-5xl font-semibold mobile:text-3xl'>
           NAVI 성경 암송
         </h1>
-        <VerseSelect />
+        <Suspense fallback={<Loader size='lg' />}>
+          <VerseSelect />
+        </Suspense>
       </div>
       <ExamConfigModal />
     </>

@@ -5,8 +5,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import RootComponent from './RootComponent';
 import RouteErrorElement from '@/lib/error/RouteErrorElement';
-import { getSeries } from '@features/verseSelect/api/getSeries';
 import { routes } from '@/shared/constants/routes';
+import { HomePage } from '@pages/home';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,11 +24,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: routes.home.path,
-        loader: getSeries,
-        lazy: async () => {
-          const { HomePage } = await import('@pages/home');
-          return { Component: HomePage };
-        },
+        Component: HomePage,
       },
       {
         path: routes.drilling.path,

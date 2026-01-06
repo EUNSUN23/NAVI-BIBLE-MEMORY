@@ -1,11 +1,10 @@
 import SeriesTab from '@features/verseSelect/components/seriesTab';
-import { useLoaderData } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useVerseSelectStore } from '@store/verseSelectStore';
-import { SeriesDataList } from '@features/verseSelect/types/seriesData.type';
+import { useSeries } from '@features/verseSelect/api/getSeries';
 
 function VerseSelect() {
-  const data = useLoaderData<SeriesDataList>();
+  const { data } = useSeries();
   const resetVerseSelect = useVerseSelectStore(state => state.reset);
 
   useEffect(() => {
