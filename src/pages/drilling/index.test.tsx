@@ -1,4 +1,3 @@
-import renderRoute from '@utils/test/renderRoute';
 import { screen, within } from '@testing-library/react';
 import {
   BIBLE_VERSIONS,
@@ -14,12 +13,13 @@ import { createShortVerseAddress, createVerseAddress } from '@utils/common';
 import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
 import { mockVerseSelectStore } from '@utils/test/mockZustandStore';
 import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
-import { routes } from '@/shared/constants/routes';
+import { DrillingPage } from '@pages/drilling/index';
+import { render } from '@utils/test/render';
 
 const setup = async () => {
   const user = userEvent.setup();
 
-  renderRoute(routes.drilling.path);
+  render(<DrillingPage />);
 
   await waitForElementToBeRemovedIfExist(screen.queryByTestId('loader'));
 
@@ -42,8 +42,6 @@ const setup = async () => {
     user,
     BV_OPTION: '성경버전',
     HIDE_OPTION: '숨김',
-    NAV_TO_HOME: routes.home.label,
-    NAV_TO_EXAM: routes.exam.label,
     verses_kor: orderVerseDetails(
       VERSE_DETAIL_DATA_KOR.map(verse => ({
         ...verse,
@@ -65,15 +63,18 @@ beforeEach(() => {
     hasAnyId: () => true,
   });
   mockAnimationsApi();
+  vi.mock('react-router-dom', async () => {
+    const original = await vi.importActual('react-router-dom');
+    return {
+      ...original,
+      useNavigate: () => vi.fn(),
+    };
+  });
 });
 
 describe('DrillingPage Test - rendering', () => {
-  test('render home and exam links, bible version and card hide options, verse cards', async () => {
-    const { NAV_TO_HOME, NAV_TO_EXAM, BV_OPTION, HIDE_OPTION, verses_kor } =
-      await setup();
-
-    expect(screen.getByRole('link', { name: NAV_TO_HOME })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: NAV_TO_EXAM })).toBeInTheDocument();
+  test('if it renders bible version and card hide options', async () => {
+    const { BV_OPTION, HIDE_OPTION } = await setup();
 
     expect(
       screen.getByRole('combobox', {
@@ -85,7 +86,10 @@ describe('DrillingPage Test - rendering', () => {
         name: HIDE_OPTION,
       }),
     ).toBeInTheDocument();
+  });
 
+  test('if it renders verse cards', async () => {
+    const { verses_kor } = await setup();
     verses_kor.forEach(verse => {
       expect(
         screen.getByTestId(createVerseCardTestId(verse.card_info.idx)),

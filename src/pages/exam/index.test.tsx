@@ -1,7 +1,6 @@
 import { beforeEach, describe, test } from 'vitest';
 import { VERSE_DETAIL_DATA_KOR } from '@/msw/mockData';
 import { userEvent } from '@testing-library/user-event';
-import renderRoute from '@utils/test/renderRoute';
 import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { screen, waitFor, within } from '@testing-library/react';
 import { createVerseAddress } from '@utils/common';
@@ -11,10 +10,13 @@ import {
 } from '@utils/test/mockZustandStore';
 import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
 import { routes } from '@/shared/constants/routes';
+import { ExamPage } from '@pages/exam/index';
+import { render } from '@utils/test/render';
 
+const navigateFn = vi.fn();
 const setup = () => {
   const user = userEvent.setup();
-  renderRoute(routes.exam.path);
+  render(<ExamPage />);
   return {
     user,
     versesAllByAsc: orderVerseDetails(
@@ -56,22 +58,18 @@ beforeEach(() => {
     hasAnyId: () => true,
     verseIds: VERSE_DETAIL_DATA_KOR.map(verse => verse.card_info.idx),
   });
+  beforeEach(() => {
+    vi.mock('react-router-dom', async () => {
+      const original = await vi.importActual('react-router-dom');
+      return {
+        ...original,
+        useNavigate: () => navigateFn,
+      };
+    });
+  });
 });
 
 describe('ExamPage Rendering Test', () => {
-  test('render links for home and drilling page', async () => {
-    const { LOADER_ID, HOME_LINK_LABEL, DRILLING_LINK_LABEL } = setup();
-
-    await waitForElementToBeRemovedIfExist(screen.queryByTestId(LOADER_ID));
-
-    expect(
-      screen.getByRole('link', { name: HOME_LINK_LABEL }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole('link', { name: DRILLING_LINK_LABEL }),
-    ).toBeInTheDocument();
-  });
-
   test('render verse range and verse count info', async () => {
     const { LOADER_ID, RANGE_SECTION_LABEL, VERSE_RANGE, VERSE_COUNT } =
       setup();

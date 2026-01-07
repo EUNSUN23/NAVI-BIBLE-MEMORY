@@ -2,6 +2,7 @@ import { Link, LinkProps } from 'react-router-dom';
 import cn from '@/shared/styles/cn';
 import { HTMLAttributes } from 'react';
 
+// todo - 모바일 반응형
 function Nav({ ...props }: HTMLAttributes<HTMLElement>) {
   return (
     <nav

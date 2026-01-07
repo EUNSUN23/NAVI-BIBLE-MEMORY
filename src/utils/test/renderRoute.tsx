@@ -1,41 +1,23 @@
-import { createMemoryRouter, RouterProvider } from 'react-router-dom';
-import RootComponent from '@/RootComponent';
-import Loader from '@/shared/ui/Loader';
-import { HomePage } from '@pages/home';
-import { getSeries } from '@features/verseSelect/api/getSeries';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { render } from '@utils/test/render';
+import { routes } from '@/shared/constants/routes';
+import RootComponent from '@/RootComponent';
+import { HomePage } from '@pages/home';
 import { DrillingPage } from '@pages/drilling';
 import { ExamPage } from '@pages/exam';
-import { routes } from '@/shared/constants/routes';
 
 const renderRoute = (initialEntry: string = routes.home.path) => {
-  const router = createMemoryRouter(
-    [
-      {
-        element: <RootComponent />,
-        HydrateFallback: Loader,
-        children: [
-          {
-            path: routes.home.path,
-            element: <HomePage />,
-            loader: getSeries,
-          },
-          {
-            path: routes.drilling.path,
-            element: <DrillingPage />,
-          },
-          {
-            path: routes.exam.path,
-            element: <ExamPage />,
-          },
-        ],
-      },
-    ],
-    { initialEntries: [initialEntry] },
+  render(
+    <MemoryRouter initialEntries={[initialEntry]}>
+      <Routes>
+        <Route path={routes.home.path} element={<RootComponent />}>
+          <Route index element={<HomePage />} />
+          <Route path={routes.drilling.path} element={<DrillingPage />} />
+          <Route path={routes.exam.path} element={<ExamPage />} />
+        </Route>
+      </Routes>
+    </MemoryRouter>,
   );
-  render(<RouterProvider router={router} />);
-
-  return router;
 };
 
 export default renderRoute;
