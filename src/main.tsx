@@ -6,7 +6,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import RootComponent from './RootComponent';
 import RouteErrorElement from '@/lib/error/RouteErrorElement';
 import { routes } from '@/shared/constants/routes';
-import { HomePage } from '@pages/home';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,7 +23,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: routes.home.path,
-        Component: HomePage,
+        lazy: async () => {
+          const { HomePage } = await import('@pages/home');
+          return { Component: HomePage };
+        },
       },
       {
         path: routes.drilling.path,
