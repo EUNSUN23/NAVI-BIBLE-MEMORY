@@ -10,7 +10,13 @@ export function HomePage() {
         <h1 className='flex items-center text-5xl font-semibold mobile:text-3xl'>
           NAVI 성경 암송
         </h1>
-        <Suspense fallback={<Loader size='lg' />}>
+        <Suspense
+          fallback={
+            <div className='flex h-[350px] flex-col justify-center'>
+              <Loader size='lg' />
+            </div>
+          }
+        >
           <VerseSelect />
         </Suspense>
       </div>
