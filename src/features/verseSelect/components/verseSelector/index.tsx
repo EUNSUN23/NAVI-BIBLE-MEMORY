@@ -1,17 +1,26 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect, useRef } from 'react';
 import { useVerseSelectStore } from '@store/verseSelectStore';
 import VerseOption from '@features/verseSelect/components/verseOption';
 import { useVersesSummary } from '@features/verseSelect/api/getVersesSummary';
 
 type VerseSelectorProps = {
-  series_code: string;
+  seriesCode: string;
 };
 
-function VerseSelector({ series_code }: VerseSelectorProps) {
+function VerseSelector({ seriesCode }: VerseSelectorProps) {
+  const containerRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    containerRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+    });
+  }, []);
+
   const resetSelected = useVerseSelectStore(state => state.reset);
   const addSelected = useVerseSelectStore(state => state.add);
 
-  const { data } = useVersesSummary(series_code);
+  const { data } = useVersesSummary(seriesCode);
 
   const handleChangeAllCheckbox = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.checked) resetSelected();
@@ -22,6 +31,7 @@ function VerseSelector({ series_code }: VerseSelectorProps) {
 
   return (
     <ul
+      ref={containerRef}
       role='list'
       className='m-2 max-h-[200px] divide-y divide-greyBlue/50 overflow-y-auto'
     >
