@@ -3,13 +3,15 @@ import { Field } from '@headlessui/react';
 import { ComposedBoundary } from '@/lib/error/ComposedBoundary';
 import ErrorMessage from '@/lib/error/ErrorMessage';
 import Loader from '@/shared/ui/Loader';
-import BibleVersionCombobox from '@features/bibleVersionSelect/components/bibleVersionCombobox';
+import BibleVersionCombobox from './bibleVersion-select-combobox';
 
 type BibleVersionSelectProps = {
   className?: string;
 };
 
-function BibleVersionSelect({ className = '' }: BibleVersionSelectProps) {
+export function BibleVersionSelect({
+  className = '',
+}: BibleVersionSelectProps) {
   return (
     <Field className={className}>
       <CommonCombobox.Label>성경버전</CommonCombobox.Label>
@@ -24,5 +26,3 @@ function BibleVersionSelect({ className = '' }: BibleVersionSelectProps) {
     </Field>
   );
 }
-
-export default BibleVersionSelect;

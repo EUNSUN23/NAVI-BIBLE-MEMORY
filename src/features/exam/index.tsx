@@ -1,4 +1,4 @@
-import { useBibleVersionStore } from '@store/bibleVersionStore';
+import { useBibleVersionStore } from '@/entities/bibleVersion';
 import { useVerseSelectStore } from '@store/verseSelectStore';
 import { useShallow } from 'zustand/react/shallow';
 import Timer from '@features/exam/components/timer';

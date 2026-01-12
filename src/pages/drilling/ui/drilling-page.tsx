@@ -1,6 +1,6 @@
 import { useVerseSelectStore } from '@store/verseSelectStore';
 import { useEffect } from 'react';
-import BibleVersionSelect from '@features/bibleVersionSelect';
+import { BibleVersionSelect } from '@/entities/bibleVersion';
 import CardHideOptionSelect from '@features/cardHideOptionSelect';
 import VerseDisplay from '@features/verseDisplay';
 import ExamConfigModal from '@features/examConfig';

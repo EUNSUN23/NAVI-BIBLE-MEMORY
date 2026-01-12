@@ -5,7 +5,7 @@ import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
 import VerseCard from '@features/verseDisplay/components/verseCard';
 import { useRef, useState } from 'react';
-import { useBibleVersionStore } from '@store/bibleVersionStore';
+import { useBibleVersionStore } from '@/entities/bibleVersion';
 import { useVerseSelectStore } from '@store/verseSelectStore';
 import { useShallow } from 'zustand/react/shallow';
 import { useVersesDetail } from '@features/verseDisplay/api/getVersesDetail';

@@ -1,7 +1,8 @@
-import { BibleVersion, Verse } from '@/types/data.types';
+import { Verse } from '@/types/data.types';
 import supabase from 'src/supabase';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { supabaseResponseHandler } from '@/lib/api/supabaseResponseHandler';
+import { BibleVersion } from '@/entities/bibleVersion/@x/verse';
 
 export const getVersesDetail = async (
   verseIds: Verse['idx'][],

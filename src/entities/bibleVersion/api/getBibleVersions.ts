@@ -1,4 +1,4 @@
-import supabase from 'src/supabase';
+import supabase from '@/supabase';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { supabaseResponseHandler } from '@/lib/api/supabaseResponseHandler';
 
