@@ -1,5 +1,5 @@
 import { createVerseAddress } from '@utils/common';
-import { useCardHideOptionStore } from '@store/drilling/cardHideOptionStore';
+import { useCardHideOptionStore } from '@/entities/cardHideOption';
 import { ClassValue } from 'clsx';
 import cn from '@/shared/styles/cn';
 import { CARD_HIDE_OPTIONS } from '@/msw/mockData';

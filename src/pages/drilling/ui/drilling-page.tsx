@@ -1,7 +1,7 @@
 import { useVerseSelectStore } from '@/entities/verse';
 import { useEffect } from 'react';
 import { BibleVersionSelect } from '@/entities/bibleVersion';
-import CardHideOptionSelect from '@features/cardHideOptionSelect';
+import { CardHideOptionSelect } from '@/entities/cardHideOption';
 import VerseDisplay from '@features/verseDisplay';
 import ExamConfigModal from '@features/examConfig';
 import { useNavigate } from 'react-router-dom';

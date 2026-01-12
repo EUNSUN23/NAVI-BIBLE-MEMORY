@@ -3,13 +3,15 @@ import { Field } from '@headlessui/react';
 import { ComposedBoundary } from '@/lib/error/ComposedBoundary';
 import ErrorMessage from '@/lib/error/ErrorMessage';
 import Loader from '@/shared/ui/Loader';
-import CardHideOptionCombobox from '@features/cardHideOptionSelect/components/cardHideOptionCombobox';
+import CardHideOptionCombobox from './cardHideOption-combobox';
 
 type CardHideOptionSelectProps = {
   className?: string;
 };
 
-function CardHideOptionSelect({ className = '' }: CardHideOptionSelectProps) {
+export function CardHideOptionSelect({
+  className = '',
+}: CardHideOptionSelectProps) {
   return (
     <Field className={className}>
       <CommonCombobox.Label>숨김</CommonCombobox.Label>
@@ -24,5 +26,3 @@ function CardHideOptionSelect({ className = '' }: CardHideOptionSelectProps) {
     </Field>
   );
 }
-
-export default CardHideOptionSelect;
