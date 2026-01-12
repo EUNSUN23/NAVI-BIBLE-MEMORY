@@ -1,7 +1,10 @@
-import { useVerseSelectStore, type VerseSummaryData } from '@/entities/verse';
+import {
+  createVerseAddress,
+  useVerseSelectStore,
+  type VerseSummaryData,
+} from '@/entities/verse';
 import { useShallow } from 'zustand/react/shallow';
 import { ChangeEvent } from 'react';
-import { createVerseAddress } from '@utils/common';
 import { createVerseOptionId } from '@features/verseSelect/utils/createVerseOptionId';
 
 type VerseOptionProps = {

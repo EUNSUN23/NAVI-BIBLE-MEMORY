@@ -2,7 +2,7 @@ import { useVerseSelectStore } from '@/entities/verse';
 import { useEffect } from 'react';
 import { BibleVersionSelect } from '@/entities/bibleVersion';
 import { CardHideOptionSelect } from '@/entities/cardHideOption';
-import VerseDisplay from '@features/verseDisplay';
+import { VerseDrill } from '@features/verse-drill';
 import { ExamConfigModal } from '@features/exam-config';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '@/shared/constants/routes';
@@ -25,7 +25,7 @@ export function DrillingPage() {
             <BibleVersionSelect className='flex w-[200px] flex-col items-start mobile:w-[120px]' />
             <CardHideOptionSelect className='flex w-[200px] flex-col items-start mobile:w-[120px]' />
           </div>
-          <VerseDisplay />
+          <VerseDrill />
         </div>
       )}
       <ExamConfigModal />

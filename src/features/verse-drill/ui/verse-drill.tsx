@@ -1,9 +1,9 @@
 import { ComposedBoundary } from '@/lib/error/ComposedBoundary';
 import ErrorMessage from '@/lib/error/ErrorMessage';
 import Loader from '@/shared/ui/Loader';
-import VerseCardSwiper from '@features/verseDisplay/components/verseCardSwiper';
+import VerseCardSwiper from './verse-card-swiper';
 
-function VerseDisplay() {
+export function VerseDrill() {
   return (
     <ComposedBoundary
       fallbackRender={({ resetErrorBoundary, error }) => (
@@ -21,5 +21,3 @@ function VerseDisplay() {
     </ComposedBoundary>
   );
 }
-
-export default VerseDisplay;

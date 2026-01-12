@@ -9,12 +9,12 @@ import { mockAnimationsApi } from 'jsdom-testing-mocks';
 import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { userEvent } from '@testing-library/user-event';
 import { describe } from 'vitest';
-import { createShortVerseAddress, createVerseAddress } from '@utils/common';
-import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
+import { createVerseCardTestId } from '@/entities/verse/ui/create-verse-card-test-id';
 import { mockVerseSelectStore } from '@utils/test/mockZustandStore';
-import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
+import { orderVerseDetails } from 'src/entities/verse';
 import { DrillingPage } from './drilling-page';
 import { render } from '@utils/test/render';
+import { createShortVerseAddress, createVerseAddress } from '@/entities/verse';
 
 const setup = async () => {
   const user = userEvent.setup();

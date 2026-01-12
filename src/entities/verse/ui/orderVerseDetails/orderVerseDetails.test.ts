@@ -1,8 +1,5 @@
-import {
-  VerseDetailData,
-  VerseDetailDataList,
-} from '@/entities/verse/api/verseDetail.type';
-import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails/index';
+import { VerseDetailData, VerseDetailDataList } from '@/entities/verse';
+import { orderVerseDetails } from './orderVerseDetails';
 
 const createDummyCard = (
   seriesOrd: number,

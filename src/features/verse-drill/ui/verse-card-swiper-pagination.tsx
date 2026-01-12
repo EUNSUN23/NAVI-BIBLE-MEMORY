@@ -2,17 +2,22 @@ import { useSwiper } from 'swiper/react';
 import ReactPaginate from 'react-paginate';
 import { FiChevronsLeft } from '@react-icons/all-files/fi/FiChevronsLeft';
 import { FiChevronsRight } from '@react-icons/all-files/fi/FiChevronsRight';
-import { createShortVerseAddress } from '@utils/common';
-import { type VerseDetailDataList } from '@/entities/verse';
+import {
+  createShortVerseAddress,
+  type VerseDetailDataList,
+} from '@/entities/verse';
 import { useMediaQuery } from 'react-responsive';
 import { MAX_MOBILE } from '@/constants/screenSize';
 
-type SwiperBulletProps = {
+type VerseCardSwiperPaginationProps = {
   verses: VerseDetailDataList;
   activeIndex: number;
 };
 
-function SwiperPagination({ verses, activeIndex }: SwiperBulletProps) {
+function VerseCardSwiperPagination({
+  verses,
+  activeIndex,
+}: VerseCardSwiperPaginationProps) {
   const isMobile = useMediaQuery({ query: `(max-width: ${MAX_MOBILE})` });
   const swiper = useSwiper();
 
@@ -69,4 +74,4 @@ function SwiperPagination({ verses, activeIndex }: SwiperBulletProps) {
   );
 }
 
-export default SwiperPagination;
+export default VerseCardSwiperPagination;

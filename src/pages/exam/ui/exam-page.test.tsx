@@ -3,15 +3,14 @@ import { VERSE_DETAIL_DATA_KOR } from '@msw/mockData';
 import { userEvent } from '@testing-library/user-event';
 import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { screen, waitFor, within } from '@testing-library/react';
-import { createVerseAddress } from '@utils/common';
 import {
   mockExamConfigStore,
   mockVerseSelectStore,
 } from '@utils/test/mockZustandStore';
-import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
 import { routes } from '@/shared/constants/routes';
 import { ExamPage } from './exam-page';
 import { render } from '@utils/test/render';
+import { createVerseAddress } from '@/entities/verse';
 
 const navigateFn = vi.fn();
 const setup = () => {
@@ -19,12 +18,10 @@ const setup = () => {
   render(<ExamPage />);
   return {
     user,
-    versesAllByAsc: orderVerseDetails(
-      VERSE_DETAIL_DATA_KOR.map(verse => ({
-        ...verse,
-        contents: verse.contents.trim(),
-      })),
-    ),
+    versesAllByAsc: VERSE_DETAIL_DATA_KOR.map(verse => ({
+      ...verse,
+      contents: verse.contents.trim(),
+    })),
     LOADER_ID: 'loader',
     HOME_LINK_LABEL: routes.home.label,
     DRILLING_LINK_LABEL: routes.drilling.label,

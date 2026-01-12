@@ -1,14 +1,14 @@
-import { createVerseAddress } from '@utils/common';
-import { useCardHideOptionStore } from '@/entities/cardHideOption';
 import { ClassValue } from 'clsx';
 import cn from '@/shared/styles/cn';
-import { CARD_HIDE_OPTIONS } from '@/msw/mockData';
-import { type VerseDetailData } from '@/entities/verse';
-import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
+import { CARD_HIDE_OPTIONS } from '@msw/mockData';
+import { type VerseDetailData } from '../api/verseDetail.type';
+import { createVerseCardTestId } from './create-verse-card-test-id';
+import { createVerseAddress } from './verse-address-format';
 
 const [_, HIDE_ADDR, HIDE_THEME, HIDE_CONTENTS] = CARD_HIDE_OPTIONS;
 
-type CardProps = {
+type VerseCardProps = {
+  hideOption: string;
   data: VerseDetailData;
 };
 
@@ -16,12 +16,12 @@ const cardTextClass = (isHidden: boolean, ...inputs: ClassValue[]) => {
   return cn(inputs, isHidden && 'text-covered');
 };
 
-function VerseCard({ data }: CardProps) {
+export function VerseCard({ hideOption, data }: VerseCardProps) {
   const {
     card_info: { theme, category },
     contents,
   } = data;
-  const { code } = useCardHideOptionStore(state => state.cardHideOption);
+
   const address = createVerseAddress(data);
   return (
     <div
@@ -30,7 +30,7 @@ function VerseCard({ data }: CardProps) {
     >
       <div
         className={cardTextClass(
-          code === HIDE_THEME.code,
+          hideOption === HIDE_THEME.code,
           'text-[27px] font-semibold mobile:text-[17px]',
         )}
       >
@@ -39,7 +39,7 @@ function VerseCard({ data }: CardProps) {
       <div>
         <div
           className={cardTextClass(
-            code === HIDE_ADDR.code,
+            hideOption === HIDE_ADDR.code,
             'mb-1 text-[26px] font-medium mobile:text-base',
           )}
         >
@@ -52,7 +52,7 @@ function VerseCard({ data }: CardProps) {
         >
           <div
             className={cardTextClass(
-              code === HIDE_CONTENTS.code,
+              hideOption === HIDE_CONTENTS.code,
               'max-h-[170px] mobile:max-h-[130px]',
             )}
           >
@@ -64,5 +64,3 @@ function VerseCard({ data }: CardProps) {
     </div>
   );
 }
-
-export default VerseCard;

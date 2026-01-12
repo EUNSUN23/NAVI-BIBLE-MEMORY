@@ -1,15 +1,18 @@
 import { describe } from 'vitest';
 import { userEvent } from '@testing-library/user-event';
 import { render } from '@utils/test/render';
-import VerseDisplay from '@features/verseDisplay/index';
-import { VERSE_DETAIL_DATA_KOR } from '@/msw/mockData';
+import { VerseDrill } from './verse-drill';
+import { VERSE_DETAIL_DATA_KOR } from '@msw/mockData';
 import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { screen, within } from '@testing-library/react';
-import { createShortVerseAddress, createVerseAddress } from '@utils/common';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
-import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
+import {
+  createShortVerseAddress,
+  createVerseAddress,
+  createVerseCardTestId,
+  orderVerseDetails,
+} from '@/entities/verse';
 import { mockVerseSelectStore } from '@utils/test/mockZustandStore';
-import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
 
 const setup = () => {
   const user = userEvent.setup();
@@ -19,7 +22,7 @@ const setup = () => {
       contents: data.contents.trim(),
     })),
   );
-  render(<VerseDisplay />);
+  render(<VerseDrill />);
   return {
     user,
     verseList,

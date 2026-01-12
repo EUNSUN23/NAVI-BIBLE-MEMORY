@@ -1,9 +1,8 @@
-import { createVerseAddress } from '@utils/common';
 import AddressInput from './address-input';
 import ThemeInput from './theme-input';
 import ContentsInput from './contents-input';
 import { type ExamExposeOption } from '@/entities/examExposeOption';
-import { type VerseDetailData } from '@/entities/verse';
+import { createVerseAddress, type VerseDetailData } from '@/entities/verse';
 
 type ExamCardProps = {
   data: VerseDetailData;

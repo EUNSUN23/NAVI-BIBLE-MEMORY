@@ -3,16 +3,23 @@ import SwiperCore from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
-import VerseCard from '@features/verseDisplay/components/verseCard';
+import {
+  orderVerseDetails,
+  useVerseSelectStore,
+  verseApi,
+  VerseCard,
+} from '@/entities/verse';
 import { useRef, useState } from 'react';
 import { useBibleVersionStore } from '@/entities/bibleVersion';
-import { useVerseSelectStore, verseApi } from '@/entities/verse';
 import { useShallow } from 'zustand/react/shallow';
-import SwiperPagination from 'src/features/verseDisplay/components/swiperPagination';
-import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
+import VerseCardSwiperPagination from '@features/verse-drill/ui/verse-card-swiper-pagination';
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { useCardHideOptionStore } from '@/entities/cardHideOption';
 
 function VerseCardSwiper() {
+  const { code: hideOption } = useCardHideOptionStore(
+    state => state.cardHideOption,
+  );
   const bibleVersion = useBibleVersionStore(state => state.bibleVersion);
   const verseIds = useVerseSelectStore(useShallow(state => state.verseIds));
 
@@ -40,10 +47,13 @@ function VerseCardSwiper() {
       >
         {verseDetails.map(v => (
           <SwiperSlide key={`card-${v.card_info.idx}`}>
-            <VerseCard data={v} />
+            <VerseCard hideOption={hideOption} data={v} />
           </SwiperSlide>
         ))}
-        <SwiperPagination verses={verseDetails} activeIndex={activeIndex} />
+        <VerseCardSwiperPagination
+          verses={verseDetails}
+          activeIndex={activeIndex}
+        />
       </Swiper>
     </div>
   );
