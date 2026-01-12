@@ -1,19 +1,19 @@
 import Modal from '@/shared/ui/modal';
-import TimeLimitInput from 'src/features/examConfig/components/timelimitInput';
-import ExposeSelector from 'src/features/examConfig/components/exposeSelector';
-import VerseCountInput from 'src/features/examConfig/components/verseCountInput';
-import { useExamConfigModalStore } from '@store/exam/examConfigModalStore';
+import TimeLimitInput from './time-limit-input';
+import ExposeSelector from './expose-exam-option-select';
+import VerseCountInput from './verse-count-input';
+import { useExamConfigModalStore } from '../model/exam-config-modal-store';
 import { ComposedBoundary } from '@/lib/error/ComposedBoundary';
 import ErrorMessage from '@/lib/error/ErrorMessage';
 import { Field } from '@headlessui/react';
 import { CommonCombobox } from '@/shared/ui/commonCombobox';
 import Loader from '@/shared/ui/Loader';
 import { useNavigate } from 'react-router-dom';
-import { useExamConfigStore } from '@store/exam/examConfigStore';
+import { useExamConfigStore } from '../model/exam-config-store';
 import { useShallow } from 'zustand/react/shallow';
 import { routes } from '@/shared/constants/routes';
 
-function ExamConfigModal() {
+export function ExamConfigModal() {
   const navigate = useNavigate();
   const isOpen = useExamConfigModalStore(state => state.isOpen);
   const setIsOpen = useExamConfigModalStore(state => state.setIsOpen);
@@ -61,5 +61,3 @@ function ExamConfigModal() {
     </Modal>
   );
 }
-
-export default ExamConfigModal;

@@ -1,5 +1,5 @@
 import ExamCard from 'src/features/exam/components/examCard';
-import { useExamConfigStore } from '@store/exam/examConfigStore';
+import { useExamConfigStore } from '@features/exam-config';
 import SubmitButton from '@features/exam/components/submitButton';
 import { type VerseDetailDataList } from '@/entities/verse';
 

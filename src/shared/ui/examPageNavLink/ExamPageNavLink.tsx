@@ -1,7 +1,7 @@
 import Nav from '@/shared/ui/Nav';
 import { MouseEvent, useTransition } from 'react';
-import { useExamConfigStore } from '@store/exam/examConfigStore';
-import { useExamConfigModalStore } from '@store/exam/examConfigModalStore';
+import { useExamConfigStore } from '@features/exam-config';
+import { useExamConfigModalStore } from '@features/exam-config/model/exam-config-modal-store';
 import { useVerseSelectStore } from '@/entities/verse';
 import { useShallow } from 'zustand/react/shallow';
 import { routes } from '@/shared/constants/routes';

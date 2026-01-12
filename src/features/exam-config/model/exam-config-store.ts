@@ -1,22 +1,6 @@
-import { type ExamExposeOption } from '@/entities/examExposeOption';
 import { create } from 'zustand/index';
-import { EXAM_EXPOSE_OPTIONS } from '@/msw/mockData';
-
-type ExamConfigState = {
-  time: number;
-  exposeOption: ExamExposeOption;
-  verseCount: number;
-};
-
-type ExamConfigAction = {
-  setTime: (time: number) => void;
-  setExposeOption: (exposeOption: ExamExposeOption) => void;
-  setVerseCount: (verseCount: number) => void;
-  reset: () => void;
-  isConfigValid: () => boolean;
-};
-
-export type ExamConfigStore = ExamConfigState & ExamConfigAction;
+import { EXAM_EXPOSE_OPTIONS } from '@msw/mockData';
+import { ExamConfigState, ExamConfigStore } from './models';
 
 const initialState: ExamConfigState = {
   time: 30,

@@ -1,13 +1,10 @@
 import type * as ZustandExportedTypes from 'zustand';
 import { useVerseSelectStore, VerseSelectStore } from '@/entities/verse';
-import {
-  ExamConfigStore,
-  useExamConfigStore,
-} from '@store/exam/examConfigStore';
+import { ExamConfigStore, useExamConfigStore } from '@features/exam-config';
 import {
   ExamConfigModalStore,
   useExamConfigModalStore,
-} from '@store/exam/examConfigModalStore';
+} from '@features/exam-config/model/exam-config-modal-store';
 
 const mockStore = <T extends Record<string, any>>(
   hook: ZustandExportedTypes.UseBoundStore<ZustandExportedTypes.StoreApi<T>>,

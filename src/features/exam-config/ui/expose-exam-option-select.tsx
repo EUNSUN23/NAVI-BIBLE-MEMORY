@@ -1,6 +1,6 @@
 import { CommonCombobox } from '@/shared/ui/commonCombobox';
 import { useShallow } from 'zustand/react/shallow';
-import { useExamConfigStore } from '@store/exam/examConfigStore';
+import { useExamConfigStore } from '../model/exam-config-store';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { examExposeOptionApi } from '@/entities/examExposeOption';
 

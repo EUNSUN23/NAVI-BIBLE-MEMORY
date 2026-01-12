@@ -1,5 +1,5 @@
 import { useShallow } from 'zustand/react/shallow';
-import { useExamConfigStore } from '@store/exam/examConfigStore';
+import { useExamConfigStore } from '../model/exam-config-store';
 
 function TimeLimitInput() {
   const time = useExamConfigStore(useShallow(state => state.time));

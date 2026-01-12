@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test } from 'vitest';
-import { EXAM_EXPOSE_OPTIONS, VERSE_SUMMARY_DATA } from '@/msw/mockData';
+import { EXAM_EXPOSE_OPTIONS, VERSE_SUMMARY_DATA } from '@msw/mockData';
 import { screen, within } from '@testing-library/react';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
 import mockAlert from '@utils/test/mocks/mockAlert';
@@ -8,7 +8,7 @@ import {
   mockExamConfigStore,
   mockVerseSelectStore,
 } from '@utils/test/mockZustandStore';
-import ExamConfigModal from '@features/examConfig/index';
+import { ExamConfigModal } from './exam-config-modal';
 import { render } from '@utils/test/render';
 import { userEvent } from '@testing-library/user-event';
 import { routes } from '@/shared/constants/routes';

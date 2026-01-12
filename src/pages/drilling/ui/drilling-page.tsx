@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { BibleVersionSelect } from '@/entities/bibleVersion';
 import { CardHideOptionSelect } from '@/entities/cardHideOption';
 import VerseDisplay from '@features/verseDisplay';
-import ExamConfigModal from '@features/examConfig';
+import { ExamConfigModal } from '@features/exam-config';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '@/shared/constants/routes';
 

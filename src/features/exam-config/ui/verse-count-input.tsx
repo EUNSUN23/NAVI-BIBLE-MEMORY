@@ -1,4 +1,4 @@
-import { useExamConfigStore } from '@store/exam/examConfigStore';
+import { useExamConfigStore } from '../model/exam-config-store';
 import { useShallow } from 'zustand/react/shallow';
 
 function VerseCountInput() {

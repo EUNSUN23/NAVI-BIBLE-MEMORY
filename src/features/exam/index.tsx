@@ -5,7 +5,7 @@ import Timer from '@features/exam/components/timer';
 import RangeInfo from '@features/exam/components/rangeInfo';
 import { useExamStatusStore } from '@store/exam/examStatusStore';
 import { useEffect } from 'react';
-import { useExamConfigStore } from '@store/exam/examConfigStore';
+import { useExamConfigStore } from '@features/exam-config';
 import reArrangeInRandomOrder from '@/shared/utils/reArrangeInRandomOrder';
 import ExamBoard from '@features/exam/components/examBoard';
 import { useSuspenseQuery } from '@tanstack/react-query';
