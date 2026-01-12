@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import RootComponent from '@/RootComponent';
+import { RootPage } from '@pages/root/ui/RootPage';
 import { lazy } from 'react';
 import { routes } from '@/shared/constants/routes';
 
@@ -16,7 +16,7 @@ const ExamPage = lazy(() =>
 export function App() {
   return (
     <Routes>
-      <Route path={routes.home.path} element={<RootComponent />}>
+      <Route path={routes.home.path} element={<RootPage />}>
         <Route index element={<HomePage />} />
         <Route path={routes.drilling.path} element={<DrillingPage />} />
         <Route path={routes.exam.path} element={<ExamPage />} />

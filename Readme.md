@@ -45,7 +45,7 @@ src
 ├── test         
 ├── types        
 ├── utils        
-├── RootComponent.tsx  
+├── RootPage.tsx  
 ├── main.tsx           
 ├── index.css          
 ├── vite-env.d.ts     ```

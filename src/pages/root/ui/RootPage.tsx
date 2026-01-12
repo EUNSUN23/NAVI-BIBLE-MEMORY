@@ -3,7 +3,7 @@ import Loader from '@/shared/ui/Loader';
 import { Suspense } from 'react';
 import { Header } from '@/shared/ui/Header';
 
-function RootComponent() {
+export function RootPage() {
   return (
     <div className='responsiveContainer'>
       <div className='flex w-full flex-col items-center justify-center'>
@@ -17,5 +17,3 @@ function RootComponent() {
     </div>
   );
 }
-
-export default RootComponent;
