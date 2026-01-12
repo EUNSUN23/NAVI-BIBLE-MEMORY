@@ -1,6 +1,6 @@
 import Nav from '@/shared/ui/Nav';
 import { MouseEvent } from 'react';
-import { useVerseSelectStore } from '@/entities/verse/model/store';
+import { useVerseSelectStore } from '@/entities/verse';
 import { useShallow } from 'zustand/react/shallow';
 import { routes } from '@/shared/constants/routes';
 

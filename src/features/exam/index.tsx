@@ -1,5 +1,5 @@
 import { useBibleVersionStore } from '@/entities/bibleVersion';
-import { useVerseSelectStore } from '@/entities/verse/model/store';
+import { useVerseSelectStore, verseApi } from '@/entities/verse';
 import { useShallow } from 'zustand/react/shallow';
 import Timer from '@features/exam/components/timer';
 import RangeInfo from '@features/exam/components/rangeInfo';
@@ -9,7 +9,6 @@ import { useExamConfigStore } from '@store/exam/examConfigStore';
 import reArrangeInRandomOrder from '@/shared/utils/reArrangeInRandomOrder';
 import ExamBoard from '@features/exam/components/examBoard';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { verseApi } from '@/entities/verse';
 
 function Exam() {
   const setIsFinished = useExamStatusStore(state => state.setIsFinished);

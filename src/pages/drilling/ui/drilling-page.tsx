@@ -1,4 +1,4 @@
-import { useVerseSelectStore } from '@/entities/verse/model/store';
+import { useVerseSelectStore } from '@/entities/verse';
 import { useEffect } from 'react';
 import { BibleVersionSelect } from '@/entities/bibleVersion';
 import CardHideOptionSelect from '@features/cardHideOptionSelect';

@@ -1,7 +1,6 @@
-import { useVerseSelectStore } from '@/entities/verse/model/store';
+import { useVerseSelectStore, type VerseSummaryData } from '@/entities/verse';
 import { useShallow } from 'zustand/react/shallow';
 import { ChangeEvent } from 'react';
-import { type VerseSummaryData } from '@/entities/verse';
 import { createVerseAddress } from '@utils/common';
 import { createVerseOptionId } from '@features/verseSelect/utils/createVerseOptionId';
 

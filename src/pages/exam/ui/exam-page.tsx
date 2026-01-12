@@ -1,4 +1,4 @@
-import { useVerseSelectStore } from '@/entities/verse/model/store';
+import { useVerseSelectStore } from '@/entities/verse';
 import { Suspense, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Exam from '@features/exam';

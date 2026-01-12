@@ -6,12 +6,11 @@ import { Navigation, Pagination } from 'swiper/modules';
 import VerseCard from '@features/verseDisplay/components/verseCard';
 import { useRef, useState } from 'react';
 import { useBibleVersionStore } from '@/entities/bibleVersion';
-import { useVerseSelectStore } from '@/entities/verse/model/store';
+import { useVerseSelectStore, verseApi } from '@/entities/verse';
 import { useShallow } from 'zustand/react/shallow';
 import SwiperPagination from 'src/features/verseDisplay/components/swiperPagination';
 import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { verseApi } from '@/entities/verse';
 
 function VerseCardSwiper() {
   const bibleVersion = useBibleVersionStore(state => state.bibleVersion);

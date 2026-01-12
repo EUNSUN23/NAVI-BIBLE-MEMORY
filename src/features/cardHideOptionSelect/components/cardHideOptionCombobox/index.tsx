@@ -1,7 +1,8 @@
 import { useCardHideOptionStore } from '@store/drilling/cardHideOptionStore';
 import { useShallow } from 'zustand/react/shallow';
-import { useCardHideOptions } from '@features/cardHideOptionSelect/api/getCardHideOptions';
 import { CommonCombobox, CommonComboboxItem } from '@/shared/ui/commonCombobox';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { cardHideOptionApi } from '@/entities/cardHideOption';
 
 function CardHideOptionCombobox() {
   const selectedItem = useCardHideOptionStore(
@@ -16,7 +17,7 @@ function CardHideOptionCombobox() {
     state => state.setCardHideOption,
   );
 
-  const { data } = useCardHideOptions();
+  const { data } = useSuspenseQuery(cardHideOptionApi.list());
 
   const items = data.map(({ name, code }) => ({ name, value: code, id: code }));
 
