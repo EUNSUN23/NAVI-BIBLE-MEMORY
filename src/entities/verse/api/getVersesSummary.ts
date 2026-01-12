@@ -1,6 +1,5 @@
 import { SeriesCode } from '@/types/data.types';
-import supabase from 'src/supabase';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import supabase from '@/supabase';
 import { supabaseResponseHandler } from '@/lib/api/supabaseResponseHandler';
 
 export const getVersesSummary = async (seriesCode: SeriesCode) => {
@@ -13,13 +12,4 @@ export const getVersesSummary = async (seriesCode: SeriesCode) => {
     .order('card_num', { ascending: true });
 
   return supabaseResponseHandler(res);
-};
-
-export const VERSES_SUMMARY_QUERY_KEY = 'verseSummaryData';
-
-export const useVersesSummary = (seriesCode: SeriesCode) => {
-  return useSuspenseQuery({
-    queryKey: [VERSES_SUMMARY_QUERY_KEY, seriesCode],
-    queryFn: () => getVersesSummary(seriesCode),
-  });
 };

@@ -3,7 +3,7 @@ import { useCardHideOptionStore } from '@store/drilling/cardHideOptionStore';
 import { ClassValue } from 'clsx';
 import cn from '@/shared/styles/cn';
 import { CARD_HIDE_OPTIONS } from '@/msw/mockData';
-import { VerseDetailData } from '@features/verseDisplay/types/verseDetail.type';
+import { type VerseDetailData } from '@/entities/verse';
 import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
 
 const [_, HIDE_ADDR, HIDE_THEME, HIDE_CONTENTS] = CARD_HIDE_OPTIONS;

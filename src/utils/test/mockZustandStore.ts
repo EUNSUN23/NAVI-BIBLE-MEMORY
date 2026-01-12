@@ -1,5 +1,5 @@
 import type * as ZustandExportedTypes from 'zustand';
-import { useVerseSelectStore, VerseSelectStore } from '@store/verseSelectStore';
+import { Store, useVerseSelectStore } from '@/entities/verse/model/store';
 import {
   ExamConfigStore,
   useExamConfigStore,
@@ -17,7 +17,7 @@ const mockStore = <T extends Record<string, any>>(
   hook.setState({ ...initStore, ...state });
 };
 
-export const mockVerseSelectStore = (state: Partial<VerseSelectStore>) => {
+export const mockVerseSelectStore = (state: Partial<Store>) => {
   mockStore(useVerseSelectStore, state);
 };
 

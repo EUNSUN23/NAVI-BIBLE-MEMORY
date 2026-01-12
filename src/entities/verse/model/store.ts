@@ -1,10 +1,10 @@
 import { create } from 'zustand';
-
-import { VerseId } from '@/types/data.types';
+import { VerseId } from '../model/models';
 
 type VerseSelectState = {
   verseIds: VerseId[];
 };
+
 type VerseSelectAction = {
   remove: (verseId: VerseId) => void;
   add: (verseId: VerseId | VerseId[]) => void;
@@ -13,13 +13,13 @@ type VerseSelectAction = {
   hasAnyId: () => boolean;
 };
 
-export type VerseSelectStore = VerseSelectState & VerseSelectAction;
+export type Store = VerseSelectState & VerseSelectAction;
 
 const initialState: VerseSelectState = {
   verseIds: [],
 };
 
-export const useVerseSelectStore = create<VerseSelectStore>()((set, get) => ({
+export const useVerseSelectStore = create<Store>()((set, get) => ({
   ...initialState,
   remove: verseId =>
     set(state => ({

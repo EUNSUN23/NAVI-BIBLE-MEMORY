@@ -1,6 +1,6 @@
 import SeriesTab from '@features/verseSelect/components/seriesTab';
 import { useEffect } from 'react';
-import { useVerseSelectStore } from '@store/verseSelectStore';
+import { useVerseSelectStore } from '@/entities/verse/model/store';
 import { useSeries } from '@features/verseSelect/api/getSeries';
 
 function VerseSelect() {

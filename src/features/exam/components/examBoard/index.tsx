@@ -1,7 +1,7 @@
 import ExamCard from 'src/features/exam/components/examCard';
 import { useExamConfigStore } from '@store/exam/examConfigStore';
 import SubmitButton from '@features/exam/components/submitButton';
-import { VerseDetailDataList } from '@features/verseDisplay/types/verseDetail.type';
+import { type VerseDetailDataList } from '@/entities/verse';
 
 type ExamBoardProps = {
   data: VerseDetailDataList;

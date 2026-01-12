@@ -1,4 +1,4 @@
-import { VerseDetailDataList } from '@features/verseDisplay/types/verseDetail.type';
+import { type VerseDetailDataList } from '@/entities/verse';
 
 export const orderVerseDetails = (data: VerseDetailDataList) => {
   return data.sort((a, b) => {

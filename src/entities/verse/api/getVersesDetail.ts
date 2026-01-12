@@ -1,8 +1,7 @@
-import { Verse } from '@/types/data.types';
-import supabase from 'src/supabase';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import supabase from '@/supabase';
 import { supabaseResponseHandler } from '@/lib/api/supabaseResponseHandler';
 import { BibleVersion } from '@/entities/bibleVersion/@x/verse';
+import { Verse } from '../model/models';
 
 export const getVersesDetail = async (
   verseIds: Verse['idx'][],
@@ -32,16 +31,4 @@ export const getVersesDetail = async (
   return supabaseResponseHandler(res, data =>
     data.map(v => ({ ...v, contents: v.contents.trim() })),
   );
-};
-
-export const VERSES_DETAIL_QUERY_KEY = 'verseDetails';
-
-export const useVersesDetail = (
-  verseIds: Verse['idx'][],
-  bibleVersion: BibleVersion,
-) => {
-  return useSuspenseQuery({
-    queryKey: [VERSES_DETAIL_QUERY_KEY, verseIds, bibleVersion],
-    queryFn: () => getVersesDetail(verseIds, bibleVersion),
-  });
 };

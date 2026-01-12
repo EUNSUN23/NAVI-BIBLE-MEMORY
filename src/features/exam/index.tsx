@@ -1,14 +1,15 @@
 import { useBibleVersionStore } from '@/entities/bibleVersion';
-import { useVerseSelectStore } from '@store/verseSelectStore';
+import { useVerseSelectStore } from '@/entities/verse/model/store';
 import { useShallow } from 'zustand/react/shallow';
 import Timer from '@features/exam/components/timer';
 import RangeInfo from '@features/exam/components/rangeInfo';
 import { useExamStatusStore } from '@store/exam/examStatusStore';
 import { useEffect } from 'react';
 import { useExamConfigStore } from '@store/exam/examConfigStore';
-import { useVersesDetail } from '@features/verseDisplay/api/getVersesDetail';
 import reArrangeInRandomOrder from '@/shared/utils/reArrangeInRandomOrder';
 import ExamBoard from '@features/exam/components/examBoard';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { verseApi } from '@/entities/verse';
 
 function Exam() {
   const setIsFinished = useExamStatusStore(state => state.setIsFinished);
@@ -27,7 +28,9 @@ function Exam() {
   const bibleVersion = useBibleVersionStore(state => state.bibleVersion);
   const verseIds = useVerseSelectStore(useShallow(state => state.verseIds));
 
-  const { data } = useVersesDetail(verseIds, bibleVersion);
+  const { data } = useSuspenseQuery(
+    verseApi.detailList(verseIds, bibleVersion),
+  );
 
   const examVerses = reArrangeInRandomOrder(data, verseCount);
 

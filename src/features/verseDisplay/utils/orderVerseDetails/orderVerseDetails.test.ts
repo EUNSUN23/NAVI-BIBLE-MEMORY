@@ -1,7 +1,7 @@
 import {
   VerseDetailData,
   VerseDetailDataList,
-} from '@features/verseDisplay/types/verseDetail.type';
+} from '@/entities/verse/api/verseDetail.type';
 import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails/index';
 
 const createDummyCard = (

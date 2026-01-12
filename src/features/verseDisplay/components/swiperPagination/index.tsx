@@ -3,7 +3,7 @@ import ReactPaginate from 'react-paginate';
 import { FiChevronsLeft } from '@react-icons/all-files/fi/FiChevronsLeft';
 import { FiChevronsRight } from '@react-icons/all-files/fi/FiChevronsRight';
 import { createShortVerseAddress } from '@utils/common';
-import { VerseDetailDataList } from '@features/verseDisplay/types/verseDetail.type';
+import { type VerseDetailDataList } from '@/entities/verse';
 import { useMediaQuery } from 'react-responsive';
 import { MAX_MOBILE } from '@/constants/screenSize';
 
