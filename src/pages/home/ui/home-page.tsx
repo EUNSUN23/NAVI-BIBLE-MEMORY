@@ -1,5 +1,5 @@
 import VerseSelect from '@features/verseSelect';
-import ExamConfigModal from 'src/features/examConfig';
+import ExamConfigModal from '@features/examConfig';
 import Loader from '@/shared/ui/Loader';
 import { Suspense } from 'react';
 

@@ -4,7 +4,7 @@ import {
   CARD_HIDE_OPTIONS,
   VERSE_DETAIL_DATA_GAE,
   VERSE_DETAIL_DATA_KOR,
-} from '@/msw/mockData';
+} from '@msw/mockData';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
 import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { userEvent } from '@testing-library/user-event';
@@ -13,7 +13,7 @@ import { createShortVerseAddress, createVerseAddress } from '@utils/common';
 import { createVerseCardTestId } from '@features/verseDisplay/utils/createVerseCardTestId';
 import { mockVerseSelectStore } from '@utils/test/mockZustandStore';
 import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
-import { DrillingPage } from '@pages/drilling/index';
+import { DrillingPage } from './drilling-page';
 import { render } from '@utils/test/render';
 
 const setup = async () => {

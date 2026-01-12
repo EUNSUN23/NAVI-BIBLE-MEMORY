@@ -1,5 +1,5 @@
 import { beforeEach, describe, test } from 'vitest';
-import { VERSE_DETAIL_DATA_KOR } from '@/msw/mockData';
+import { VERSE_DETAIL_DATA_KOR } from '@msw/mockData';
 import { userEvent } from '@testing-library/user-event';
 import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { screen, waitFor, within } from '@testing-library/react';
@@ -10,7 +10,7 @@ import {
 } from '@utils/test/mockZustandStore';
 import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
 import { routes } from '@/shared/constants/routes';
-import { ExamPage } from '@pages/exam/index';
+import { ExamPage } from '@pages/exam/ui/exam-page';
 import { render } from '@utils/test/render';
 
 const navigateFn = vi.fn();
