@@ -1,6 +1,6 @@
-import { SeriesCode } from '@/types/data.types';
 import supabase from '@/supabase';
 import { supabaseResponseHandler } from '@/lib/api/supabaseResponseHandler';
+import { SeriesCode } from '@/entities/series/@x/verse';
 
 export const getVersesSummary = async (seriesCode: SeriesCode) => {
   const res = await supabase

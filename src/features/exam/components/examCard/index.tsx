@@ -2,7 +2,7 @@ import { createVerseAddress } from '@utils/common';
 import AddressInput from '@features/exam/components/examCard/AddressInput';
 import ThemeInput from '@features/exam/components/examCard/ThemeInput';
 import ContentsInput from '@features/exam/components/examCard/ContentsInput';
-import { ExamExposeOption } from '@features/exam/types/examExposeOption.type';
+import { type ExamExposeOption } from '@/entities/examExposeOption';
 import { type VerseDetailData } from '@/entities/verse';
 
 type ExamCardProps = {

@@ -1,4 +1,4 @@
-import { SeriesDataList } from '@features/verseSelect/types/seriesData.type';
+import { SeriesDataList } from '@/entities/series/api/seriesData.type';
 
 export const SERIES_DATA: SeriesDataList = [
   {

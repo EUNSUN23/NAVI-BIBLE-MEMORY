@@ -2,7 +2,7 @@ import { useExamStatusStore } from '@store/exam/examStatusStore';
 import getExamResultHTML from '@/lib/getExamResultHTML';
 import { useState } from 'react';
 import parse from 'html-react-parser';
-import { ExamExposeOption } from '@features/exam/types/examExposeOption.type';
+import { type ExamExposeOption } from '@/entities/examExposeOption';
 import { EXAM_EXPOSE_OPTIONS } from '@/msw/mockData';
 
 type ThemeInputProps = {

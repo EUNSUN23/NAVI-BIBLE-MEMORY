@@ -1,4 +1,4 @@
-import { ExamExposeOption } from '@features/exam/types/examExposeOption.type';
+import { type ExamExposeOption } from '@/entities/examExposeOption';
 import { create } from 'zustand/index';
 import { EXAM_EXPOSE_OPTIONS } from '@/msw/mockData';
 

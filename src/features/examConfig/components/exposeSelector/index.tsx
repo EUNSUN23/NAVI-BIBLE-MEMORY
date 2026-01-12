@@ -1,7 +1,8 @@
 import { CommonCombobox } from '@/shared/ui/commonCombobox';
 import { useShallow } from 'zustand/react/shallow';
-import { useExamExposeOptions } from '@features/examConfig/api/getExamExposeOptions';
 import { useExamConfigStore } from '@store/exam/examConfigStore';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { examExposeOptionApi } from '@/entities/examExposeOption';
 
 function ExposeSelector() {
   const { name: exposeOptionName, code: exposeOptionCode } = useExamConfigStore(
@@ -9,7 +10,9 @@ function ExposeSelector() {
   );
   const setExposeOption = useExamConfigStore(state => state.setExposeOption);
 
-  const { data: exposeOptionData } = useExamExposeOptions();
+  const { data: exposeOptionData } = useSuspenseQuery(
+    examExposeOptionApi.list(),
+  );
 
   const items = exposeOptionData.map(({ name, code }) => ({
     name,

@@ -1,10 +1,11 @@
 import SeriesTab from '@features/verseSelect/components/seriesTab';
 import { useEffect } from 'react';
 import { useVerseSelectStore } from '@/entities/verse/model/store';
-import { useSeries } from '@features/verseSelect/api/getSeries';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { seriesApi } from '@/entities/series';
 
 function VerseSelect() {
-  const { data } = useSeries();
+  const { data } = useSuspenseQuery(seriesApi.list());
   const resetVerseSelect = useVerseSelectStore(state => state.reset);
 
   useEffect(() => {

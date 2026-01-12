@@ -1,6 +1,5 @@
 import supabase from '@/supabase';
 import { supabaseResponseHandler } from '@/lib/api/supabaseResponseHandler';
-import { useSuspenseQuery } from '@tanstack/react-query';
 
 export const getSeries = async () => {
   const res = await supabase
@@ -10,13 +9,4 @@ export const getSeries = async () => {
     .order('ord', { ascending: true });
 
   return supabaseResponseHandler(res);
-};
-
-const SERIES_QUERY_KEY = 'series';
-
-export const useSeries = () => {
-  return useSuspenseQuery({
-    queryKey: [SERIES_QUERY_KEY],
-    queryFn: getSeries,
-  });
 };

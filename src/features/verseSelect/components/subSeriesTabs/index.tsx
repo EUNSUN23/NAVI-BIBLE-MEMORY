@@ -1,6 +1,7 @@
 import SeriesTab from '@features/verseSelect/components/seriesTab';
-import { useSubSeries } from '@features/verseSelect/api/getSubSeries';
 import { useEffect, useRef } from 'react';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { subSeriesApi } from '@/entities/series';
 
 type SubSeriesTabsProps = {
   parentSeriesCode: string;
@@ -8,7 +9,7 @@ type SubSeriesTabsProps = {
 
 function SubSeriesTabs({ parentSeriesCode }: SubSeriesTabsProps) {
   const tabpanelRef = useRef<HTMLDivElement>(null);
-  const { data } = useSubSeries(parentSeriesCode);
+  const { data } = useSuspenseQuery(subSeriesApi.list(parentSeriesCode));
 
   useEffect(() => {
     tabpanelRef.current?.scrollIntoView({
