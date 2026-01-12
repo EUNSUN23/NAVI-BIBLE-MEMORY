@@ -1,11 +1,11 @@
 import { afterEach, describe, expect, test } from 'vitest';
 import { userEvent } from '@testing-library/user-event';
-import Timer from '@features/exam/components/timer/index';
+import { ExamTimer } from './exam-timer';
 import { act, screen } from '@testing-library/react';
 import { render } from '@utils/test/render';
 
 const setup = () => {
-  render(<Timer time={30} />);
+  render(<ExamTimer time={30} />);
 
   return {
     INIT_TIME: 30,

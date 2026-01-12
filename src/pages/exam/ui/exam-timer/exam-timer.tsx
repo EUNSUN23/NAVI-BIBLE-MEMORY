@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { useExamStatusStore } from '@store/exam/examStatusStore';
+import { useExamStatusStore } from '@pages/exam/model/examStatusStore';
 import { useShallow } from 'zustand/react/shallow';
 
-type TimerProps = {
+type ExamTimerProps = {
   time: number;
 };
-function Timer({ time }: TimerProps) {
+
+export function ExamTimer({ time }: ExamTimerProps) {
   const isFinished = useExamStatusStore(state => state.isFinished);
   const setIsFinished = useExamStatusStore(
     useShallow(state => state.setIsFinished),
@@ -84,5 +85,3 @@ function Timer({ time }: TimerProps) {
     </section>
   );
 }
-
-export default Timer;

@@ -10,7 +10,7 @@ import {
 } from '@utils/test/mockZustandStore';
 import orderVerseDetails from '@features/verseDisplay/utils/orderVerseDetails';
 import { routes } from '@/shared/constants/routes';
-import { ExamPage } from '@pages/exam/ui/exam-page';
+import { ExamPage } from './exam-page';
 import { render } from '@utils/test/render';
 
 const navigateFn = vi.fn();

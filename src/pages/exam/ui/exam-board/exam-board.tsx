@@ -1,13 +1,13 @@
-import ExamCard from 'src/features/exam/components/examCard';
+import { ExamCard } from './exam-card';
 import { useExamConfigStore } from '@features/exam-config';
-import SubmitButton from '@features/exam/components/submitButton';
+import SubmitButton from './exam-submit-button';
 import { type VerseDetailDataList } from '@/entities/verse';
 
 type ExamBoardProps = {
   data: VerseDetailDataList;
 };
 
-function ExamBoard({ data }: ExamBoardProps) {
+export function ExamBoard({ data }: ExamBoardProps) {
   const exposeOption = useExamConfigStore(state => state.exposeOption);
 
   return (
@@ -26,5 +26,3 @@ function ExamBoard({ data }: ExamBoardProps) {
     </section>
   );
 }
-
-export default ExamBoard;

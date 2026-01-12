@@ -1,11 +1,11 @@
 import { Textfit } from 'react-textfit';
 import { type VerseDetailDataList } from '@/entities/verse';
 
-type RangeInfoProps = {
+type ExamRangeInfoProps = {
   data: VerseDetailDataList;
 };
 
-function RangeInfo({ data }: RangeInfoProps) {
+export function ExamRangeInfo({ data }: ExamRangeInfoProps) {
   const init: string[] = [];
   const seriesNames = data
     .reduce((acc, curr) => {
@@ -54,5 +54,3 @@ function RangeInfo({ data }: RangeInfoProps) {
     </section>
   );
 }
-
-export default RangeInfo;

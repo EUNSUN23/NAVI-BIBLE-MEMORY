@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useExamStatusStore } from '@store/exam/examStatusStore';
+import { useExamStatusStore } from '@pages/exam/model/examStatusStore';
 import getExamResultHTML from '@/lib/getExamResultHTML';
 import parse from 'html-react-parser';
 import { type ExamExposeOption } from '@/entities/examExposeOption';
-import { EXAM_EXPOSE_OPTIONS } from '@/msw/mockData';
+import { EXAM_EXPOSE_OPTIONS } from '@msw/mockData';
 
 type AddressInputProps = {
   exposeOption: ExamExposeOption;
