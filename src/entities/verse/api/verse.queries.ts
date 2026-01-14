@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query';
 import { type VerseId } from '../model/models';
-import { type BibleVersion } from '@/entities/bibleVersion/@x/verse';
+import { type BibleVersion } from '@/entities/bible-version/@x/verse';
 import { getVersesSummary } from './getVersesSummary';
 import { getVersesDetail } from './getVersesDetail';
 

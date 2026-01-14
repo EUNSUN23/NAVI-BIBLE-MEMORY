@@ -1,4 +1,4 @@
-import type { ExamExposeOption } from '@/entities/examExposeOption';
+import type { ExamExposeOption } from 'src/entities/exam-expose-option';
 
 export type ExamConfigState = {
   time: number;

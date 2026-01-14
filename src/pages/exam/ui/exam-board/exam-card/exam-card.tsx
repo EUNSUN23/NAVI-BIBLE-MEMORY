@@ -1,7 +1,7 @@
 import AddressInput from './address-input';
 import ThemeInput from './theme-input';
 import ContentsInput from './contents-input';
-import { type ExamExposeOption } from '@/entities/examExposeOption';
+import { type ExamExposeOption } from 'src/entities/exam-expose-option';
 import { createVerseAddress, type VerseDetailData } from '@/entities/verse';
 
 type ExamCardProps = {

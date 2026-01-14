@@ -1,5 +1,5 @@
 import { queryOptions } from '@tanstack/react-query';
-import { getCardHideOptions } from './getCardHideOptions';
+import { getCardHideOptions } from './get-card-hide-options';
 
 export const cardHideOptionQueries = {
   all: () => ['cardHideOption'],

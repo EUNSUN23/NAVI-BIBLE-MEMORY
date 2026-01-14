@@ -1,5 +1,5 @@
 import { queryOptions } from '@tanstack/react-query';
-import { getExamExposeOptions } from './getExamExposeOptions';
+import { getExamExposeOptions } from './get-exam-expose-options';
 
 export const examExposeOptionQueries = {
   all: () => ['examExposeOption'],

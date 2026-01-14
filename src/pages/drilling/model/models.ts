@@ -1,4 +1,4 @@
-import { CardHideOptionData } from '@/entities/cardHideOption';
+import { CardHideOptionData } from 'src/entities/card-hide-option';
 
 export type CardHideOptionState = {
   cardHideOption: CardHideOptionData;

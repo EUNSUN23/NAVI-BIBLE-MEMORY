@@ -1,6 +1,6 @@
 import supabase from '@/supabase';
 import { supabaseResponseHandler } from '@/lib/api/supabaseResponseHandler';
-import { BibleVersion } from '@/entities/bibleVersion/@x/verse';
+import { BibleVersion } from '@/entities/bible-version/@x/verse';
 import { Verse } from '../model/models';
 
 export const getVersesDetail = async (

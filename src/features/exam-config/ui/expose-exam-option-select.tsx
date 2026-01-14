@@ -2,7 +2,7 @@ import { CommonCombobox } from '@/shared/ui/commonCombobox';
 import { useShallow } from 'zustand/react/shallow';
 import { useExamConfigStore } from '../model/exam-config-store';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { examExposeOptionApi } from '@/entities/examExposeOption';
+import { examExposeOptionApi } from 'src/entities/exam-expose-option';
 
 function ExposeSelector() {
   const { name: exposeOptionName, code: exposeOptionCode } = useExamConfigStore(
