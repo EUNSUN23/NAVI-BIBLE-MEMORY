@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { VerseSelectState, VerseSelectStore } from '../model/models';
+import { VerseSelectState, VerseSelectStore } from './models';
+import { create } from 'zustand/index';
 
 const initialState: VerseSelectState = {
   verseIds: [],

@@ -1,5 +1,5 @@
 import type * as ZustandExportedTypes from 'zustand';
-import { useVerseSelectStore, VerseSelectStore } from '@/entities/verse';
+import { useVerseSelectStore, VerseSelectStore } from '@/features/verse-select';
 import { ExamConfigStore, useExamConfigStore } from '@features/exam-config';
 import {
   ExamConfigModalStore,

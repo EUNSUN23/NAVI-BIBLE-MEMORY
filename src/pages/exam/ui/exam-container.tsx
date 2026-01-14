@@ -1,5 +1,6 @@
 import { useBibleVersionStore } from '@/entities/bibleVersion';
-import { useVerseSelectStore, verseApi } from '@/entities/verse';
+import { verseApi } from '@/entities/verse';
+import { useVerseSelectStore } from '@/features/verse-select';
 import { useShallow } from 'zustand/react/shallow';
 import { ExamTimer } from './exam-timer';
 import { ExamRangeInfo } from './exam-range-info';
