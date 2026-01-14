@@ -1,5 +1,5 @@
-import VerseSelector from '@features/verseSelect/components/verseSelector';
-import SubSeriesTabs from '@features/verseSelect/components/subSeriesTabs';
+import VerseSelector from '@features/verse-select/ui/verse-select';
+import SubSeriesTabs from '@features/verse-select/ui/sub-series-tabs';
 import { ComposedBoundary } from '@/lib/error/ComposedBoundary';
 import ErrorMessage from '@/lib/error/ErrorMessage';
 import Loader from '@/shared/ui/Loader';

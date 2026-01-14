@@ -1,4 +1,4 @@
-import VerseSelect from '@features/verseSelect';
+import { VerseSelectList } from '@features/verse-select';
 import { ExamConfigModal } from '@features/exam-config';
 import Loader from '@/shared/ui/Loader';
 import { Suspense } from 'react';
@@ -17,7 +17,7 @@ export function HomePage() {
             </div>
           }
         >
-          <VerseSelect />
+          <VerseSelectList />
         </Suspense>
       </div>
       <ExamConfigModal />

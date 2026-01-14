@@ -1,4 +1,4 @@
-import SeriesTab from '@features/verseSelect/components/seriesTab';
+import SeriesTab from '@features/verse-select/ui/series-tab';
 import { useEffect, useRef } from 'react';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { subSeriesApi } from '@/entities/series';

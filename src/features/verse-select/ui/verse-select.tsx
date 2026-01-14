@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useRef } from 'react';
 import { useVerseSelectStore, verseApi } from '@/entities/verse';
-import VerseOption from '@features/verseSelect/components/verseOption';
+import VerseOption from '@features/verse-select/ui/verse-option';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 type VerseSelectorProps = {

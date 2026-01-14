@@ -5,7 +5,7 @@ import {
 } from '@/entities/verse';
 import { useShallow } from 'zustand/react/shallow';
 import { ChangeEvent } from 'react';
-import { createVerseOptionId } from '@features/verseSelect/utils/createVerseOptionId';
+import { createVerseOptionId } from '@features/verse-select/lib/createVerseOptionId';
 
 type VerseOptionProps = {
   data: VerseSummaryData;
