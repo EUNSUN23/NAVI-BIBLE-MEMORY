@@ -1,5 +1,5 @@
+export { examExposeOptionQueries as examExposeOptionApi } from './api/exam-expose-option.queries';
 export {
-  examExposeOptionQueries as examExposeOptionApi,
   type ExamExposeOptionList,
   type ExamExposeOption,
-} from './api';
+} from './api/exam-expose-option.types';

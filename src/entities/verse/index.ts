@@ -1,4 +1,4 @@
-export { verseQueries as verseApi } from './api';
+export { verseQueries as verseApi } from './api/verse.queries';
 export {
   type VerseDetailData,
   type VerseDetailDataList,
