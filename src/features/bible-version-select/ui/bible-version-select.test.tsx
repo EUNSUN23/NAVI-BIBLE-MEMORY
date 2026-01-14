@@ -1,5 +1,5 @@
 import { userEvent } from '@testing-library/user-event';
-import { BibleVersionSelect } from './bibleVersion-select';
+import { BibleVersionSelect } from './bible-version-select';
 import { render } from '@utils/test/render';
 import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { screen, waitFor, within } from '@testing-library/react';

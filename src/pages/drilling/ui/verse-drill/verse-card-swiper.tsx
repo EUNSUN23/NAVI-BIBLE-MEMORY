@@ -6,7 +6,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import { orderVerseDetails, verseApi, VerseCard } from '@/entities/verse';
 import { useVerseSelectStore } from '@features/verse-select';
 import { useRef, useState } from 'react';
-import { useBibleVersionStore } from '@features/bibleVersion-select';
+import { useBibleVersionStore } from 'src/features/bible-version-select';
 import { useShallow } from 'zustand/react/shallow';
 import { VerseCardSwiperPagination } from './verse-card-swiper-pagination';
 import { useSuspenseQuery } from '@tanstack/react-query';

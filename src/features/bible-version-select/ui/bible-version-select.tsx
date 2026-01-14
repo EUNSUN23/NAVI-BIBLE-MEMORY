@@ -3,7 +3,7 @@ import { Field } from '@headlessui/react';
 import { ComposedBoundary } from '@/lib/error/ComposedBoundary';
 import ErrorMessage from '@/lib/error/ErrorMessage';
 import Loader from '@/shared/ui/Loader';
-import BibleVersionCombobox from './bibleVersion-select-combobox';
+import BibleVersionCombobox from './bible-version-select-combobox';
 
 type BibleVersionSelectProps = {
   className?: string;
