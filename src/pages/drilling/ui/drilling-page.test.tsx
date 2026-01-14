@@ -9,7 +9,7 @@ import { mockAnimationsApi } from 'jsdom-testing-mocks';
 import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
 import { userEvent } from '@testing-library/user-event';
 import { describe } from 'vitest';
-import { createVerseCardTestId } from '@/entities/verse/ui/create-verse-card-test-id';
+import { createVerseCardTestId } from '@/entities/verse/lib/create-verse-card-test-id';
 import { mockVerseSelectStore } from '@utils/test/mockZustandStore';
 import { orderVerseDetails } from 'src/entities/verse';
 import { DrillingPage } from './drilling-page';

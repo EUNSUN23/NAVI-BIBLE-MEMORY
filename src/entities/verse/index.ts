@@ -9,7 +9,7 @@ export { type VerseSelectStore } from './model/models';
 export {
   createShortVerseAddress,
   createVerseAddress,
-} from './ui/verse-address-format';
-export { createVerseCardTestId } from './ui/create-verse-card-test-id';
-export { orderVerseDetails } from './ui/orderVerseDetails';
+} from './lib/verse-address-format';
+export { createVerseCardTestId } from './lib/create-verse-card-test-id';
+export { orderVerseDetails } from './lib/orderVerseDetails';
 export { VerseCard } from './ui/verse-card';
