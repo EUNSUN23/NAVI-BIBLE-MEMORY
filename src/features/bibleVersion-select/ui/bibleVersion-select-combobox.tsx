@@ -1,6 +1,6 @@
-import { useBibleVersionStore } from '../../model/store';
+import { useBibleVersionStore } from '../model/store';
 import { useShallow } from 'zustand/react/shallow';
-import { useBibleVersions } from '../../api/getBibleVersions';
+import { useBibleVersions } from '@/entities/bibleVersion';
 import { CommonCombobox, CommonComboboxItem } from '@/shared/ui/commonCombobox';
 
 function BibleVersionCombobox() {

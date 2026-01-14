@@ -3,7 +3,7 @@ import { Field } from '@headlessui/react';
 import { ComposedBoundary } from '@/lib/error/ComposedBoundary';
 import ErrorMessage from '@/lib/error/ErrorMessage';
 import Loader from '@/shared/ui/Loader';
-import CardHideOptionCombobox from './cardHideOption-combobox';
+import CardHideOptionCombobox from './card-hide-option-combobox';
 
 type CardHideOptionSelectProps = {
   className?: string;

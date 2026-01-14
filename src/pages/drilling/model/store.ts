@@ -1,7 +1,7 @@
 import { create } from 'zustand/index';
 import { CARD_HIDE_OPTIONS } from '@msw/mockData';
-import { CardHideOptionState, CardHideOptionStore } from '../model/models';
-import { CardHideOptionData } from '../api/cardHideOption.types';
+import { CardHideOptionState, CardHideOptionStore } from './models';
+import { CardHideOptionData } from '@/entities/cardHideOption';
 
 const [HIDE_NONE] = CARD_HIDE_OPTIONS;
 const initialState: CardHideOptionState = {

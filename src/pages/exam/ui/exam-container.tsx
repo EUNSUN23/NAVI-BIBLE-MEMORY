@@ -1,4 +1,4 @@
-import { useBibleVersionStore } from '@/entities/bibleVersion';
+import { useBibleVersionStore } from '@features/bibleVersion-select';
 import { verseApi } from '@/entities/verse';
 import { useVerseSelectStore } from '@/features/verse-select';
 import { useShallow } from 'zustand/react/shallow';
