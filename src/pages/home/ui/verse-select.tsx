@@ -1,13 +1,13 @@
 import { ChangeEvent, useEffect, useRef } from 'react';
 import { useVerseSelectStore, verseApi } from '@/entities/verse';
-import VerseOption from '@features/verse-select/ui/verse-option';
+import { VerseOption } from './verse-option';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 type VerseSelectorProps = {
   seriesCode: string;
 };
 
-function VerseSelector({ seriesCode }: VerseSelectorProps) {
+export function VerseSelector({ seriesCode }: VerseSelectorProps) {
   const containerRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
@@ -58,5 +58,3 @@ function VerseSelector({ seriesCode }: VerseSelectorProps) {
     </ul>
   );
 }
-
-export default VerseSelector;

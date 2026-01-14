@@ -2,7 +2,7 @@ import { useVerseSelectStore } from '@/entities/verse';
 import { useEffect } from 'react';
 import { BibleVersionSelect } from '@/entities/bibleVersion';
 import { CardHideOptionSelect } from '@/entities/cardHideOption';
-import { VerseDrill } from '@features/verse-drill';
+import { VerseDrill } from './verse-drill';
 import { ExamConfigModal } from '@features/exam-config';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '@/shared/constants/routes';

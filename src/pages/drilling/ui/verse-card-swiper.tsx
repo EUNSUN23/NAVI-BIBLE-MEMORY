@@ -12,7 +12,7 @@ import {
 import { useRef, useState } from 'react';
 import { useBibleVersionStore } from '@/entities/bibleVersion';
 import { useShallow } from 'zustand/react/shallow';
-import VerseCardSwiperPagination from '@features/verse-drill/ui/verse-card-swiper-pagination';
+import { VerseCardSwiperPagination } from './verse-card-swiper-pagination';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { useCardHideOptionStore } from '@/entities/cardHideOption';
 

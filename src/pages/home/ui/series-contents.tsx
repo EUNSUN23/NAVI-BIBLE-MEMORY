@@ -1,5 +1,5 @@
-import VerseSelector from '@features/verse-select/ui/verse-select';
-import SubSeriesTabs from '@features/verse-select/ui/sub-series-tabs';
+import { VerseSelector } from './verse-select';
+import { SubSeriesTabs } from './sub-series-tabs';
 import { ComposedBoundary } from '@/lib/error/ComposedBoundary';
 import ErrorMessage from '@/lib/error/ErrorMessage';
 import Loader from '@/shared/ui/Loader';
@@ -10,7 +10,7 @@ export type SeriesContentsProps = {
   testId: string;
 };
 
-function SeriesContents({
+export function SeriesContents({
   hasSubSeries,
   seriesCode,
   testId,
@@ -41,5 +41,3 @@ function SeriesContents({
     </div>
   );
 }
-
-export default SeriesContents;

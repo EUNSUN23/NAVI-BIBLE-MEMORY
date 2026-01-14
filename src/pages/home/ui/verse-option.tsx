@@ -5,13 +5,13 @@ import {
 } from '@/entities/verse';
 import { useShallow } from 'zustand/react/shallow';
 import { ChangeEvent } from 'react';
-import { createVerseOptionId } from '@features/verse-select/lib/createVerseOptionId';
+import { createVerseOptionId } from '../lib/createVerseOptionId';
 
 type VerseOptionProps = {
   data: VerseSummaryData;
 };
 
-function VerseOption({ data }: VerseOptionProps) {
+export function VerseOption({ data }: VerseOptionProps) {
   const { idx, theme } = data;
 
   const isSelected = useVerseSelectStore(useShallow(state => state.hasId(idx)));
@@ -51,5 +51,3 @@ function VerseOption({ data }: VerseOptionProps) {
     </li>
   );
 }
-
-export default VerseOption;

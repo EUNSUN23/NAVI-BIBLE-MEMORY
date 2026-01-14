@@ -1,4 +1,4 @@
-import { VerseSelectList } from '@features/verse-select';
+import { VerseSelectList } from './verse-select-list';
 import { ExamConfigModal } from '@features/exam-config';
 import Loader from '@/shared/ui/Loader';
 import { Suspense } from 'react';

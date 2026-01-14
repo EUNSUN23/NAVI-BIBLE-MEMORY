@@ -14,7 +14,7 @@ type VerseCardSwiperPaginationProps = {
   activeIndex: number;
 };
 
-function VerseCardSwiperPagination({
+export function VerseCardSwiperPagination({
   verses,
   activeIndex,
 }: VerseCardSwiperPaginationProps) {
@@ -73,5 +73,3 @@ function VerseCardSwiperPagination({
     />
   );
 }
-
-export default VerseCardSwiperPagination;

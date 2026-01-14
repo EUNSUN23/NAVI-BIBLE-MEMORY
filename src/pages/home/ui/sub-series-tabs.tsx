@@ -1,4 +1,4 @@
-import SeriesTab from '@features/verse-select/ui/series-tab';
+import { SeriesTab } from './series-tab';
 import { useEffect, useRef } from 'react';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { subSeriesApi } from '@/entities/series';
@@ -7,7 +7,7 @@ type SubSeriesTabsProps = {
   parentSeriesCode: string;
 };
 
-function SubSeriesTabs({ parentSeriesCode }: SubSeriesTabsProps) {
+export function SubSeriesTabs({ parentSeriesCode }: SubSeriesTabsProps) {
   const tabpanelRef = useRef<HTMLDivElement>(null);
   const { data } = useSuspenseQuery(subSeriesApi.list(parentSeriesCode));
 
@@ -31,5 +31,3 @@ function SubSeriesTabs({ parentSeriesCode }: SubSeriesTabsProps) {
     </div>
   );
 }
-
-export default SubSeriesTabs;

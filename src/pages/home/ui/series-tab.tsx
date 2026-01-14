@@ -4,7 +4,7 @@ import { FaCaretDown } from '@react-icons/all-files/fa/FaCaretDown';
 import cn from '@/shared/styles/cn';
 import { cva } from 'class-variance-authority';
 import { SeriesData } from '@/entities/series/api/seriesData.type';
-import { createSeriesTabPanelId } from '@features/verse-select/lib/createSeriesTabPanelId';
+import { createSeriesTabPanelId } from '../lib/createSeriesTabPanelId';
 import Loader from '@/shared/ui/Loader';
 
 const tabVariants = cva(
@@ -32,15 +32,17 @@ const caretVariants = cva('flex size-10 items-center justify-center', {
   },
 });
 
-const SeriesContents = lazy(
-  () => import('@features/verse-select/ui/series-contents'),
+const SeriesContents = lazy(() =>
+  import('@pages/home/ui/series-contents').then(module => ({
+    default: module.SeriesContents,
+  })),
 );
 
 type SeriesTabProps = {
   data: SeriesData;
 };
 
-function SeriesTab({ data }: SeriesTabProps) {
+export function SeriesTab({ data }: SeriesTabProps) {
   const [isTabOpen, setIsTabOpen] = useState<boolean>(false);
 
   const { parent_series, series_code, sub_series_opt } = data;
@@ -88,5 +90,3 @@ function SeriesTab({ data }: SeriesTabProps) {
     </div>
   );
 }
-
-export default SeriesTab;
