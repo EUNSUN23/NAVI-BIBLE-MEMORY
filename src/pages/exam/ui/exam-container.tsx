@@ -1,11 +1,11 @@
 import { useBibleVersionStore } from 'src/features/bible-version-select';
-import { verseApi } from '@/entities/verse';
+import { verseApi } from '@entities/verse';
 import { useVerseSelectStore } from '@/features/verse-select';
 import { useShallow } from 'zustand/react/shallow';
 import { ExamTimer } from './exam-timer';
 import { ExamRangeInfo } from './exam-range-info';
 import { useExamConfigStore } from '@features/exam-config';
-import reArrangeInRandomOrder from '@/shared/utils/reArrangeInRandomOrder';
+import reArrangeInRandomOrder from '@shared/utils/reArrangeInRandomOrder';
 import { ExamBoard } from './exam-board';
 import { useSuspenseQuery } from '@tanstack/react-query';
 

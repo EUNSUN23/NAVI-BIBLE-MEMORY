@@ -1,4 +1,4 @@
-import { VerseDetailData, VerseDetailDataList } from '@/entities/verse';
+import { VerseDetailData, VerseDetailDataList } from '@entities/verse';
 import { orderVerseDetails } from './orderVerseDetails';
 
 const createDummyCard = (

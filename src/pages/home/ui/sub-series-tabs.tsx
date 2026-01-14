@@ -1,7 +1,7 @@
 import { SeriesTab } from './series-tab';
 import { useEffect, useRef } from 'react';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { subSeriesApi } from '@/entities/series';
+import { subSeriesApi } from '@entities/series';
 
 type SubSeriesTabsProps = {
   parentSeriesCode: string;

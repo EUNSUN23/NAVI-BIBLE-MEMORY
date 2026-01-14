@@ -1,4 +1,4 @@
-import Modal from '@/shared/ui/modal';
+import Modal from '@shared/ui/modal';
 import TimeLimitInput from './time-limit-input';
 import ExposeSelector from './expose-exam-option-select';
 import VerseCountInput from './verse-count-input';
@@ -6,12 +6,12 @@ import { useExamConfigModalStore } from '../model/exam-config-modal-store';
 import { ComposedBoundary } from '@/lib/error/ComposedBoundary';
 import ErrorMessage from '@/lib/error/ErrorMessage';
 import { Field } from '@headlessui/react';
-import { CommonCombobox } from '@/shared/ui/commonCombobox';
-import Loader from '@/shared/ui/Loader';
+import { CommonCombobox } from '@shared/ui/commonCombobox';
+import Loader from '@shared/ui/Loader';
 import { useNavigate } from 'react-router-dom';
 import { useExamConfigStore } from '../model/exam-config-store';
 import { useShallow } from 'zustand/react/shallow';
-import { routes } from '@/shared/constants/routes';
+import { routes } from '@shared/constants/routes';
 
 export function ExamConfigModal() {
   const navigate = useNavigate();

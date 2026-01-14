@@ -7,10 +7,10 @@ import {
   mockExamConfigStore,
   mockVerseSelectStore,
 } from '@utils/test/mockZustandStore';
-import { routes } from '@/shared/constants/routes';
+import { routes } from '@shared/constants/routes';
 import { ExamPage } from './exam-page';
 import { render } from '@utils/test/render';
-import { createVerseAddress } from '@/entities/verse';
+import { createVerseAddress } from '@entities/verse';
 
 const navigateFn = vi.fn();
 const setup = () => {

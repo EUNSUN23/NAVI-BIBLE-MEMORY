@@ -1,4 +1,4 @@
-import { SeriesDataList } from '@/entities/series/api/seriesData.type';
+import { SeriesDataList } from '@entities/series/api/seriesData.type';
 
 export const SERIES_DATA: SeriesDataList = [
   {

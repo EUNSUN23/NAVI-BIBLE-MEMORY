@@ -9,7 +9,7 @@ import {
 import { FaChevronDown } from '@react-icons/all-files/fa/FaChevronDown';
 import { FaCheck } from '@react-icons/all-files/fa/FaCheck';
 import { HTMLAttributes } from 'react';
-import cn from '@/shared/styles/cn';
+import cn from '@shared/styles/cn';
 
 export type CommonComboboxItem = {
   id: string;

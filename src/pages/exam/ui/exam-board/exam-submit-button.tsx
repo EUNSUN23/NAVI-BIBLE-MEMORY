@@ -1,5 +1,5 @@
 import { useExamStatusStore } from '@pages/exam/model/examStatusStore';
-import cn from '@/shared/styles/cn';
+import cn from '@shared/styles/cn';
 
 function SubmitButton() {
   const isFinished = useExamStatusStore(state => state.isFinished);

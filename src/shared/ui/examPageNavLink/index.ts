@@ -1,3 +1,3 @@
-import { ExamPageNavLink } from '@/shared/ui/examPageNavLink/ExamPageNavLink';
+import { ExamPageNavLink } from '@shared/ui/examPageNavLink/ExamPageNavLink';
 
 export default ExamPageNavLink;

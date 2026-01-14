@@ -11,7 +11,7 @@ import {
 import { ExamConfigModal } from './exam-config-modal';
 import { render } from '@utils/test/render';
 import { userEvent } from '@testing-library/user-event';
-import { routes } from '@/shared/constants/routes';
+import { routes } from '@shared/constants/routes';
 
 const setup = {
   TIME_LIMIT: { LABEL: '제한시간', DEFAULT: 30 },

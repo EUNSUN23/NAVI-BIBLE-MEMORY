@@ -1,11 +1,11 @@
 import { lazy, Suspense, useState } from 'react';
 import { FaCaretUp } from '@react-icons/all-files/fa/FaCaretUp';
 import { FaCaretDown } from '@react-icons/all-files/fa/FaCaretDown';
-import cn from '@/shared/styles/cn';
+import cn from '@shared/styles/cn';
 import { cva } from 'class-variance-authority';
-import { SeriesData } from '@/entities/series/api/seriesData.type';
+import { SeriesData } from '@entities/series/api/seriesData.type';
 import { createSeriesTabPanelId } from '../lib/createSeriesTabPanelId';
-import Loader from '@/shared/ui/Loader';
+import Loader from '@shared/ui/Loader';
 
 const tabVariants = cva(
   'w-full rounded-2xl px-7 py-2.5 text-center mobile:px-4 flex items-center justify-between space-x-1',
@@ -33,7 +33,7 @@ const caretVariants = cva('flex size-10 items-center justify-center', {
 });
 
 const SeriesContents = lazy(() =>
-  import('@pages/home/ui/series-contents').then(module => ({
+  import('../ui/series-contents').then(module => ({
     default: module.SeriesContents,
   })),
 );

@@ -1,20 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
 import { RootPage } from '@pages/root/ui/root-page';
 import { lazy } from 'react';
-import { routes } from '@/shared/constants/routes';
+import { routes } from '@shared/constants/routes';
 
 const HomePage = lazy(() =>
-  import('@pages/home/ui/home-page').then(module => ({
+  import('@pages/home').then(module => ({
     default: module.HomePage,
   })),
 );
 const DrillingPage = lazy(() =>
-  import('@pages/drilling/ui/drilling-page').then(module => ({
+  import('@pages/drilling').then(module => ({
     default: module.DrillingPage,
   })),
 );
 const ExamPage = lazy(() =>
-  import('@pages/exam/ui/exam-page').then(module => ({
+  import('@pages/exam').then(module => ({
     default: module.ExamPage,
   })),
 );

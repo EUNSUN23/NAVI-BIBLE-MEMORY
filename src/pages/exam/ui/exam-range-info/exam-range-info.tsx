@@ -1,5 +1,5 @@
 import { Textfit } from 'react-textfit';
-import { type VerseDetailDataList } from '@/entities/verse';
+import { type VerseDetailDataList } from '@entities/verse';
 
 type ExamRangeInfoProps = {
   data: VerseDetailDataList;

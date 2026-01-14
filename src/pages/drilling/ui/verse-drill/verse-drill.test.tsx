@@ -11,7 +11,7 @@ import {
   createVerseAddress,
   createVerseCardTestId,
   orderVerseDetails,
-} from '@/entities/verse';
+} from '@entities/verse';
 import { mockVerseSelectStore } from '@utils/test/mockZustandStore';
 
 const setup = () => {

@@ -3,7 +3,7 @@ import SwiperCore from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
-import { orderVerseDetails, verseApi, VerseCard } from '@/entities/verse';
+import { orderVerseDetails, verseApi, VerseCard } from '@entities/verse';
 import { useVerseSelectStore } from '@features/verse-select';
 import { useRef, useState } from 'react';
 import { useBibleVersionStore } from 'src/features/bible-version-select';

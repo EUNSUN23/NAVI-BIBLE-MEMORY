@@ -1,4 +1,4 @@
-import { createVerseAddress, type VerseSummaryData } from '@/entities/verse';
+import { createVerseAddress, type VerseSummaryData } from '@entities/verse';
 import { useVerseSelectStore } from '@/features/verse-select';
 import { useShallow } from 'zustand/react/shallow';
 import { ChangeEvent } from 'react';

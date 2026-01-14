@@ -5,7 +5,7 @@ import { FiChevronsRight } from '@react-icons/all-files/fi/FiChevronsRight';
 import {
   createShortVerseAddress,
   type VerseDetailDataList,
-} from '@/entities/verse';
+} from '@entities/verse';
 import { useMediaQuery } from 'react-responsive';
 import { MAX_MOBILE } from '@/constants/screenSize';
 

@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import cn from '@/shared/styles/cn';
+import cn from '@shared/styles/cn';
 
 interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
   text: string;

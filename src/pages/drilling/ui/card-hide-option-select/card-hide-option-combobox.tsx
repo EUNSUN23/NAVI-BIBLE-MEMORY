@@ -1,6 +1,6 @@
 import { useCardHideOptionStore } from '../../model/store';
 import { useShallow } from 'zustand/react/shallow';
-import { CommonCombobox, CommonComboboxItem } from '@/shared/ui/commonCombobox';
+import { CommonCombobox, CommonComboboxItem } from '@shared/ui/commonCombobox';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { cardHideOptionQueries as cardHideOptionApi } from 'src/entities/card-hide-option';
 

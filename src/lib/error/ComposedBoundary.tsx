@@ -3,8 +3,8 @@ import {
   ErrorBoundaryPropsWithRender,
 } from 'react-error-boundary';
 import { ReactNode, Suspense } from 'react';
-import { HttpError } from '@/shared/utils/HttpError';
-import HTTP_STATUS_CODE from '@/shared/constants/httpStatusCode';
+import { HttpError } from '@shared/utils/HttpError';
+import HTTP_STATUS_CODE from '@shared/constants/httpStatusCode';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 
 interface ComposedBoundaryProps extends ErrorBoundaryPropsWithRender {

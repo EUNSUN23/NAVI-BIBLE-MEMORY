@@ -14,7 +14,4 @@ export default defineConfig({
       brotliSize: true,
     }) as PluginOption,
   ],
-  build: {
-    sourcemap: true,
-  },
 });

@@ -5,7 +5,7 @@ import { CardHideOptionSelect } from './card-hide-option-select';
 import { VerseDrill } from './verse-drill';
 import { ExamConfigModal } from '@features/exam-config';
 import { useNavigate } from 'react-router-dom';
-import { routes } from '@/shared/constants/routes';
+import { routes } from '@shared/constants/routes';
 
 export function DrillingPage() {
   const navigate = useNavigate();

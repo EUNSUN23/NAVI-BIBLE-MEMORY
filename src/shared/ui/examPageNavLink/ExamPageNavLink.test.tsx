@@ -1,7 +1,7 @@
 import { mockVerseSelectStore } from '@utils/test/mockZustandStore';
 import { VERSE_SUMMARY_DATA } from '@msw/mockData';
 import { screen, waitFor } from '@testing-library/react';
-import { routes } from '@/shared/constants/routes';
+import { routes } from '@shared/constants/routes';
 import { render } from '@utils/test/render';
 import { MemoryRouter } from 'react-router-dom';
 import { ExamConfigModal } from '@features/exam-config';

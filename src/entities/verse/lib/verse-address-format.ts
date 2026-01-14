@@ -1,4 +1,4 @@
-import type { VerseDetailData, VerseSummaryData } from '@/entities/verse';
+import type { VerseDetailData, VerseSummaryData } from '@entities/verse';
 
 type VerseDetailLikeData<T> =
   T extends Pick<VerseDetailData, 'bible' | 'chapter' | 'verse1' | 'verse2'>

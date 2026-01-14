@@ -5,7 +5,7 @@ import { userEvent } from '@testing-library/user-event';
 import {
   CommonCombobox,
   CommonComboboxItem,
-} from '@/shared/ui/commonCombobox/index';
+} from '@shared/ui/commonCombobox/index';
 import { Field } from '@headlessui/react';
 import { BIBLE_VERSIONS } from '@/msw/mockData';
 

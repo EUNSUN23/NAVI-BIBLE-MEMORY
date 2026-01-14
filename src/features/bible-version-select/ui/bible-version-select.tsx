@@ -1,8 +1,8 @@
-import { CommonCombobox } from '@/shared/ui/commonCombobox';
+import { CommonCombobox } from '@shared/ui/commonCombobox';
 import { Field } from '@headlessui/react';
 import { ComposedBoundary } from '@/lib/error/ComposedBoundary';
 import ErrorMessage from '@/lib/error/ErrorMessage';
-import Loader from '@/shared/ui/Loader';
+import Loader from '@shared/ui/Loader';
 import BibleVersionCombobox from './bible-version-select-combobox';
 
 type BibleVersionSelectProps = {

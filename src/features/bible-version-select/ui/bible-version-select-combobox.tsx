@@ -1,7 +1,7 @@
 import { useBibleVersionStore } from '../model/store';
 import { useShallow } from 'zustand/react/shallow';
 import { useBibleVersions } from 'src/entities/bible-version';
-import { CommonCombobox, CommonComboboxItem } from '@/shared/ui/commonCombobox';
+import { CommonCombobox, CommonComboboxItem } from '@shared/ui/commonCombobox';
 
 function BibleVersionCombobox() {
   const selectedItem = useBibleVersionStore(
