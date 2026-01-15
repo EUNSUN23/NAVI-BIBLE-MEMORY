@@ -1,2 +1,2 @@
 export { type BibleVersion } from './model/models';
-export { useBibleVersions } from './api/get-bible-versions';
+export { bibleVersionQueries as bibleVersionApi } from './api/bible-version.queries';

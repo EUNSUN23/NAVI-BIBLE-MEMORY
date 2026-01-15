@@ -6,7 +6,7 @@ export const cardHideOptionQueries = {
   lists: () => [...cardHideOptionQueries.all(), 'list'],
   list: () =>
     queryOptions({
-      queryKey: [cardHideOptionQueries.lists()],
+      queryKey: [...cardHideOptionQueries.lists()],
       queryFn: getCardHideOptions,
     }),
 };

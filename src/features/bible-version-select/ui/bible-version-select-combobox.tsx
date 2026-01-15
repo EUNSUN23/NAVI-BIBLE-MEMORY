@@ -1,7 +1,8 @@
 import { useBibleVersionStore } from '../model/store';
 import { useShallow } from 'zustand/react/shallow';
-import { useBibleVersions } from 'src/entities/bible-version';
+import { bibleVersionApi } from '@entities/bible-version';
 import { CommonCombobox, CommonComboboxItem } from '@shared/ui/commonCombobox';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 function BibleVersionCombobox() {
   const selectedItem = useBibleVersionStore(
@@ -14,7 +15,7 @@ function BibleVersionCombobox() {
 
   const setBibleVersion = useBibleVersionStore(state => state.setBibleVersion);
 
-  const { data } = useBibleVersions();
+  const { data } = useSuspenseQuery(bibleVersionApi.list());
 
   const selectItems = data.map(({ code, name }) => ({
     name,
