@@ -1,7 +1,10 @@
 import { useBibleVersionStore } from '../model/store';
 import { useShallow } from 'zustand/react/shallow';
 import { bibleVersionApi } from '@entities/bible-version';
-import { CommonCombobox, CommonComboboxItem } from '@shared/ui/commonCombobox';
+import {
+  CommonCombobox,
+  CommonComboboxItem,
+} from 'src/shared/ui/common-combobox';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 function BibleVersionCombobox() {

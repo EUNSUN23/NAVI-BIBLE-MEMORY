@@ -2,7 +2,7 @@ import { useVerseSelectStore } from '@/features/verse-select';
 import { Suspense, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ExamContainer from './exam-container';
-import Loader from '@shared/ui/Loader';
+import Loader from '@shared/ui/loader';
 import { routes } from '@shared/constants/routes';
 import { useExamStatusStore } from '../model/examStatusStore';
 

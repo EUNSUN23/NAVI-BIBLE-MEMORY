@@ -5,7 +5,7 @@ import cn from '@shared/styles/cn';
 import { cva } from 'class-variance-authority';
 import { SeriesData } from '@entities/series/api/seriesData.type';
 import { createSeriesTabPanelId } from '../lib/createSeriesTabPanelId';
-import Loader from '@shared/ui/Loader';
+import Loader from '@shared/ui/loader';
 
 const tabVariants = cva(
   'w-full rounded-2xl px-7 py-2.5 text-center mobile:px-4 flex items-center justify-between space-x-1',

@@ -1,4 +1,4 @@
-import { CommonCombobox } from '@shared/ui/commonCombobox';
+import { CommonCombobox } from 'src/shared/ui/common-combobox';
 import { useShallow } from 'zustand/react/shallow';
 import { useExamConfigStore } from '../model/exam-config-store';
 import { useSuspenseQuery } from '@tanstack/react-query';

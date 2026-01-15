@@ -1,9 +1,9 @@
 import { useExamStatusStore } from '@pages/exam/model/examStatusStore';
-import getExamResultHTML from '@/lib/getExamResultHTML';
+import getExamResultHtml from '@/lib/get-exam-result-html';
 import { useState } from 'react';
 import parse from 'html-react-parser';
 import { type ExamExposeOption } from 'src/entities/exam-expose-option';
-import { EXAM_EXPOSE_OPTIONS } from '@msw/mockData';
+import { EXAM_EXPOSE_OPTIONS } from '@msw/mock-data';
 
 type ThemeInputProps = {
   exposeOption: ExamExposeOption;
@@ -25,7 +25,7 @@ function ThemeInput({ exposeOption, theme, verseId }: ThemeInputProps) {
         <div className='text-xl font-medium leading-loose'>{theme}</div>
       ) : isFinished ? (
         <div className='w-4/5 rounded-lg bg-[#f7f7f7] pl-3 pt-[2px] text-xl font-medium leading-loose mobile:text-lg'>
-          {parse(getExamResultHTML(value, theme))}
+          {parse(getExamResultHtml(value, theme))}
         </div>
       ) : (
         <>

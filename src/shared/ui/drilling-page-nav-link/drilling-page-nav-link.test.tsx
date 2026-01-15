@@ -3,9 +3,9 @@ import { routes } from '@shared/constants/routes';
 import { render } from '@utils/test/render';
 import { MemoryRouter } from 'react-router-dom';
 import { ExamConfigModal } from '@features/exam-config';
-import mockAlert from '@utils/test/mocks/mockAlert';
+import mockAlert from '@utils/test/mocks/mock-alert';
 import { userEvent } from '@testing-library/user-event';
-import { DrillingPageNavLink } from './DrillingPageNavLink';
+import { DrillingPageNavLink } from './drilling-page-nav-link';
 
 const setup = () => {
   const user = userEvent.setup();

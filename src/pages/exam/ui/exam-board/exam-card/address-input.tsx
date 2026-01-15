@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useExamStatusStore } from '@pages/exam/model/examStatusStore';
-import getExamResultHTML from '@/lib/getExamResultHTML';
+import getExamResultHtml from '@/lib/get-exam-result-html';
 import parse from 'html-react-parser';
 import { type ExamExposeOption } from 'src/entities/exam-expose-option';
-import { EXAM_EXPOSE_OPTIONS } from '@msw/mockData';
+import { EXAM_EXPOSE_OPTIONS } from '@msw/mock-data';
 
 type AddressInputProps = {
   exposeOption: ExamExposeOption;
@@ -24,7 +24,7 @@ function AddressInput({ exposeOption, address, verseId }: AddressInputProps) {
         <div className='text-xl font-medium leading-loose'>{address}</div>
       ) : isFinished ? (
         <div className='w-full rounded-xl bg-[#f7f7f7] text-xl font-medium leading-loose text-secondary mobile:text-lg'>
-          {parse(getExamResultHTML(value, address))}
+          {parse(getExamResultHtml(value, address))}
         </div>
       ) : (
         <div className='w-full'>

@@ -1,12 +1,12 @@
 import { beforeEach, describe, test } from 'vitest';
-import { VERSE_DETAIL_DATA_KOR } from '@msw/mockData';
+import { VERSE_DETAIL_DATA_KOR } from '@msw/mock-data';
 import { userEvent } from '@testing-library/user-event';
-import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
+import waitForElementToBeRemovedIfExist from '@utils/test/wait-for-element-to-be-removed-If-exist';
 import { screen, waitFor, within } from '@testing-library/react';
 import {
   mockExamConfigStore,
   mockVerseSelectStore,
-} from '@utils/test/mockZustandStore';
+} from '@utils/test/mock-zustand-store';
 import { routes } from '@shared/constants/routes';
 import { ExamPage } from './exam-page';
 import { render } from '@utils/test/render';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useExamStatusStore } from '@pages/exam/model/examStatusStore';
-import getExamResultHTML from '@/lib/getExamResultHTML';
+import getExamResultHtml from '@/lib/get-exam-result-html';
 import parse from 'html-react-parser';
 import { Textfit } from 'react-textfit';
 
@@ -22,7 +22,7 @@ function ContentsInput({ contents, verseId }: ContentsInputProps) {
           max={18}
           className='size-full rounded-lg bg-[#f7f7f7] px-4 py-6'
         >
-          {parse(getExamResultHTML(value, contents))}
+          {parse(getExamResultHtml(value, contents))}
         </Textfit>
       ) : (
         <>

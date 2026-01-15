@@ -1,5 +1,5 @@
 import { create } from 'zustand/index';
-import { EXAM_EXPOSE_OPTIONS } from '@msw/mockData';
+import { EXAM_EXPOSE_OPTIONS } from '@msw/mock-data';
 import { ExamConfigState, ExamConfigStore } from './models';
 
 const initialState: ExamConfigState = {

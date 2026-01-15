@@ -5,7 +5,7 @@ import { useShallow } from 'zustand/react/shallow';
 import { ExamTimer } from './exam-timer';
 import { ExamRangeInfo } from './exam-range-info';
 import { useExamConfigStore } from '@features/exam-config';
-import reArrangeInRandomOrder from '@shared/utils/reArrangeInRandomOrder';
+import reArrangeInRandomOrder from 'src/shared/utils/re-arrange-in-random-order';
 import { ExamBoard } from './exam-board';
 import { useSuspenseQuery } from '@tanstack/react-query';
 

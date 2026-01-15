@@ -1,6 +1,6 @@
-import { ComposedBoundary } from '@/lib/error/ComposedBoundary';
-import ErrorMessage from '@/lib/error/ErrorMessage';
-import Loader from '@shared/ui/Loader';
+import { ComposedBoundary } from '@/lib/error/composed-boundary';
+import ErrorMessage from '@/lib/error/error-message';
+import Loader from '@shared/ui/loader';
 import VerseCardSwiper from './verse-card-swiper';
 
 export function VerseDrill() {

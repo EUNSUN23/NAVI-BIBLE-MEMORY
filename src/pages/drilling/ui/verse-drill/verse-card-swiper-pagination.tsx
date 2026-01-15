@@ -7,7 +7,7 @@ import {
   type VerseDetailDataList,
 } from '@entities/verse';
 import { useMediaQuery } from 'react-responsive';
-import { MAX_MOBILE } from '@/constants/screenSize';
+import { MAX_MOBILE } from '@/constants/screen-size';
 
 type VerseCardSwiperPaginationProps = {
   verses: VerseDetailDataList;

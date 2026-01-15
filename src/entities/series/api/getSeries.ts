@@ -1,5 +1,5 @@
 import supabase from '@/supabase';
-import { supabaseResponseHandler } from '@/lib/api/supabaseResponseHandler';
+import { supabaseResponseHandler } from '@/lib/api/supabase-response-handler';
 
 export const getSeries = async () => {
   const res = await supabase

@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import Loader from '@shared/ui/Loader';
+import Loader from '@shared/ui/loader';
 import { Suspense } from 'react';
-import { Header } from '@shared/ui/Header';
+import { Header } from '@shared/ui/header';
 
 export function RootPage() {
   return (

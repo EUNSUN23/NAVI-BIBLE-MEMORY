@@ -4,13 +4,13 @@ import {
   CARD_HIDE_OPTIONS,
   VERSE_DETAIL_DATA_GAE,
   VERSE_DETAIL_DATA_KOR,
-} from '@msw/mockData';
+} from '@msw/mock-data';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
-import waitForElementToBeRemovedIfExist from '@utils/test/waitForElementToBeRemovedIfExist';
+import waitForElementToBeRemovedIfExist from '@utils/test/wait-for-element-to-be-removed-If-exist';
 import { userEvent } from '@testing-library/user-event';
 import { describe } from 'vitest';
 import { createVerseCardTestId } from '@entities/verse/lib/create-verse-card-test-id';
-import { mockVerseSelectStore } from '@utils/test/mockZustandStore';
+import { mockVerseSelectStore } from '@utils/test/mock-zustand-store';
 import { orderVerseDetails } from 'src/entities/verse';
 import { DrillingPage } from './drilling-page';
 import { render } from '@utils/test/render';

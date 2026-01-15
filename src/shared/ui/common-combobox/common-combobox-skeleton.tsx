@@ -1,4 +1,4 @@
-import Skeleton from '@shared/ui/Skeleton';
+import Skeleton from '@shared/ui/skeleton';
 
 type CommonComboboxSkeletonProps = {
   label: string;

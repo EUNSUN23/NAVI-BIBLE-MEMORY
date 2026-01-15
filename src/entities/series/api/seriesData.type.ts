@@ -1,5 +1,5 @@
-import { ApiResultType } from '@shared/types/apiResult.type';
-import { ArrayElement } from '@shared/types/arrayElement.type';
+import { ApiResultType } from '@shared/types/api-result.type';
+import { ArrayElement } from '@shared/types/array-element.type';
 import { getSeries } from './getSeries';
 
 export type SeriesDataList = ApiResultType<typeof getSeries>;

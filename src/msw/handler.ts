@@ -8,8 +8,8 @@ import {
   VERSE_DETAIL_DATA_GAE,
   VERSE_DETAIL_DATA_KOR,
   VERSE_SUMMARY_DATA,
-} from '@/msw/mockData';
-import { SUPABASE_URL } from '@/supabase/supabaseConfig';
+} from '@msw/mock-data';
+import { SUPABASE_URL } from '@/supabase/supabase-config';
 
 const baseURL = `${SUPABASE_URL}/rest/v1`;
 

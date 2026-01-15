@@ -1,4 +1,4 @@
-import Nav from '@shared/ui/Nav';
+import Nav from '@shared/ui/nav';
 import { MouseEvent, useTransition } from 'react';
 import { useExamConfigStore } from '@features/exam-config/model/exam-config-store';
 import { useExamConfigModalStore } from '@features/exam-config/model/exam-config-modal-store';

@@ -3,7 +3,7 @@ import { CgRedo } from '@react-icons/all-files/cg/CgRedo';
 import { HTMLAttributes } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 import cn from '@shared/styles/cn';
-import { HttpError } from '@shared/utils/HttpError';
+import { HttpError } from '@shared/utils/http-error';
 import { IoIosWarning } from '@react-icons/all-files/io/IoIosWarning';
 
 const RetryQueryMessageVariants = cva('flex-wrap', {

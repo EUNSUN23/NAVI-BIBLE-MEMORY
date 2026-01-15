@@ -1,7 +1,7 @@
 import { ClassValue } from 'clsx';
 import cn from '@shared/styles/cn';
-import { CARD_HIDE_OPTIONS } from '@msw/mockData';
-import { type VerseDetailData } from '../api/verseDetail.type';
+import { CARD_HIDE_OPTIONS } from '@msw/mock-data';
+import { type VerseDetailData } from '../api/verse-detail.type';
 import { createVerseCardTestId } from '../lib/create-verse-card-test-id';
 import { createVerseAddress } from '../lib/verse-address-format';
 

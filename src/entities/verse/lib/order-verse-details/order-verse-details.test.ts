@@ -1,5 +1,5 @@
 import { VerseDetailData, VerseDetailDataList } from '@entities/verse';
-import { orderVerseDetails } from './orderVerseDetails';
+import { orderVerseDetails } from './order-verse-details';
 
 const createDummyCard = (
   seriesOrd: number,

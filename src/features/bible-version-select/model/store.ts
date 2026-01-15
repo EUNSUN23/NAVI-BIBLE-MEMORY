@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { BIBLE_VERSIONS } from '@msw/mockData';
+import { BIBLE_VERSIONS } from '@msw/mock-data';
 import { BibleVersion } from 'src/entities/bible-version';
 
 type BibleVersionState = {
