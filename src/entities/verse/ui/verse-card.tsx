@@ -1,5 +1,5 @@
 import { ClassValue } from 'clsx';
-import cn from '@shared/styles/cn';
+import cn from '@shared/lib/styles/cn';
 import { CARD_HIDE_OPTIONS } from '@msw/mock-data';
 import { type VerseDetailData } from '../api/verse-detail.type';
 import { createVerseCardTestId } from '../lib/create-verse-card-test-id';

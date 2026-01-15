@@ -1,5 +1,5 @@
-import supabase from '@/supabase';
-import { supabaseResponseHandler } from '@/lib/api/supabase-response-handler';
+import supabase from '@shared/api/supabase-client';
+import { supabaseResponseHandler } from '@shared/api/supabase-response-handler';
 import { SeriesCode } from '@entities/series/@x/verse';
 
 export const getVersesSummary = async (seriesCode: SeriesCode) => {

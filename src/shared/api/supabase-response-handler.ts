@@ -1,5 +1,5 @@
 import { PostgrestSingleResponse } from '@supabase/supabase-js';
-import { HttpError } from '@shared/utils/http-error';
+import { HttpError } from '@shared/lib/error/http-error';
 
 export const supabaseResponseHandler = <T, U extends T = T>(
   res: PostgrestSingleResponse<T>,

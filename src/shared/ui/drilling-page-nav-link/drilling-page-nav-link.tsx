@@ -2,7 +2,7 @@ import Nav from '@shared/ui/nav';
 import { MouseEvent } from 'react';
 import { useVerseSelectStore } from '@/features/verse-select';
 import { useShallow } from 'zustand/react/shallow';
-import { routes } from '@shared/constants/routes';
+import { routes } from '@shared/config/routes';
 
 export function DrillingPageNavLink() {
   const hasSelectedVerse = useVerseSelectStore(

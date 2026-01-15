@@ -1,5 +1,5 @@
-import supabase from '@/supabase';
-import { supabaseResponseHandler } from '@/lib/api/supabase-response-handler';
+import supabase from '@shared/api/supabase-client';
+import { supabaseResponseHandler } from '@shared/api/supabase-response-handler';
 import { BibleVersion } from '@entities/bible-version/@x/verse';
 import { Verse } from '../model/models';
 

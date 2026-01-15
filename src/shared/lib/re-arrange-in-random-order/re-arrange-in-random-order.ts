@@ -1,4 +1,4 @@
-import { ApplicationError } from '@shared/utils/application-error';
+import { ApplicationError } from '@shared/lib/error/application-error';
 
 export const reArrangeInRandomOrder = <T>(data: T[], size?: number): T[] => {
   const maxSize = data.length;

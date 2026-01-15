@@ -1,5 +1,5 @@
 import { Link, LinkProps } from 'react-router-dom';
-import cn from '@shared/styles/cn';
+import cn from '@shared/lib/styles/cn';
 import { HTMLAttributes } from 'react';
 
 // todo - 모바일 반응형

@@ -1,5 +1,5 @@
 import { beforeEach } from 'vitest';
-import { reArrangeInRandomOrder } from '@shared/utils/re-arrange-in-random-order/re-arrange-in-random-order';
+import { reArrangeInRandomOrder } from '@shared/lib/re-arrange-in-random-order/re-arrange-in-random-order';
 
 let data: number[] = [];
 let resultSize = 1;

@@ -7,7 +7,7 @@ import {
   mockExamConfigStore,
   mockVerseSelectStore,
 } from '@utils/test/mock-zustand-store';
-import { routes } from '@shared/constants/routes';
+import { routes } from '@shared/config/routes';
 import { ExamPage } from './exam-page';
 import { render } from '@utils/test/render';
 import { createVerseAddress } from '@entities/verse';

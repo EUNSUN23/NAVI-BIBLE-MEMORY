@@ -1,7 +1,7 @@
 import { VerseSelector } from './verse-select';
 import { SubSeriesTabs } from './sub-series-tabs';
-import { ComposedBoundary } from '@/lib/error/composed-boundary';
-import ErrorMessage from '@/lib/error/error-message';
+import { ComposedBoundary } from '@shared/lib/error/composed-boundary';
+import ErrorMessage from '@shared/lib/error/error-message';
 import Loader from '@shared/ui/loader';
 
 export type SeriesContentsProps = {

@@ -9,7 +9,7 @@ import {
   VERSE_DETAIL_DATA_KOR,
   VERSE_SUMMARY_DATA,
 } from '@msw/mock-data';
-import { SUPABASE_URL } from '@/supabase/supabase-config';
+import { SUPABASE_URL } from '@shared/config/supabase/supabase-config';
 
 const baseURL = `${SUPABASE_URL}/rest/v1`;
 

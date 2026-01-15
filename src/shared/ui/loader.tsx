@@ -1,5 +1,5 @@
 import { cva, VariantProps } from 'class-variance-authority';
-import cn from '@shared/styles/cn';
+import cn from '@shared/lib/styles/cn';
 import { HTMLAttributes } from 'react';
 
 const LoaderVariants = cva(`aspect-square mx-auto mb-1 mt-2 rounded-full`, {

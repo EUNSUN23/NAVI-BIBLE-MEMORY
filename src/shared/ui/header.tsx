@@ -1,5 +1,5 @@
 import Nav from '@shared/ui/nav';
-import { routes } from '@shared/constants/routes';
+import { routes } from '@shared/config/routes';
 import { FaHome } from '@react-icons/all-files/fa/FaHome';
 import { useLocation } from 'react-router-dom';
 import ExamPageNavLink from 'src/shared/ui/exam-page-nav-link';

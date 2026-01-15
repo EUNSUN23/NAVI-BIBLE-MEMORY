@@ -1,5 +1,5 @@
-import supabase from '@/supabase';
-import { supabaseResponseHandler } from '@/lib/api/supabase-response-handler';
+import supabase from '@shared/api/supabase-client';
+import { supabaseResponseHandler } from '@shared/api/supabase-response-handler';
 import { SeriesCode } from '../model/models';
 
 export const getSubSeries = async (series_code: SeriesCode) => {

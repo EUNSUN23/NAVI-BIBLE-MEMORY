@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { RootPage } from '@pages/root/ui/root-page';
 import { lazy } from 'react';
-import { routes } from '@shared/constants/routes';
+import { routes } from '@shared/config/routes';
 
 const HomePage = lazy(() =>
   import('@pages/home').then(module => ({

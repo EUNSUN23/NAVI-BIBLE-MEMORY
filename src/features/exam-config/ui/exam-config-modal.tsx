@@ -3,15 +3,15 @@ import TimeLimitInput from './time-limit-input';
 import ExposeSelector from './expose-exam-option-select';
 import VerseCountInput from './verse-count-input';
 import { useExamConfigModalStore } from '../model/exam-config-modal-store';
-import { ComposedBoundary } from '@/lib/error/composed-boundary';
-import ErrorMessage from '@/lib/error/error-message';
+import { ComposedBoundary } from '@shared/lib/error/composed-boundary';
+import ErrorMessage from '@shared/lib/error/error-message';
 import { Field } from '@headlessui/react';
 import { CommonCombobox } from 'src/shared/ui/common-combobox';
 import Loader from '@shared/ui/loader';
 import { useNavigate } from 'react-router-dom';
 import { useExamConfigStore } from '../model/exam-config-store';
 import { useShallow } from 'zustand/react/shallow';
-import { routes } from '@shared/constants/routes';
+import { routes } from '@shared/config/routes';
 
 export function ExamConfigModal() {
   const navigate = useNavigate();

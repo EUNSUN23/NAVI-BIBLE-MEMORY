@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { routes } from '@shared/constants/routes';
+import { routes } from '@shared/config/routes';
 import { render } from '@utils/test/render';
 import { MemoryRouter } from 'react-router-dom';
 import { ExamConfigModal } from '@features/exam-config';
