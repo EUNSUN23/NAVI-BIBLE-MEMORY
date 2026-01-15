@@ -1,5 +1,8 @@
 import { beforeEach, describe, expect, test } from 'vitest';
-import { EXAM_EXPOSE_OPTIONS, VERSE_SUMMARY_DATA } from '@msw/mock-data';
+import {
+  EXAM_EXPOSE_OPTIONS,
+  VERSE_SUMMARY_DATA,
+} from '@shared/lib/msw/mock-data';
 import { screen, within } from '@testing-library/react';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
 import mockAlert from '@shared/lib/test/mocks/mock-alert';

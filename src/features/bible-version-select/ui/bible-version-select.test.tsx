@@ -4,7 +4,7 @@ import { render } from '@shared/lib/test/render';
 import waitForElementToBeRemovedIfExist from '@shared/lib/test/wait-for-element-to-be-removed-If-exist';
 import { screen, waitFor, within } from '@testing-library/react';
 import { expect } from 'vitest';
-import { BIBLE_VERSIONS } from '@msw/mock-data';
+import { BIBLE_VERSIONS } from '@shared/lib/msw/mock-data';
 
 describe('BibleVersionSelect test', () => {
   test('renders bible version combobox after data loading finishes', async () => {

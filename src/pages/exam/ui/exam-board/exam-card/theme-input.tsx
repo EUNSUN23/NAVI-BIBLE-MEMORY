@@ -3,7 +3,7 @@ import getExamResultHtml from '@pages/exam/lib/get-exam-result-html';
 import { useState } from 'react';
 import parse from 'html-react-parser';
 import { type ExamExposeOption } from 'src/entities/exam-expose-option';
-import { EXAM_EXPOSE_OPTIONS } from '@msw/mock-data';
+import { EXAM_EXPOSE_OPTIONS } from '@shared/lib/msw/mock-data';
 
 type ThemeInputProps = {
   exposeOption: ExamExposeOption;

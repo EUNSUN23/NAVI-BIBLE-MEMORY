@@ -1,5 +1,5 @@
 import { mockVerseSelectStore } from '@shared/lib/test/mocks/mock-zustand-store';
-import { VERSE_SUMMARY_DATA } from '@msw/mock-data';
+import { VERSE_SUMMARY_DATA } from '@shared/lib/msw/mock-data';
 import { screen, waitFor } from '@testing-library/react';
 import { routes } from '@shared/config/routes';
 import { render } from '@shared/lib/test/render';

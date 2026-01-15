@@ -4,7 +4,7 @@ import {
   CARD_HIDE_OPTIONS,
   VERSE_DETAIL_DATA_GAE,
   VERSE_DETAIL_DATA_KOR,
-} from '@msw/mock-data';
+} from '@shared/lib/msw/mock-data';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
 import waitForElementToBeRemovedIfExist from '@shared/lib/test/wait-for-element-to-be-removed-If-exist';
 import { userEvent } from '@testing-library/user-event';

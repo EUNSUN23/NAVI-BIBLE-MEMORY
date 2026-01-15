@@ -7,7 +7,7 @@ import {
   CommonComboboxItem,
 } from '@shared/ui/common-combobox/index';
 import { Field } from '@headlessui/react';
-import { BIBLE_VERSIONS } from '@msw/mock-data';
+import { BIBLE_VERSIONS } from '@shared/lib/msw/mock-data';
 
 const label = '성경버전';
 const items: CommonComboboxItem[] = BIBLE_VERSIONS.map(({ name, code }) => ({

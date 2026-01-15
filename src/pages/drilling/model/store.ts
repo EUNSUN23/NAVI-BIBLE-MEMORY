@@ -1,5 +1,5 @@
 import { create } from 'zustand/index';
-import { CARD_HIDE_OPTIONS } from '@msw/mock-data';
+import { CARD_HIDE_OPTIONS } from '@shared/lib/msw/mock-data';
 import { CardHideOptionState, CardHideOptionStore } from './models';
 import { CardHideOptionData } from 'src/entities/card-hide-option';
 

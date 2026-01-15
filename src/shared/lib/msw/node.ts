@@ -8,7 +8,7 @@ import {
   getVerseDetailGaeHandler,
   getVerseDetailHandler,
   getVerseSummaryHandler,
-} from '@/msw/handler';
+} from '@shared/lib/msw/handler';
 
 export const handlers = [
   getSeriesHandler,

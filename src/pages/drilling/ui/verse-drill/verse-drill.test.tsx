@@ -2,7 +2,7 @@ import { describe } from 'vitest';
 import { userEvent } from '@testing-library/user-event';
 import { render } from '@shared/lib/test/render';
 import { VerseDrill } from './verse-drill';
-import { VERSE_DETAIL_DATA_KOR } from '@msw/mock-data';
+import { VERSE_DETAIL_DATA_KOR } from '@shared/lib/msw/mock-data';
 import waitForElementToBeRemovedIfExist from '@shared/lib/test/wait-for-element-to-be-removed-If-exist';
 import { screen, within } from '@testing-library/react';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';

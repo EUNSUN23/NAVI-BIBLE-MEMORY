@@ -3,7 +3,7 @@ import { userEvent } from '@testing-library/user-event';
 import { CardHideOptionSelect } from './card-hide-option-select';
 import { screen, waitFor, within } from '@testing-library/react';
 import waitForElementToBeRemovedIfExist from '@shared/lib/test/wait-for-element-to-be-removed-If-exist';
-import { CARD_HIDE_OPTIONS } from '@msw/mock-data';
+import { CARD_HIDE_OPTIONS } from '@shared/lib/msw/mock-data';
 import { render } from '@shared/lib/test/render';
 
 describe('CardHideOptionSelect Test', () => {

@@ -1,5 +1,5 @@
 import { beforeEach, describe, test } from 'vitest';
-import { VERSE_DETAIL_DATA_KOR } from '@msw/mock-data';
+import { VERSE_DETAIL_DATA_KOR } from '@shared/lib/msw/mock-data';
 import { userEvent } from '@testing-library/user-event';
 import waitForElementToBeRemovedIfExist from '@shared/lib/test/wait-for-element-to-be-removed-If-exist';
 import { screen, waitFor, within } from '@testing-library/react';
