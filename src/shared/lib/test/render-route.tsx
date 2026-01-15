@@ -1,5 +1,5 @@
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { render } from '@utils/test/render';
+import { render } from '@shared/lib/test/render';
 import { routes } from '@shared/config/routes';
 import { RootPage } from '@pages/root/ui/root-page';
 import { HomePage } from '@pages/home/ui/home-page';

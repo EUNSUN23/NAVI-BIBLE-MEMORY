@@ -1,11 +1,11 @@
-import { mockVerseSelectStore } from '@utils/test/mock-zustand-store';
+import { mockVerseSelectStore } from '@shared/lib/test/mocks/mock-zustand-store';
 import { VERSE_SUMMARY_DATA } from '@msw/mock-data';
 import { screen, waitFor } from '@testing-library/react';
 import { routes } from '@shared/config/routes';
-import { render } from '@utils/test/render';
+import { render } from '@shared/lib/test/render';
 import { MemoryRouter } from 'react-router-dom';
 import { ExamConfigModal } from '@features/exam-config';
-import mockAlert from '@utils/test/mocks/mock-alert';
+import mockAlert from '@shared/lib/test/mocks/mock-alert';
 import { userEvent } from '@testing-library/user-event';
 import { ExamPageNavLink } from './ExamPageNavLink';
 

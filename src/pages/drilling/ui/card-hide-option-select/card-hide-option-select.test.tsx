@@ -2,9 +2,9 @@ import { expect, test } from 'vitest';
 import { userEvent } from '@testing-library/user-event';
 import { CardHideOptionSelect } from './card-hide-option-select';
 import { screen, waitFor, within } from '@testing-library/react';
-import waitForElementToBeRemovedIfExist from '@utils/test/wait-for-element-to-be-removed-If-exist';
+import waitForElementToBeRemovedIfExist from '@shared/lib/test/wait-for-element-to-be-removed-If-exist';
 import { CARD_HIDE_OPTIONS } from '@msw/mock-data';
-import { render } from '@utils/test/render';
+import { render } from '@shared/lib/test/render';
 
 describe('CardHideOptionSelect Test', () => {
   test('renders card hide option combobox after data loading finishes', async () => {

@@ -1,15 +1,15 @@
 import { beforeEach, describe, test } from 'vitest';
 import { VERSE_DETAIL_DATA_KOR } from '@msw/mock-data';
 import { userEvent } from '@testing-library/user-event';
-import waitForElementToBeRemovedIfExist from '@utils/test/wait-for-element-to-be-removed-If-exist';
+import waitForElementToBeRemovedIfExist from '@shared/lib/test/wait-for-element-to-be-removed-If-exist';
 import { screen, waitFor, within } from '@testing-library/react';
 import {
   mockExamConfigStore,
   mockVerseSelectStore,
-} from '@utils/test/mock-zustand-store';
+} from '@shared/lib/test/mocks/mock-zustand-store';
 import { routes } from '@shared/config/routes';
 import { ExamPage } from './exam-page';
-import { render } from '@utils/test/render';
+import { render } from '@shared/lib/test/render';
 import { createVerseAddress } from '@entities/verse';
 
 const navigateFn = vi.fn();

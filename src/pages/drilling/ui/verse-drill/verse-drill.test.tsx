@@ -1,9 +1,9 @@
 import { describe } from 'vitest';
 import { userEvent } from '@testing-library/user-event';
-import { render } from '@utils/test/render';
+import { render } from '@shared/lib/test/render';
 import { VerseDrill } from './verse-drill';
 import { VERSE_DETAIL_DATA_KOR } from '@msw/mock-data';
-import waitForElementToBeRemovedIfExist from '@utils/test/wait-for-element-to-be-removed-If-exist';
+import waitForElementToBeRemovedIfExist from '@shared/lib/test/wait-for-element-to-be-removed-If-exist';
 import { screen, within } from '@testing-library/react';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
 import {
@@ -12,7 +12,7 @@ import {
   createVerseCardTestId,
   orderVerseDetails,
 } from '@entities/verse';
-import { mockVerseSelectStore } from '@utils/test/mock-zustand-store';
+import { mockVerseSelectStore } from '@shared/lib/test/mocks/mock-zustand-store';
 
 const setup = () => {
   const user = userEvent.setup();

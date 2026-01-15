@@ -4,7 +4,7 @@
   "include": ["src"],
   "exclude": [
     "**/*.test.*",
-    "src/utils/test",
+    "src/shared/lib/test",
     "__mocks__",
     "vitest.config.ts",
     "vitest.setup.ts"

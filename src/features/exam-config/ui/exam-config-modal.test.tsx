@@ -2,14 +2,14 @@ import { beforeEach, describe, expect, test } from 'vitest';
 import { EXAM_EXPOSE_OPTIONS, VERSE_SUMMARY_DATA } from '@msw/mock-data';
 import { screen, within } from '@testing-library/react';
 import { mockAnimationsApi } from 'jsdom-testing-mocks';
-import mockAlert from '@utils/test/mocks/mock-alert';
+import mockAlert from '@shared/lib/test/mocks/mock-alert';
 import {
   mockExamConfigModalStore,
   mockExamConfigStore,
   mockVerseSelectStore,
-} from '@utils/test/mock-zustand-store';
+} from '@shared/lib/test/mocks/mock-zustand-store';
 import { ExamConfigModal } from './exam-config-modal';
-import { render } from '@utils/test/render';
+import { render } from '@shared/lib/test/render';
 import { userEvent } from '@testing-library/user-event';
 import { routes } from '@shared/config/routes';
 
