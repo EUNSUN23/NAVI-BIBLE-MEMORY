@@ -60,14 +60,4 @@ export default defineConfig({
       brotliSize: true,
     }) as PluginOption,
   ],
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('supabase')) return 'supabase';
-          if (id.includes('@headlessui/react')) return 'headlessui-react';
-        },
-      },
-    },
-  },
 });
