@@ -1,12 +1,7 @@
 import { VerseSelectList } from './verse-select-list';
 import Loader from '@shared/ui/loader';
-import { lazy, Suspense } from 'react';
-
-const ExamConfigModal = lazy(() =>
-  import('@features/exam-config/ui/exam-config-modal').then(module => ({
-    default: module.ExamConfigModal,
-  })),
-);
+import { Suspense } from 'react';
+import { ExamConfigModal } from '@features/exam-config';
 
 export function HomePage() {
   return (

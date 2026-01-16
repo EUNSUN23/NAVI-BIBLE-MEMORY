@@ -1,5 +1,5 @@
 import { useVerseSelectStore } from '@/features/verse-select';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { BibleVersionSelect } from 'src/features/bible-version-select';
 import { CardHideOptionSelect } from './card-hide-option-select';
 import { VerseDrill } from './verse-drill';
@@ -28,7 +28,9 @@ export function DrillingPage() {
           <VerseDrill />
         </div>
       )}
-      <ExamConfigModal />
+      <Suspense fallback={null}>
+        <ExamConfigModal />
+      </Suspense>
     </>
   );
 }
