@@ -25,7 +25,7 @@ export function HomePage() {
           <VerseSelectList />
         </Suspense>
       </div>
-      <Suspense fallback={<div className='size-[100px]'>loading..</div>}>
+      <Suspense fallback={null}>
         <ExamConfigModal />
       </Suspense>
     </>
