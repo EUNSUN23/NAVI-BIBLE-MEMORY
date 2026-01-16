@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import { routes } from '@shared/config/routes';
 import { render } from '@shared/lib/test/render';
 import { MemoryRouter } from 'react-router-dom';
-import { ExamConfigModal } from '@features/exam-config';
+import { ExamConfigModal } from '@features/exam-config/ui/exam-config-modal';
 import mockAlert from '@shared/lib/test/mocks/mock-alert';
 import { userEvent } from '@testing-library/user-event';
 import { DrillingPageNavLink } from './drilling-page-nav-link';
