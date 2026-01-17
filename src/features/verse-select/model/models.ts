@@ -1,4 +1,4 @@
-import { VerseId } from '@entities/verse/model/models';
+import { VerseId } from '@entities/verse';
 
 export type VerseSelectState = {
   verseIds: VerseId[];

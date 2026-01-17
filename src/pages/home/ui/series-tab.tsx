@@ -3,7 +3,7 @@ import { FaCaretUp } from '@react-icons/all-files/fa/FaCaretUp';
 import { FaCaretDown } from '@react-icons/all-files/fa/FaCaretDown';
 import cn from '@shared/lib/styles/cn';
 import { cva } from 'class-variance-authority';
-import { SeriesData } from '@entities/series/api/seriesData.type';
+import { SeriesData } from '@entities/series';
 import { createSeriesTabPanelId } from '../lib/createSeriesTabPanelId';
 import Loader from '@shared/ui/loader';
 

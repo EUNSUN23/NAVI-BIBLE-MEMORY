@@ -8,4 +8,7 @@ const ExamConfigModal = lazy(() =>
 );
 export { ExamConfigModal };
 export { useExamConfigStore } from './model/exam-config-store';
-export { useExamConfigModalStore } from './model/exam-config-modal-store';
+export {
+  useExamConfigModalStore,
+  type ExamConfigModalStore,
+} from './model/exam-config-modal-store';

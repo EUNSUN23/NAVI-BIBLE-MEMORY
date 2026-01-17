@@ -9,13 +9,13 @@ import {
 } from '@shared/lib/test/mocks/mock-zustand-store';
 import { routes } from '@shared/config/routes';
 import { ExamPage } from './exam-page';
-import { render } from '@shared/lib/test/render';
 import { createVerseAddress } from '@entities/verse';
+import { customRender } from '@shared/lib/test/render';
 
 const navigateFn = vi.fn();
 const setup = () => {
   const user = userEvent.setup();
-  render(<ExamPage />);
+  customRender(<ExamPage />);
   return {
     user,
     versesAllByAsc: VERSE_DETAIL_DATA_KOR.map(verse => ({

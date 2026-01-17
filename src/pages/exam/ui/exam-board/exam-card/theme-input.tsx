@@ -1,5 +1,5 @@
-import { useExamStatusStore } from '@pages/exam/model/examStatusStore';
-import getExamResultHtml from '@pages/exam/lib/get-exam-result-html';
+import { useExamStatusStore } from '../../../model/examStatusStore';
+import getExamResultHtml from '../../../lib/get-exam-result-html';
 import { useState } from 'react';
 import parse from 'html-react-parser';
 import { type ExamExposeOption } from 'src/entities/exam-expose-option';

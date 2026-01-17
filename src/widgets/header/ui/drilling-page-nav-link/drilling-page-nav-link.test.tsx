@@ -1,15 +1,15 @@
 import { screen } from '@testing-library/react';
 import { routes } from '@shared/config/routes';
-import { render } from '@shared/lib/test/render';
 import { MemoryRouter } from 'react-router-dom';
 import { ExamConfigModal } from '@features/exam-config/ui/exam-config-modal';
 import mockAlert from '@shared/lib/test/mocks/mock-alert';
 import { userEvent } from '@testing-library/user-event';
 import { DrillingPageNavLink } from './drilling-page-nav-link';
+import { customRender } from '@shared/lib/test/render';
 
 const setup = () => {
   const user = userEvent.setup();
-  render(
+  customRender(
     <MemoryRouter initialEntries={['/']}>
       <DrillingPageNavLink />
       <ExamConfigModal />

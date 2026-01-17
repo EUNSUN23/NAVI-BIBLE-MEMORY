@@ -1,5 +1,5 @@
 import { queryOptions } from '@tanstack/react-query';
-import { getBibleVersions } from '@entities/bible-version/api/get-bible-versions';
+import { getBibleVersions } from './get-bible-versions';
 
 export const bibleVersionQueries = {
   all: () => ['bible-version'],

@@ -1,6 +1,5 @@
 import { describe } from 'vitest';
 import { userEvent } from '@testing-library/user-event';
-import { render } from '@shared/lib/test/render';
 import { VerseDrill } from './verse-drill';
 import { VERSE_DETAIL_DATA_KOR } from '@shared/lib/msw/mock-data';
 import waitForElementToBeRemovedIfExist from '@shared/lib/test/wait-for-element-to-be-removed-If-exist';
@@ -13,6 +12,7 @@ import {
   orderVerseDetails,
 } from '@entities/verse';
 import { mockVerseSelectStore } from '@shared/lib/test/mocks/mock-zustand-store';
+import { customRender } from '@shared/lib/test/render';
 
 const setup = () => {
   const user = userEvent.setup();
@@ -22,7 +22,7 @@ const setup = () => {
       contents: data.contents.trim(),
     })),
   );
-  render(<VerseDrill />);
+  customRender(<VerseDrill />);
   return {
     user,
     verseList,

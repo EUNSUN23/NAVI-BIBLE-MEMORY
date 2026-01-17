@@ -13,13 +13,13 @@ import { createVerseCardTestId } from '@entities/verse/lib/create-verse-card-tes
 import { mockVerseSelectStore } from '@shared/lib/test/mocks/mock-zustand-store';
 import { orderVerseDetails } from 'src/entities/verse';
 import { DrillingPage } from './drilling-page';
-import { render } from '@shared/lib/test/render';
 import { createShortVerseAddress, createVerseAddress } from '@entities/verse';
+import { customRender } from '@shared/lib/test/render';
 
 const setup = async () => {
   const user = userEvent.setup();
 
-  render(<DrillingPage />);
+  customRender(<DrillingPage />);
 
   await waitForElementToBeRemovedIfExist(screen.queryByTestId('loader'));
 

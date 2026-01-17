@@ -11,3 +11,4 @@ export {
 export { createVerseCardTestId } from './lib/create-verse-card-test-id';
 export { orderVerseDetails } from './lib/order-verse-details';
 export { VerseCard } from './ui/verse-card';
+export { type VerseId } from './model/models';

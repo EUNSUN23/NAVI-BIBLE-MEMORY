@@ -1,13 +1,13 @@
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { render } from '@shared/lib/test/render';
 import { routes } from '@shared/config/routes';
-import { RootPage } from '@pages/root/ui/root-page';
-import { HomePage } from '@pages/home/ui/home-page';
-import { DrillingPage } from '@pages/drilling/ui/drilling-page';
-import { ExamPage } from '@pages/exam/ui/exam-page';
+import { RootPage } from '@pages/root';
+import { HomePage } from '@pages/home';
+import { DrillingPage } from '@pages/drilling';
+import { ExamPage } from '@pages/exam';
+import { customRender } from '@shared/lib/test/render';
 
 const renderRoute = (initialEntry: string = routes.home.path) => {
-  render(
+  customRender(
     <MemoryRouter initialEntries={[initialEntry]}>
       <Routes>
         <Route path={routes.home.path} element={<RootPage />}>

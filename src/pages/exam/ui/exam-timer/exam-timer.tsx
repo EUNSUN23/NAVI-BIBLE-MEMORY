@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useExamStatusStore } from '@pages/exam/model/examStatusStore';
+import { useExamStatusStore } from '../../model/examStatusStore';
 import { useShallow } from 'zustand/react/shallow';
 
 type ExamTimerProps = {

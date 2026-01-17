@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { RootPage } from '@pages/root/ui/root-page';
+import { RootPage } from '@pages/root';
 import { lazy } from 'react';
 import { routes } from '@shared/config/routes';
 

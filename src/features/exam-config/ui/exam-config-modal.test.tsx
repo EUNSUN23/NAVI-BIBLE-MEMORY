@@ -12,9 +12,9 @@ import {
   mockVerseSelectStore,
 } from '@shared/lib/test/mocks/mock-zustand-store';
 import { ExamConfigModal } from './exam-config-modal';
-import { render } from '@shared/lib/test/render';
 import { userEvent } from '@testing-library/user-event';
 import { routes } from '@shared/config/routes';
+import { customRender } from '@shared/lib/test/render';
 
 const setup = {
   TIME_LIMIT: { LABEL: '제한시간', DEFAULT: 30 },
@@ -47,7 +47,7 @@ beforeEach(() => {
   });
   mockAnimationsApi();
   mockAlert();
-  render(<ExamConfigModal />);
+  customRender(<ExamConfigModal />);
 });
 
 describe('ExamConfig Test', () => {

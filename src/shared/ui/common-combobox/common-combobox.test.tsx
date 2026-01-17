@@ -1,10 +1,10 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-import { render } from '@shared/lib/test/render';
 import { cleanup, screen, waitFor, within } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { CommonCombobox, CommonComboboxItem } from './common-combobox';
 import { Field } from '@headlessui/react';
 import { BIBLE_VERSIONS } from '@shared/lib/msw/mock-data';
+import { customRender } from '@shared/lib/test/render';
 
 const label = '성경버전';
 const items: CommonComboboxItem[] = BIBLE_VERSIONS.map(({ name, code }) => ({
@@ -17,7 +17,7 @@ const handleChangeCombobox = vi.fn<(item: CommonComboboxItem) => void>();
 
 describe('CommonCombobox Test', () => {
   beforeEach(() => {
-    render(
+    customRender(
       <Field>
         <CommonCombobox.Label>{label}</CommonCombobox.Label>
         <CommonCombobox

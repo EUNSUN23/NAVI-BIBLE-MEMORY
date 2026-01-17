@@ -1,4 +1,4 @@
-import { useExamStatusStore } from '@pages/exam/model/examStatusStore';
+import { useExamStatusStore } from '../../model/examStatusStore';
 import cn from '@shared/lib/styles/cn';
 
 function SubmitButton() {

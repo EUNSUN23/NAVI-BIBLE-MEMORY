@@ -1,15 +1,15 @@
 import { userEvent } from '@testing-library/user-event';
 import { BibleVersionSelect } from './bible-version-select';
-import { render } from '@shared/lib/test/render';
 import waitForElementToBeRemovedIfExist from '@shared/lib/test/wait-for-element-to-be-removed-If-exist';
 import { screen, waitFor, within } from '@testing-library/react';
 import { expect } from 'vitest';
 import { BIBLE_VERSIONS } from '@shared/lib/msw/mock-data';
+import { customRender } from '@shared/lib/test/render';
 
 describe('BibleVersionSelect test', () => {
   test('renders bible version combobox after data loading finishes', async () => {
     const user = userEvent.setup();
-    render(<BibleVersionSelect />);
+    customRender(<BibleVersionSelect />);
 
     await waitForElementToBeRemovedIfExist(
       screen.getByTestId('bibleVersionSelect-loader'),
