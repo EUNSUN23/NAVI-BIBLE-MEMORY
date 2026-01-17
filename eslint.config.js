@@ -6,6 +6,7 @@ import tseslint from 'typescript-eslint';
 import react from 'eslint-plugin-react';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import tailwindcss from 'eslint-plugin-tailwindcss';
+import importPlugin from 'eslint-plugin-import';
 
 export default tseslint.config(
   { ignores: ['.*', 'dist'] },
@@ -15,6 +16,8 @@ export default tseslint.config(
       ...tseslint.configs.recommendedTypeChecked,
       ...tseslint.configs.stylisticTypeChecked,
       ...tailwindcss.configs['flat/recommended'],
+      importPlugin.flatConfigs.recommended,
+      importPlugin.flatConfigs.typescript,
     ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
@@ -25,7 +28,10 @@ export default tseslint.config(
         tsconfigRootDir: import.meta.dirname,
       },
     },
-    settings: { react: { version: '18.3' } },
+    settings: {
+      'import/resolver': { typescript: true },
+      react: { version: '18.3' },
+    },
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
@@ -67,6 +73,134 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-function-type': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            // Use public API only
+            '@app/**',
+            '@pages/*/**',
+            '@widgets/*/**',
+            '@features/*/**',
+            '@entities/*/model/**',
+            '@entities/*/api/**',
+            '@entities/*/ui/**',
+            '@entities/*/lib/**',
+            '@entities/*/config/**',
+            '@entities/*/assets/**',
+
+            '../**/app',
+            '../**/pages',
+            '../**/widgets',
+            '../**/features',
+            '../**/entities',
+            '../**/shared',
+          ],
+        },
+      ],
+      'import/no-restricted-paths': [
+        'error',
+        {
+          zones: [
+            // pages
+            {
+              target: 'src/pages',
+              from: 'src/app',
+            },
+            // Cross import
+            {
+              target: 'src/pages/*/**/*',
+              from: 'src/pages/*/index.ts',
+            },
+            // widgets
+            {
+              target: 'src/widgets',
+              from: 'src/app',
+            },
+            {
+              target: 'src/widgets',
+              from: 'src/pages',
+            },
+            // Cross import
+            {
+              target: 'src/widgets/*/**/*',
+              from: 'src/widgets/*/index.ts',
+            },
+
+            // features
+            {
+              target: 'src/features',
+              from: 'src/app',
+            },
+            {
+              target: 'src/features',
+              from: 'src/pages',
+            },
+            {
+              target: 'src/features',
+              from: 'src/widgets',
+            },
+            // Cross import
+            {
+              target: 'src/features/*/**/*',
+              from: 'src/features/*/index.ts',
+            },
+
+            // entities
+            {
+              target: 'src/entities',
+              from: 'src/app',
+            },
+            {
+              target: 'src/entities',
+              from: 'src/pages',
+            },
+            {
+              target: 'src/entities',
+              from: 'src/widgets',
+            },
+            {
+              target: 'src/entities',
+              from: 'src/features',
+            },
+            // Cross import
+            {
+              target: 'src/entities/*/**/*',
+              from: 'src/entities/*/index.ts',
+            },
+            // shared
+            {
+              target: 'src/shared',
+              from: 'src/app',
+            },
+            {
+              target: 'src/shared',
+              from: 'src/pages',
+            },
+            {
+              target: 'src/shared',
+              from: 'src/widgets',
+            },
+            {
+              target: 'src/shared',
+              from: 'src/features',
+            },
+            {
+              target: 'src/shared',
+              from: 'src/entities',
+            },
+          ],
+        },
+      ],
+      'import/default': 'off',
+      'import/no-named-as-default-member': 'off',
+    },
+  },
+  {
+    files: ['**/*.test.{ts,tsx}', '**/msw/*', '**/test/**/*'],
+    rules: {
+      'no-restricted-imports': 'off',
+      'import/no-restricted-paths': 'off',
     },
   },
 );
