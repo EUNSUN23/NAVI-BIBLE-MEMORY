@@ -6,6 +6,6 @@ const ExamConfigModal = lazy(() =>
     default: module.ExamConfigModal,
   })),
 );
-
 export { ExamConfigModal };
 export { useExamConfigStore } from './model/exam-config-store';
+export { useExamConfigModalStore } from './model/exam-config-modal-store';
