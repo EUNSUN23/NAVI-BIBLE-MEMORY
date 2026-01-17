@@ -3,7 +3,7 @@ import { useShallow } from 'zustand/react/shallow';
 import {
   CommonCombobox,
   CommonComboboxItem,
-} from 'src/shared/ui/common-combobox';
+} from '@shared/ui/common-combobox/common-combobox';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { cardHideOptionQueries as cardHideOptionApi } from 'src/entities/card-hide-option';
 

@@ -1,4 +1,4 @@
-import { CommonCombobox } from 'src/shared/ui/common-combobox';
+import { CommonCombobox } from '@shared/ui/common-combobox';
 import { Field } from '@headlessui/react';
 import { ComposedBoundary } from '@shared/lib/error/composed-boundary';
 import ErrorMessage from '@shared/lib/error/error-message';

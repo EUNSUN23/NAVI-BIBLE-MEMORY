@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { ExamConfigModal } from '@features/exam-config/ui/exam-config-modal';
 import mockAlert from '@shared/lib/test/mocks/mock-alert';
 import { userEvent } from '@testing-library/user-event';
-import { ExamPageNavLink } from './ExamPageNavLink';
+import { ExamPageNavLink } from './exam-page-nav-link';
 
 const setup = () => {
   const user = userEvent.setup();

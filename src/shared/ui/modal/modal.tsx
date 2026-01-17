@@ -14,7 +14,7 @@ type ModalProps = {
   children: React.ReactNode;
 };
 
-function Modal({
+export function Modal({
   title,
   children,
   isOpen,
@@ -77,5 +77,3 @@ function Modal({
     </Dialog>
   );
 }
-
-export default Modal;

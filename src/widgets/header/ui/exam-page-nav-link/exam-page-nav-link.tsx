@@ -4,7 +4,7 @@ import {
   useExamConfigModalStore,
   useExamConfigStore,
 } from '@features/exam-config';
-import { useVerseSelectStore } from '@/features/verse-select';
+import { useVerseSelectStore } from '@features/verse-select';
 import { useShallow } from 'zustand/react/shallow';
 import { routes } from '@shared/config/routes';
 

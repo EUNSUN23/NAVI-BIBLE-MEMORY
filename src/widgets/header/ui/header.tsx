@@ -2,8 +2,8 @@ import Nav from '@shared/ui/nav';
 import { routes } from '@shared/config/routes';
 import { FaHome } from '@react-icons/all-files/fa/FaHome';
 import { useLocation } from 'react-router-dom';
-import ExamPageNavLink from 'src/shared/ui/exam-page-nav-link';
-import DrillingPageNavLink from 'src/shared/ui/drilling-page-nav-link';
+import { ExamPageNavLink } from './exam-page-nav-link/exam-page-nav-link';
+import { DrillingPageNavLink } from './drilling-page-nav-link/drilling-page-nav-link';
 
 export function Header() {
   const { pathname } = useLocation();

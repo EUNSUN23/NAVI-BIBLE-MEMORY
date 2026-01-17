@@ -4,7 +4,7 @@ import { bibleVersionApi } from '@entities/bible-version';
 import {
   CommonCombobox,
   CommonComboboxItem,
-} from 'src/shared/ui/common-combobox';
+} from '@shared/ui/common-combobox/common-combobox';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 function BibleVersionCombobox() {
